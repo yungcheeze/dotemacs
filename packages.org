@@ -1,0 +1,35 @@
+* QOL
+- gitmodes
+- macrostep
+- ace-window?
+- highlight-parentheses
+- org
+  - org-bullets
+  - org-projectile
+
+* Code
+- magit
+  - diff-hl or git-gutter
+  - git-timemachine
+- company
+- projectile
+  - org-projectile
+- flycheck
+- yasnippet
+  - yasnippet-snippets
+  - auto-yasnippet
+- lsp-mode
+- dap-mode
+- gh-md
+  
+* Languages
+- python
+  - cython-mode
+  - pytest
+- typescript-mode
+- dockerfile-mode
+- lua-mode
+* Core
+- modalka
+- hydra?
+- emacs-tmux-pane
