@@ -79,6 +79,7 @@
   :after magit
   :config
   (setq
+    magit-delta-default-dark-theme "Nord"
     magit-delta-hide-plus-minus-markers nil)
   (magit-delta-mode))
 
