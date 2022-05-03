@@ -44,6 +44,9 @@
   (when (fboundp #'scroll-bar-mode)
     (scroll-bar-mode -1)))
 
+  (when (fboundp #'menu-bar-mode)
+    (menu-bar-mode -1))
+
 (when (featurep 'native-compile)
   (defvar native-comp-deferred-compilation)
   (setq native-comp-deferred-compilation t)
