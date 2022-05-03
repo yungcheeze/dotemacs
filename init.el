@@ -83,6 +83,8 @@
     magit-delta-hide-plus-minus-markers nil)
   (magit-delta-mode))
 
+(use-package multiple-cursors)
+
 
 ;;; Setup Shit
 (setq backup-directory-alist
