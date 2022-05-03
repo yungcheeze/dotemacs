@@ -73,14 +73,31 @@
   :config
   (which-key-mode))
 
+(use-package magit)
+
+(use-package magit-delta
+  :after magit
+  :config
+  (setq
+    magit-delta-hide-plus-minus-markers nil)
+  (magit-delta-mode))
+
 
 ;;; Setup Shit
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
- 
+
+;; Automatically reload a file if it changes on disk
+(global-auto-revert-mode t)
+
 ;;; Custom Functions
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive)
     (revert-buffer :ignore-auto :noconfirm))
+
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
