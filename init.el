@@ -152,14 +152,14 @@
 
 
 ;;; Direnv
-;; (use-package envrc
-;;   :defer t
-;;   :config
-;;   (envrc-global-mode))
-(use-package direnv
- :defer t
- :config
- (direnv-mode))
+(use-package envrc
+  :defer t
+  :config
+  (envrc-global-mode))
+;; (use-package direnv
+;;  :defer t
+;;  :config
+;;  (direnv-mode))
 
 ;;; Langs
 (use-package nix-mode
