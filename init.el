@@ -202,6 +202,26 @@
 (use-package evil-nerd-commenter
   :defer t)
 
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1))
+(use-package consult-projectile
+  :after projectile
+  :defer t)
+(use-package flycheck-projectile
+  :after projectile
+  :defer t)
+
+(use-package treemacs
+  :defer t)
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+(use-package treemacs-magit
+  :after (treemacs magit))
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :ensure t)
 ;;; Custom Functions
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
