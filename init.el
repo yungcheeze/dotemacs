@@ -220,6 +220,12 @@
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
+;;; Custom Binds
+
+(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-O") 'ace-window)
+(global-set-key (kbd "M-s") 'consult-line)
+
 ;;; Custom Functions
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
