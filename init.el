@@ -186,17 +186,6 @@
 (use-package evil-nerd-commenter
   :defer t)
 
-;;; Setup Shit
-;; keep backups and auto-saves out of the way https://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
-
-(setq backup-directory-alist
-      `((".*" . ,(concat user-emacs-directory "backups"))))
-(setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "saves") t)))
-
-;; Automatically reload a file if it changes on disk
-(global-auto-revert-mode t)
-
 ;;; Custom Functions
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
