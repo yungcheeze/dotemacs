@@ -146,6 +146,9 @@
                          (require 'lsp-pyright)
                          (lsp))))  ; or lsp-deferred
 
+(use-package lsp-haskell
+  :hook ((haskell-mode . lsp)
+	 (haskell-literate-mode . lsp)))
 
 ;;;Completion
 (use-package company
