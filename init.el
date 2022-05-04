@@ -146,8 +146,23 @@
 ;;; Langs
 (use-package nix-mode)
 
+;;; QOL
 (use-package multiple-cursors)
 
+(use-package auto-mark
+  :straight
+  (auto-mark :type git :host github :repo "yungcheeze/auto-mark.el")
+  :config
+  (setq auto-mark-command-class-alist
+        '((anything . anything)
+          (goto-line . jump)
+          (indent-for-tab-command . ignore)
+          (undo . ignore)))
+  (global-auto-mark-mode 1))
+
+(use-package ace-window)
+
+(use-package evil-nerd-commenter)
 
 ;;; Setup Shit
 (setq backup-directory-alist
