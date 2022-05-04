@@ -80,10 +80,12 @@
   (which-key-mode))
 
 ;;; Git stuff
-(use-package magit)
+(use-package magit
+  :defer t)
 
 (use-package magit-delta
   :after magit
+  :defer t
   :config
   (setq
     magit-delta-default-dark-theme "Nord"
@@ -110,12 +112,15 @@
   (setq git-gutter:update-interval 1)
   (global-git-gutter-mode +1))
 
-(use-package git-timemachine)
+(use-package git-timemachine
+  :defer t)
 
 (use-package forge
-  :after magit)
+  :after magit
+  :defer t)
 
-(use-package code-review)
+(use-package code-review
+  :defer t)
 
 ;;;LSP
 (use-package lsp-mode
@@ -127,6 +132,7 @@
 
 (use-package lsp-pyright
   :ensure t
+  :defer t
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp))))  ; or lsp-deferred
@@ -136,24 +142,32 @@
 (use-package company
   :config
   (global-company-mode 1))
-(use-package company-shell)
-(use-package company-cabal)
-(use-package company-nixos-options)
+(use-package company-shell
+  :defer t)
+(use-package company-cabal
+  :defer t)
+(use-package company-nixos-options
+  :defer t
+  )
 
 
 ;;; Direnv
 ;; (use-package envrc
+;;   :defer t
 ;;   :config
 ;;   (envrc-global-mode))
 (use-package direnv
+ :defer t
  :config
  (direnv-mode))
 
 ;;; Langs
-(use-package nix-mode)
+(use-package nix-mode
+  :defer t)
 
 ;;; QOL
-(use-package multiple-cursors)
+(use-package multiple-cursors
+  :defer t)
 
 (use-package auto-mark
   :straight
@@ -166,9 +180,11 @@
           (undo . ignore)))
   (global-auto-mark-mode 1))
 
-(use-package ace-window)
+(use-package ace-window
+  :defer t)
 
-(use-package evil-nerd-commenter)
+(use-package evil-nerd-commenter
+  :defer t)
 
 ;;; Setup Shit
 ;; keep backups and auto-saves out of the way https://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
