@@ -153,6 +153,11 @@
 ;;;Completion
 (use-package company
   :config
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "<return>") nil)
+    (define-key company-active-map (kbd "RET") nil)
+    (define-key company-active-map (kbd "TAB") nil)
+    (define-key company-active-map (kbd "C-f") #'company-complete-selection))
   (global-company-mode 1))
 (use-package company-shell
   :defer t)
