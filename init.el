@@ -180,7 +180,11 @@
 ;;; Langs
 (use-package nix-mode
   :defer t)
+(use-package haskell-mode
+  :defer t)
 
+(use-package format-all
+  :defer t)
 ;;; QOL
 (use-package multiple-cursors
   :defer t)
