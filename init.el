@@ -24,9 +24,8 @@
   (xclip-mode 1))
 
 ;;; Visuals
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
+(use-package mood-line
+  :hook (after-init . mood-line-mode))
 
 (use-package nord-theme
   :config
