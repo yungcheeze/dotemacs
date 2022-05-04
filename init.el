@@ -162,6 +162,17 @@
   :defer t
   )
 
+(use-package yasnippet
+  :defer t
+  :config
+  (yas-global-mode t))
+(use-package yasnippet-snippets
+  :after yasnippet
+  :defer t)
+(use-package consult-yasnippet
+  :after yasnippet
+  :defer t)
+
 
 ;;; Direnv
 (use-package envrc
