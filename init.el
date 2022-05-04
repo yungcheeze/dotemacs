@@ -170,7 +170,6 @@
 
 (use-package evil-nerd-commenter)
 
-(use-package esup)
 ;;; Setup Shit
 ;; keep backups and auto-saves out of the way https://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
 
