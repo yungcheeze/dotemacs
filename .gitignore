@@ -2,3 +2,9 @@
 /backups/
 /auto-save-list/
 /history
+/.lsp-session-v1
+*.log
+*.sqlite
+/elpa
+/projects
+/transient
