@@ -111,6 +111,28 @@
 
 (use-package code-review)
 
+;;;LSP
+(use-package lsp-mode
+  :hook (lsp-mode . lsp-enable-which-key-integration)
+  :commands lsp)
+(use-package consult-lsp)
+(use-package flycheck)
+(use-package lsp-ui)
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
+
+;;;Completion
+(use-package company
+  :config
+  (global-company-mode 1))
+(use-package company-shell)
+(use-package company-cabal)
+(use-package company-nixos-options)
 (use-package multiple-cursors)
 
 
