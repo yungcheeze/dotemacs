@@ -87,6 +87,7 @@
 (setq confirm-kill-emacs nil)
 
 (column-number-mode 1)
+(electric-pair-mode 1)
 
 (provide 'early-init)
 ;;; early-init.el ends here
