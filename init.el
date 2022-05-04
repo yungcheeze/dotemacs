@@ -89,6 +89,9 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package rg
+  :config
+  (rg-enable-menu))
 (use-package which-key
   :config
   (which-key-mode))
