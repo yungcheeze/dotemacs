@@ -83,6 +83,25 @@
     magit-delta-hide-plus-minus-markers nil)
   (magit-delta-mode))
 
+(use-package blamer
+  :ensure t
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
+
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode +1))
+
 (use-package multiple-cursors)
 
 
