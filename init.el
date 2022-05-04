@@ -12,6 +12,12 @@
   :custom
   (straight-use-package-by-default t))
 
+(use-package benchmark-init
+  :ensure t
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 (use-package xclip
   :straight (xclip :type git :host github :repo "emacsmirror/xclip")
   :config
