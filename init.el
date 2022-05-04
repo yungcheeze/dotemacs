@@ -102,15 +102,6 @@
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
-(use-package magit-delta
-  :after magit
-  :defer t
-  :config
-  (setq
-    magit-delta-default-dark-theme "Nord"
-    magit-delta-hide-plus-minus-markers nil)
-  (magit-delta-mode))
-
 (use-package blamer
   :ensure t
   :bind (("s-i" . blamer-show-commit-info))
