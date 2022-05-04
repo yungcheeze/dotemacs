@@ -133,6 +133,15 @@
 (use-package company-shell)
 (use-package company-cabal)
 (use-package company-nixos-options)
+
+
+;;; Direnv
+;; (use-package envrc
+;;   :config
+;;   (envrc-global-mode))
+(use-package direnv
+ :config
+ (direnv-mode))
 (use-package multiple-cursors)
 
 
