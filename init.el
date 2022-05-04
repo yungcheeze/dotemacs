@@ -164,6 +164,7 @@
 
 (use-package evil-nerd-commenter)
 
+(use-package esup)
 ;;; Setup Shit
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
