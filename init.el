@@ -81,7 +81,9 @@
 
 ;;; Git stuff
 (use-package magit
-  :defer t)
+  :defer t
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package magit-delta
   :after magit
