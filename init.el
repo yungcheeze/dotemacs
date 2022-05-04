@@ -142,6 +142,10 @@
 (use-package direnv
  :config
  (direnv-mode))
+
+;;; Langs
+(use-package nix-mode)
+
 (use-package multiple-cursors)
 
 
