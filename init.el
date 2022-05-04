@@ -233,3 +233,6 @@
   "Show the full path file name in the minibuffer."
   (interactive)
   (message (buffer-file-name)))
+
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file 'noerror)
