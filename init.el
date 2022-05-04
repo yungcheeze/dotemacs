@@ -23,6 +23,20 @@
   :config
   (xclip-mode 1))
 
+;;; Visuals
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
+(use-package nord-theme
+  :config
+  (defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+  (add-hook 'window-setup-hook 'on-after-init)
+  (load-theme 'nord t))
+
 ;;; Helm 2.0 
 (use-package selectrum
   :config
