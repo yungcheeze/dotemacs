@@ -73,6 +73,7 @@
   :config
   (which-key-mode))
 
+;;; Git stuff
 (use-package magit)
 
 (use-package magit-delta
@@ -100,7 +101,15 @@
 
 (use-package git-gutter
   :config
+  (setq git-gutter:update-interval 1)
   (global-git-gutter-mode +1))
+
+(use-package git-timemachine)
+
+(use-package forge
+  :after magit)
+
+(use-package code-review)
 
 (use-package multiple-cursors)
 
