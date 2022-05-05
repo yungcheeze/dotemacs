@@ -124,6 +124,9 @@
 (use-package git-timemachine
   :defer t)
 
+(use-package git-link
+  :defer t)
+
 (use-package forge
   :after magit
   :defer t)
