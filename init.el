@@ -318,3 +318,19 @@ With prefix ARG, silently save all file-visiting buffers, then kill."
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
+
+;;; Setup Shit
+;; keep backups and auto-saves out of the way https://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
+
+(setq backup-directory-alist
+      `((".*" . ,(concat user-emacs-directory "backups"))))
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory "saves") t)))
+
+;; Custom options
+;; Automatically reload a file if it changes on disk
+(global-auto-revert-mode t)
+(setq confirm-kill-emacs nil)
+
+(column-number-mode 1)
+(electric-pair-mode 1)

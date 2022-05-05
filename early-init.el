@@ -74,20 +74,5 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;;; Setup Shit
-;; keep backups and auto-saves out of the way https://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
-
-(setq backup-directory-alist
-      `((".*" . ,(concat user-emacs-directory "backups"))))
-(setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "saves") t)))
-
-;; Automatically reload a file if it changes on disk
-(global-auto-revert-mode t)
-(setq confirm-kill-emacs nil)
-
-(column-number-mode 1)
-(electric-pair-mode 1)
-
 (provide 'early-init)
 ;;; early-init.el ends here
