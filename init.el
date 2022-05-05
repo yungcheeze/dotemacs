@@ -241,6 +241,14 @@
 (use-package evil-nerd-commenter
   :defer t)
 
+(use-package golden-ratio-scroll-screen
+  :ensure t
+  :custom
+  (golden-ratio-scroll-highlight-flag 'before)
+  :config
+  (global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
+  (global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up))
+
 (use-package projectile
   :ensure t
   :init
