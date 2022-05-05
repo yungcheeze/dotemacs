@@ -89,6 +89,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package rg
+  :defer t
   :config
   (rg-enable-menu))
 (use-package which-key
@@ -136,11 +137,15 @@
 
 ;;;LSP
 (use-package lsp-mode
+  :defer t
   :hook (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp)
-(use-package consult-lsp)
-(use-package flycheck)
-(use-package lsp-ui)
+(use-package consult-lsp
+  :defer t)
+(use-package flycheck
+  :defer t)
+(use-package lsp-ui
+  :defer t)
 
 (use-package lsp-pyright
   :ensure t
@@ -201,6 +206,7 @@
   :defer t)
 
 (use-package org-projectile
+  :defer t
   :config
   (progn
     (setq org-projectile-projects-file
