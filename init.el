@@ -171,7 +171,6 @@
   )
 
 (use-package yasnippet
-  :defer t
   :config
   (yas-global-mode t))
 (use-package yasnippet-snippets
