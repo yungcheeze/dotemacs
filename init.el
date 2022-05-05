@@ -199,6 +199,15 @@
 
 (use-package format-all
   :defer t)
+
+(use-package org-projectile
+  :config
+  (progn
+    (setq org-projectile-projects-file
+          "~/work/notes/PROJECTS.org")
+    (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+    (push (org-projectile-project-todo-entry) org-capture-templates))
+  :ensure t)
 ;;; QOL
 (use-package multiple-cursors
   :defer t)
