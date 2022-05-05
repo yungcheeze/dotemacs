@@ -125,7 +125,13 @@
 (use-package git-timemachine
   :defer t)
 
+;; good for files
 (use-package git-link
+  :defer t
+  :custom
+  (git-link-use-commit t))
+;; good for commit objects
+(use-package browse-at-remote
   :defer t)
 
 (use-package forge
