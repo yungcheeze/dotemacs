@@ -324,8 +324,20 @@ With prefix ARG, silently save all file-visiting buffers, then kill."
 
 (setq backup-directory-alist
       `((".*" . ,(concat user-emacs-directory "backups"))))
-(setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "saves") t)))
+(setq auto-save-default t
+      ;; Don't auto-disable auto-save after deleting big chunks. This defeats
+      ;; the purpose of a failsafe. This adds the risk of losing the data we
+      ;; just deleted, but I believe that's VCS's jurisdiction, not ours.
+      auto-save-include-big-deletions t
+      ;; Keep it out of `doom-emacs-dir' or the local directory.
+      auto-save-list-file-prefix (concat user-emacs-directory "autosave/")
+      tramp-auto-save-directory  (concat user-emacs-directory "tramp-autosave/")
+      auto-save-file-name-transforms
+      (list (list "\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+                  ;; Prefix tramp autosaves to prevent conflicts with local ones
+                  (concat auto-save-list-file-prefix "tramp-\\2") t)
+            (list ".*" auto-save-list-file-prefix t)))
+
 
 ;; Custom options
 ;; Automatically reload a file if it changes on disk
