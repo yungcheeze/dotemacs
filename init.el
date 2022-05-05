@@ -209,6 +209,17 @@
     (push (org-projectile-project-todo-entry) org-capture-templates))
   :ensure t)
 ;;; QOL
+(use-package tmux-pane
+  :config
+  (setq -override-keymap
+	(let ((map (make-sparse-keymap)))
+	  (define-key map (kbd "M-\\") #'omni-window-last)
+	  (define-key map (kbd "M-k") #'omni-window-up)
+	  (define-key map (kbd "M-j") #'omni-window-down)
+	  (define-key map (kbd "M-h") #'omni-window-left)
+	  (define-key map (kbd "M-l") #'omni-window-right)
+	  map))
+  (tmux-pane-mode +1))
 (use-package multiple-cursors
   :defer t)
 
