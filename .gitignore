@@ -13,3 +13,5 @@
 /.mc-lists.el
 /custom.el
 /projectile-bookmarks.eld
+/bookmarks
+/autosave/
