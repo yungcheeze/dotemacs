@@ -249,6 +249,12 @@
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
+
+(use-package neotree
+  :defer t)
+
+(use-package scratch
+  :defer t)
 ;;; Custom Binds
 
 (global-set-key (kbd "M-o") 'other-window)
