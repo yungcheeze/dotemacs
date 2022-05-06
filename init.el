@@ -294,8 +294,7 @@
   :defer t)
 ;;; Custom Binds
 
-(global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "M-O") 'ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "M-s") 'consult-line)
 
 ;;; Custom Functions
