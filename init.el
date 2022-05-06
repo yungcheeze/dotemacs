@@ -245,6 +245,8 @@
   (global-auto-mark-mode 1))
 
 (use-package ace-window
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
   :defer t)
 
 (use-package evil-nerd-commenter
