@@ -213,6 +213,8 @@
   :defer t)
 (use-package json-navigator
   :defer t)
+(use-package tree-mode
+  :defer t)
 
 
 (use-package format-all
