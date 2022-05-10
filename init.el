@@ -372,4 +372,13 @@ With prefix ARG, silently save all file-visiting buffers, then kill."
 (setq confirm-kill-emacs nil)
 
 (column-number-mode 1)
+(global-hl-line-mode +1)
+(setq inhibit-splash-screen t)
 (electric-pair-mode 1)
+
+(use-package auto-fill
+  :straight nil
+  :custom
+  (fill-column 80)
+  :hook
+  (org-mode . auto-fill-mode))
