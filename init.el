@@ -296,7 +296,9 @@
   :ensure t)
 
 (use-package neotree
-  :defer t)
+  :defer t
+  :custom
+  (neo-theme 'nerd))
 
 (use-package scratch
   :defer t)
