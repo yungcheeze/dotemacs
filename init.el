@@ -222,6 +222,15 @@
 (use-package tree-mode
   :defer t)
 
+(use-package python-black
+  :defer t
+  :after python)
+(use-package pyimport
+  :defer t)
+(use-package py-isort
+  :defer t)
+(use-package pytest
+  :defer t)
 
 (use-package format-all
   :defer t)
