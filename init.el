@@ -36,6 +36,12 @@
   (add-hook 'window-setup-hook 'on-after-init)
   (load-theme 'nord t))
 
+(use-package xterm-color
+  :defer t)
+
+(use-package all-the-icons
+  :defer t)
+
 ;;; Helm 2.0
 (use-package selectrum
   :config
