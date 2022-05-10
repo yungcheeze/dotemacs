@@ -119,6 +119,9 @@
   :defer t
   :init
   (cheesemacs/git "g" 'magit)
+  :custom
+  (magit-diff-refine-ignore-whitespace t)
+  (magit-diff-refine-hunk 'all)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 (use-package magit-delta
