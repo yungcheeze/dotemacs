@@ -236,8 +236,16 @@
     (push (org-projectile-project-todo-entry) org-capture-templates))
   :ensure t)
 ;;; QOL
-(use-package multiple-cursors
+(use-package phi-search
   :defer t)
+(use-package multiple-cursors
+  :defer t
+  :bind
+  (:map mc/keymap
+	("<return>" . nil)
+	("C-s" . phi-search)
+	("C-r" . phi-search-backward)
+	("C-&" . mc/vertical-align-with-space)))
 
 (use-package expand-region
   :defer t
