@@ -302,10 +302,13 @@
 
 (use-package scratch
   :defer t)
+
 ;;; Custom Binds
 
 (global-set-key (kbd "M-o") 'ace-window)
+(global-set-key (kbd "C-M-o") 'ace-swap-window)
 (global-set-key (kbd "M-s") 'consult-line)
+(global-set-key (kbd "ESC M-DEL") 'backward-kill-sexp)
 
 ;;; Custom Functions
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
