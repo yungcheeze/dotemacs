@@ -239,6 +239,10 @@
 (use-package multiple-cursors
   :defer t)
 
+(use-package expand-region
+  :defer t
+  :bind ("M-." . er/expand-region))
+
 (use-package auto-mark
   :straight
   (auto-mark :type git :host github :repo "yungcheeze/auto-mark.el")
