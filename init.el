@@ -107,6 +107,23 @@
   :defer t
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+(use-package magit-delta
+  :defer t
+  :custom
+  (magit-delta-default-dark-theme "Nord")
+  :hook (magit-mode . magit-delta-mode))
+(use-package magit-todos
+  :defer t
+  :after magit
+  :custom
+  (magit-todos-nice (when (executable-find "nice") t)
+                    "avoid breaking Magit on systems that don't have `nice'.")
+  :init
+  (let ((inhibit-message t))
+    (magit-todos-mode 1))
+  :config
+  (transient-append-suffix 'magit-status-jump '(0 0 -1)
+    '("T " "Todos" magit-todos-jump-to-todos)))
 
 (use-package blamer
   :ensure t
