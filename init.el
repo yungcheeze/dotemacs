@@ -226,6 +226,9 @@
 (use-package format-all
   :defer t)
 
+(use-package separedit
+  :defer t)
+
 (use-package org-projectile
   :defer t
   :config
@@ -235,6 +238,11 @@
     (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
     (push (org-projectile-project-todo-entry) org-capture-templates))
   :ensure t)
+
+(use-package org-autolist
+  :defer t
+  :hook (org-mode . org-autolist-mode))
+
 ;;; QOL
 (use-package phi-search
   :defer t)
