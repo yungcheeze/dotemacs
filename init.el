@@ -42,6 +42,17 @@
 (use-package all-the-icons
   :defer t)
 
+(use-package general
+  :ensure t
+  :preface
+  (global-unset-key (kbd "M-m"))
+  (general-create-definer cheesemacs
+ 			  :prefix "M-m")
+  (general-create-definer cheesemacs/git
+			  :prefix "M-m g")
+  :config
+  (general-auto-unbind-keys))
+
 ;;; Helm 2.0
 (use-package selectrum
   :config
@@ -98,6 +109,7 @@
   :defer t
   :config
   (rg-enable-menu))
+
 (use-package which-key
   :config
   (which-key-mode))
@@ -105,6 +117,8 @@
 ;;; Git stuff
 (use-package magit
   :defer t
+  :init
+  (cheesemacs/git "g" 'magit)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 (use-package magit-delta
@@ -168,6 +182,8 @@
 (use-package lsp-mode
   :defer t
   :hook (lsp-mode . lsp-enable-which-key-integration)
+  :custom
+  (lsp-keymap-prefix "M-m l")
   :commands lsp)
 (use-package consult-lsp
   :defer t)
@@ -354,7 +370,8 @@
   (persp-mode))
 
 (use-package treemacs
-  :defer t)
+  :init
+  (cheesemacs "t" 'treemacs-display-current-project-exclusively))
 (use-package treemacs-projectile
   :after (treemacs projectile))
 (use-package treemacs-magit
