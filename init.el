@@ -250,6 +250,18 @@
           (undo . ignore)))
   (global-auto-mark-mode 1))
 
+(use-package recentf
+  :straight nil
+  :custom
+  (recentf-max-menu-items 100)
+  :config
+  (recentf-mode))
+
+(use-package gcmh
+  :delight gcmh-mode
+  :init
+  (gcmh-mode t))
+
 (use-package ace-window
   :custom
   (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
@@ -266,6 +278,9 @@
   (global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
   (global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up))
 
+(use-package perfect-margin
+  :defer t)
+
 (use-package projectile
   :ensure t
   :init
@@ -276,6 +291,9 @@
 (use-package flycheck-projectile
   :after projectile
   :defer t)
+(use-package hl-todo
+  :init
+  (global-hl-todo-mode 1))
 
 (use-package perspective
   :bind
@@ -294,6 +312,8 @@
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
+(use-package lsp-treemacs
+  :defer t)
 
 (use-package neotree
   :defer t
