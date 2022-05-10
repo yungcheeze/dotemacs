@@ -221,6 +221,10 @@
   :defer t)
 (use-package tree-mode
   :defer t)
+(use-package dockerfile-mode
+  :defer t)
+(use-package yaml-mode
+  :defer t)
 
 (use-package python-black
   :defer t
