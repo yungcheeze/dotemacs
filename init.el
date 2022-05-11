@@ -513,6 +513,11 @@
   (interactive)
   (message (buffer-file-name)))
 
+(defun display-prefix (arg)
+  "Display the value of the raw prefix arg."
+  (interactive "P")
+  (message "%s" arg))
+
 (defun my-save-buffers-kill-emacs (&optional arg)
   "Offer to save each buffer(once only), then kill this Emacs process.
 With prefix ARG, silently save all file-visiting buffers, then kill."
