@@ -323,6 +323,22 @@
 (use-package separedit
   :defer t)
 
+(use-package org
+  :commands (org-store-link)
+  :init
+  (defun cheese/org-store-link-raw ()
+    (interactive)
+    (setq current-prefix-arg '(16))
+    (call-interactively 'org-store-link))
+  (cheesemacs/project "L" 'org-store-link)
+  (cheesemacs/project "l" 'cheese/org-store-link-raw))
+(use-package org-contrib
+  :defer t)
+(use-package ol-git-link
+  :after org)
+(use-package orgit
+  :after org
+  :commands (orgit-store-link))
 (use-package org-projectile
   :defer t
   :init
