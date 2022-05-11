@@ -177,6 +177,7 @@
   :defer t
   :after magit
   :custom
+  (magit-todos-ignored-keywords '("DONE"))
   (magit-todos-nice (when (executable-find "nice") t)
                     "avoid breaking Magit on systems that don't have `nice'.")
   :init
