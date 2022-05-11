@@ -8,10 +8,20 @@
   - [ ] org-projectile
 
 * Code
-- [X] magit
+- [-] magit
   - [X] diff-hl or git-gutter
   - [X] git-timemachine
-- [X] company
+  - [ ] diffview
+  - [ ] options
+    - [ ] refine diff hunks t
+    - [ ] refine ignore whitespace t
+- [ ] company
+  - [ ] company-quickhelp (instead of corfu-doc)
+    - uses pos-tip. I think it doesn't work in terminal
+- [ ] corfu instead of company
+  - can run embark on candidates (meh)
+  - corfu-doc (oh-yeah)
+  - no idle completion (oh no)
 - [X] projectile
   - [X] org-projectile
 - [X] flycheck
@@ -31,5 +41,13 @@
 - [ ] lua-mode
 * Core
 - [ ] modalka
+- [ ] key-chord (could be useful for binding even more keys)
 - [ ] hydra?
-- [ ] emacs-tmux-pane
+- [-] emacs-tmux-pane (buggy if I want M-h/j/k/l)
+- [ ] consider vertico instead of selectrum
+  - only if I end up in a situation where I can't get completion for
+    something (https://github.com/minad/vertico#alternatives)
+    (https://github.com/raxod502/selectrum/issues/481)
+
+* Rice
+- [ ] treesitter highlighting (cause nord doesn't highlight yaml https://github.com/arcticicestudio/nord-emacs/issues/37)
