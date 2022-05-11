@@ -556,6 +556,8 @@ With prefix ARG, silently save all file-visiting buffers, then kill."
 (column-number-mode 1)
 (global-hl-line-mode +1)
 (setq inhibit-splash-screen t)
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message "")
 (electric-pair-mode 1)
 
 (use-package auto-fill
