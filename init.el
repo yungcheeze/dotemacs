@@ -459,11 +459,6 @@
 (use-package lsp-treemacs
   :defer t)
 
-(use-package neotree
-  :defer t
-  :custom
-  (neo-theme 'nerd))
-
 (use-package scratch
   :defer t
   :init
