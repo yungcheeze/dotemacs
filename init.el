@@ -401,6 +401,17 @@
   :init
   (gcmh-mode t))
 
+(use-package isearch
+  :straight nil
+  :bind ( :map isearch-mode-map
+          ("<backspace>" . isearch-del-char)
+          ("<left>" . isearch-edit-string)
+          ("<right>" . isearch-edit-string)
+	  ("C-j" . avy-isearch)
+          :map minibuffer-local-isearch-map
+          ("<left>" . backward-char)
+          ("<right>" . forward-char)))
+
 (use-package ace-window
   :custom
   (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
