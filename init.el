@@ -36,9 +36,6 @@
   (add-hook 'window-setup-hook 'on-after-init)
   (load-theme 'nord t))
 
-(use-package xterm-color
-  :defer t)
-
 (use-package all-the-icons
   :defer t)
 
@@ -47,14 +44,48 @@
   :preface
   (global-unset-key (kbd "M-m"))
   (general-create-definer cheesemacs
- 			  :prefix "M-m")
+    :prefix "M-m")
+  (general-create-definer cheesemacs/buffers
+    :prefix "M-m b")
+  (general-create-definer cheesemacs/files
+    :prefix "M-m f")
   (general-create-definer cheesemacs/git
-			  :prefix "M-m g")
+    :prefix "M-m g")
+  (general-create-definer cheesemacs/jump
+    :prefix "M-m j")
+  (general-create-definer cheesemacs/project
+    :prefix "M-m p")
+  (general-create-definer cheesemacs/search
+    :prefix "M-m s")
+  (general-create-definer cheesemacs/text
+    :prefix "M-m x")
+  (general-create-definer cheesemacs/windows
+    :prefix "M-m w")
+
+  (cheesemacs/buffers "w" 'save-buffer)
+  (cheesemacs/windows "c" 'delete-window)
+  (cheesemacs/windows "O" 'delete-other-windows)
+  (cheesemacs/windows "o" 'other-window)
+  (cheesemacs/windows "s" 'split-window-below)
+  (cheesemacs/windows "/" 'split-window-right)
+  (cheesemacs/windows "1" 'delete-other-windows)
+  (cheesemacs/windows "2" 'split-window-below)
+  (cheesemacs/windows "3" 'split-window-right)
+  (cheesemacs/windows "0" 'delete-window)
+  
   :config
   (general-auto-unbind-keys))
 
+(use-package xterm-color
+  :defer t
+  :init
+  (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer))
+
+
 ;;; Helm 2.0
 (use-package selectrum
+  :init
+  (cheesemacs ";" 'selectrum-repeat)
   :config
   (selectrum-mode +1)
   (setq completion-styles '(orderless))
@@ -105,6 +136,18 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package consult
+  :ensure t
+  :init
+  (cheesemacs/buffers "b" 'consult-buffer)
+  (cheesemacs/jump "m" 'consult-mark)
+  (cheesemacs/jump "i" 'consult-imenu)
+  (cheesemacs/jump "I" 'consult-imenu-multi)
+  (cheesemacs/files "r" 'consult-recent-file)
+  (cheesemacs/files "s" 'consult-find)
+  (cheesemacs/files "f" 'find-file)
+  (cheesemacs/search "s" 'consult-ripgrep))
+
 (use-package rg
   :defer t
   :config
@@ -119,6 +162,7 @@
   :defer t
   :init
   (cheesemacs/git "g" 'magit)
+  (cheesemacs/git "f" 'magit-find-file)
   :custom
   (magit-diff-refine-ignore-whitespace t)
   (magit-diff-refine-hunk 'all)
@@ -179,7 +223,9 @@
   :defer t)
 
 (use-package code-review
-  :defer t)
+  :defer t
+  :init
+  (cheesemacs/git "r" 'code-review-start))
 
 ;;;LSP
 (use-package lsp-mode
@@ -280,6 +326,9 @@
 
 (use-package org-projectile
   :defer t
+  :init
+  (cheesemacs/project "c" 'org-projectile-capture-for-current-project)
+  (cheesemacs/project "n" 'org-projectile-goto-location-for-project)
   :config
   (progn
     (setq org-projectile-projects-file
@@ -353,6 +402,8 @@
 (use-package projectile
   :ensure t
   :init
+  (cheesemacs/project "f" 'projectile-find-file)
+  (cheesemacs/project "p" 'projectile-switch-project)
   (projectile-mode +1))
 (use-package consult-projectile
   :after projectile
@@ -370,11 +421,16 @@
   :custom
   (persp-suppress-no-prefix-key-warning t)
   :init
+  (cheesemacs/windows "p" 'persp-switch)
+  (cheesemacs/windows "TAB" 'persp-switch)
+  (cheesemacs/project "TAB" 'persp-switch)
+  
   (persp-mode))
 
 (use-package treemacs
   :init
   (cheesemacs "t" 'treemacs-display-current-project-exclusively)
+  (cheesemacs "TAB" 'treemacs-display-current-project-exclusively)
   :config
   (treemacs-project-follow-mode +1)
   )
@@ -394,7 +450,22 @@
   (neo-theme 'nerd))
 
 (use-package scratch
-  :defer t)
+  :defer t
+  :init
+  (defun scratch-with-mode ()
+    (interactive)
+    (setq current-prefix-arg '(4))
+    (call-interactively 'scratch)
+    (setq ))
+  (cheesemacs/buffers "s" 'scratch)
+  (cheesemacs/buffers "S" 'scratch-with-mode))
+
+(use-package helpful
+  :defer t
+  :init
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key))
 
 ;;; Custom Binds
 
