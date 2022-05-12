@@ -231,7 +231,10 @@
 ;;;LSP
 (use-package lsp-mode
   :defer t
-  :hook (lsp-mode . lsp-enable-which-key-integration)
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+	 (json-mode . lsp)
+	 (jsonc-mode . lsp)
+	 (yaml-mode . lsp))
   :custom
   (lsp-keymap-prefix "M-m l")
   :commands lsp)
