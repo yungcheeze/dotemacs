@@ -55,6 +55,8 @@
     :prefix "M-m j")
   (general-create-definer cheesemacs/project
     :prefix "M-m p")
+  (general-create-definer cheesemacs/quit
+    :prefix "M-m q")
   (general-create-definer cheesemacs/search
     :prefix "M-m s")
   (general-create-definer cheesemacs/text
@@ -72,7 +74,8 @@
   (cheesemacs/windows "2" 'split-window-below)
   (cheesemacs/windows "3" 'split-window-right)
   (cheesemacs/windows "0" 'delete-window)
-  
+  (cheesemacs/quit "q" 'save-buffers-kill-emacs)
+
   :config
   (general-auto-unbind-keys))
 
