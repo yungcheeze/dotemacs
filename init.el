@@ -162,7 +162,9 @@
   :defer t
   :init
   (cheesemacs/git "g" 'magit)
+  (cheesemacs/git "d" 'magit-dispatch)
   (cheesemacs/git "f" 'magit-find-file)
+  (cheesemacs/git "o l" 'magit-list-submodules)
   :custom
   (magit-diff-refine-ignore-whitespace t)
   (magit-diff-refine-hunk 'all)
