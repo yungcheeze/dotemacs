@@ -308,6 +308,10 @@
   :defer t)
 (use-package yaml-mode
   :defer t)
+(use-package jenkinsfile-mode
+  :defer t)
+(use-package groovy-mode
+  :defer t)
 
 (use-package python-black
   :defer t
