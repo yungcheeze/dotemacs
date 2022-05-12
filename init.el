@@ -253,6 +253,38 @@
   :hook ((haskell-mode . lsp)
 	 (haskell-literate-mode . lsp)))
 
+;; Need my own version vscode-languageserver.
+;; lsp-mode's json-ls doesn't allow me to set a custom executable path and
+;; tries to install it using npm (which I don't always have)
+(use-package lsp-json-nix
+  :straight nil
+  :defer t
+  :requires (lsp-mode)
+  :preface
+  (require 'lsp-mode) ;; defines lsp- symbols
+  (require 'lsp-json) ;; defines lsp-json-- symbols
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection
+     ;; this is the main thing I changed
+     (lambda () (list "vscode-json-languageserver" "--stdio")))
+    :activation-fn (lsp-activate-on "json" "jsonc")
+    :server-id 'json-ls-nix
+    :priority 1 ;; set higher priority than json-ls (currently 0)
+    :multi-root t
+    :completion-in-comments? t
+    :initialization-options lsp-json--extra-init-params
+    :async-request-handlers (ht ("vscode/content" #'lsp-json--get-content))
+    :initialized-fn
+    (lambda (w)
+      (with-lsp-workspace w
+			  (lsp--set-configuration
+			   (ht-merge (lsp-configuration-section "json")
+				     (lsp-configuration-section "http")))
+			  (lsp-notify "json/schemaAssociations" lsp-json--schema-associations)))))
+  (provide 'lsp-json-nix))
+
 ;;;Completion
 (use-package company
   :config
