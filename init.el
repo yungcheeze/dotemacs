@@ -500,7 +500,7 @@
   (cheesemacs/windows "p" 'persp-switch)
   (cheesemacs/windows "TAB" 'persp-switch)
   (cheesemacs/project "TAB" 'persp-switch)
-  
+
   (persp-mode))
 
 (use-package treemacs
