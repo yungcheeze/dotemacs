@@ -371,6 +371,8 @@
   :defer t)
 (use-package pytest
   :defer t)
+(use-package pip-requirements
+  :defer t)
 
 (use-package format-all
   :defer t
