@@ -287,10 +287,10 @@
     :initialized-fn
     (lambda (w)
       (with-lsp-workspace w
-			  (lsp--set-configuration
-			   (ht-merge (lsp-configuration-section "json")
-				     (lsp-configuration-section "http")))
-			  (lsp-notify "json/schemaAssociations" lsp-json--schema-associations)))))
+	(lsp--set-configuration
+	 (ht-merge (lsp-configuration-section "json")
+		   (lsp-configuration-section "http")))
+	(lsp-notify "json/schemaAssociations" lsp-json--schema-associations)))))
   (provide 'lsp-json-nix))
 
 ;;;Completion
@@ -578,10 +578,10 @@ With prefix ARG, silently save all file-visiting buffers, then kill."
 	   (let ((processes (process-list))
 		 active)
              (while processes
-               (and (memq (process-status (car processes)) '(run stop open listen))
+	       (and (memq (process-status (car processes)) '(run stop open listen))
 		    (process-query-on-exit-flag (car processes))
 		    (setq active t))
-               (setq processes (cdr processes)))
+	       (setq processes (cdr processes)))
              (or (not active)
 		 (progn (list-processes t)
 			(yes-or-no-p "Active processes exist; kill them and exit anyway? ")))))
