@@ -373,7 +373,9 @@
   :defer t)
 
 (use-package format-all
-  :defer t)
+  :defer t
+  :init
+  (cheesemacs/buffers "f" 'format-all-buffer))
 
 (use-package separedit
   :defer t)
