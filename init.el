@@ -76,6 +76,10 @@
   (cheesemacs/windows "2" 'split-window-below)
   (cheesemacs/windows "3" 'split-window-right)
   (cheesemacs/windows "0" 'delete-window)
+  (cheesemacs/windows "h" 'windmove-left)
+  (cheesemacs/windows "j" 'windmove-down)
+  (cheesemacs/windows "k" 'windmove-up)
+  (cheesemacs/windows "l" 'windmove-right)
   (cheesemacs/quit "q" 'save-buffers-kill-emacs)
 
   :config
