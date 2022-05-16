@@ -386,7 +386,21 @@
     (setq current-prefix-arg '(16))
     (call-interactively 'org-store-link))
   (cheesemacs/project "L" 'org-store-link)
-  (cheesemacs/project "l" 'cheese/org-store-link-raw))
+  (cheesemacs/project "l" 'cheese/org-store-link-raw)
+
+  (defun org-capture-jump ()
+    "Jump to last captured entry"
+    (interactive)
+    (setq current-prefix-arg '(16))
+    (call-interactively 'org-capture))
+  (defun org-capture-open ()
+    "Jump to last captured entry"
+    (interactive)
+    (find-file (expand-file-name org-default-notes-file)))
+
+  (cheesemacs/org "j" 'org-capture-jump)
+  (cheesemacs/org "o" 'org-capture-open)
+  (cheesemacs/org "c" 'org-capture))
 (use-package org-contrib
   :defer t)
 (use-package ol-git-link
