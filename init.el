@@ -42,27 +42,29 @@
 (use-package general
   :ensure t
   :preface
-  (global-unset-key (kbd "M-m"))
+  (global-unset-key (kbd "M-SPC"))
   (general-create-definer cheesemacs
-    :prefix "M-m")
+    :prefix "M-SPC")
   (general-create-definer cheesemacs/buffers
-    :prefix "M-m b")
+    :prefix "M-SPC b")
   (general-create-definer cheesemacs/files
-    :prefix "M-m f")
+    :prefix "M-SPC f")
   (general-create-definer cheesemacs/git
-    :prefix "M-m g")
+    :prefix "M-SPC g")
   (general-create-definer cheesemacs/jump
-    :prefix "M-m j")
+    :prefix "M-SPC j")
+  (general-create-definer cheesemacs/org
+    :prefix "M-SPC o")
   (general-create-definer cheesemacs/project
-    :prefix "M-m p")
+    :prefix "M-SPC p")
   (general-create-definer cheesemacs/quit
-    :prefix "M-m q")
+    :prefix "M-SPC q")
   (general-create-definer cheesemacs/search
-    :prefix "M-m s")
+    :prefix "M-SPC s")
   (general-create-definer cheesemacs/text
-    :prefix "M-m x")
+    :prefix "M-SPC x")
   (general-create-definer cheesemacs/windows
-    :prefix "M-m w")
+    :prefix "M-SPC w")
 
   (cheesemacs/buffers "w" 'save-buffer)
   (cheesemacs/windows "c" 'delete-window)
@@ -239,7 +241,7 @@
 	 (jsonc-mode . lsp)
 	 (yaml-mode . lsp))
   :custom
-  (lsp-keymap-prefix "M-m l")
+  (lsp-keymap-prefix "M-SPC l")
   :commands lsp)
 (use-package consult-lsp
   :defer t)
