@@ -540,6 +540,10 @@
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key))
 
+(use-package browse-url
+  :custom
+  (browse-url-browser-function #'browse-url-chrome)
+  (browse-url-chrome-program  "brave"))
 ;;; Custom Binds
 
 (global-set-key (kbd "M-o") 'ace-window)
