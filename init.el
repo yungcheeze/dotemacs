@@ -382,7 +382,18 @@
 
 (use-package org
   :commands (org-store-link)
+  :custom
+  (org-capture-templates
+   '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+      "* TODO %?\n  %i\n  %a")
+     ("n" "Note" entry (file+headline org-default-notes-file "Notes")
+      "* %?\n  %i\n  %a")
+     ))
   :init
+  ;; setting these here so my org-capture- functions work when org hasn't loaded
+  (setq-default org-directory "~/work/notes")
+  (setq-default org-default-notes-file (concat org-directory "/NOTES.org"))
+
   (defun cheese/org-store-link-raw ()
     (interactive)
     (setq current-prefix-arg '(16))
@@ -403,6 +414,7 @@
   (cheesemacs/org "j" 'org-capture-jump)
   (cheesemacs/org "o" 'org-capture-open)
   (cheesemacs/org "c" 'org-capture))
+
 (use-package org-contrib
   :defer t)
 (use-package ol-git-link
