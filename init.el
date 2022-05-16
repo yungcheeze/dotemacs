@@ -218,10 +218,15 @@
 ;; good for files
 (use-package git-link
   :defer t
+  :init
+  (cheesemacs/git "k l" 'git-link)
+  (cheesemacs/git "k k" 'git-link)
   :custom
   (git-link-use-commit t))
 ;; good for commit objects
 (use-package browse-at-remote
+  :init
+  (cheesemacs/git "k b" 'browse-at-remote-kill)
   :defer t)
 
 (use-package forge
