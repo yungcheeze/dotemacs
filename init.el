@@ -168,6 +168,7 @@
   (cheesemacs/files "r" 'consult-recent-file)
   (cheesemacs/files "s" 'consult-find)
   (cheesemacs/files "f" 'find-file)
+  (cheesemacs/project "b" 'consult-project-buffer)
   (cheesemacs/search "s" 'consult-ripgrep))
 
 (use-package rg
