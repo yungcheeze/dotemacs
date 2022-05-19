@@ -605,7 +605,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package projectile
   :ensure t
   :init
-  (cheesemacs/project "f" 'projectile-find-file)
+  (cheesemacs/project "f" 'project-find-file)
   (cheesemacs/project "P" 'projectile-switch-project)
   (projectile-mode +1))
 (use-package consult-projectile
