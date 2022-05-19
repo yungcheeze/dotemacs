@@ -444,7 +444,8 @@
 
   (cheesemacs/org "j" 'org-capture-jump)
   (cheesemacs/org "o" 'org-capture-open)
-  (cheesemacs/org "c" 'org-capture))
+  (cheesemacs/org "c" 'org-capture)
+  (cheesemacs/org "l" 'cheese/org-store-link-raw))
 
 (use-package org-contrib
   :defer t)
