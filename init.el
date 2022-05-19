@@ -485,6 +485,12 @@
   :config
   (recentf-mode))
 
+(use-package undohist
+  :custom
+  (undohist-ignored-files '("COMMIT_EDITMSG"))
+  :config
+  (undohist-initialize))
+
 (use-package gcmh
   :delight gcmh-mode
   :init
