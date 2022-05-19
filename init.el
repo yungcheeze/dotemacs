@@ -365,13 +365,22 @@
 (use-package tree-mode
   :defer t)
 (use-package dockerfile-mode
-  :defer t)
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '(".*Dockerfile\\'" . dockerfile-mode)))
 (use-package yaml-mode
   :defer t)
 (use-package jenkinsfile-mode
-  :defer t)
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("jenkins/build\\'" . jenkinsfile-mode))
+  (add-to-list 'auto-mode-alist '(".*Jenkinsfile\\'" . jenkinsfile-mode)))
 (use-package groovy-mode
   :defer t)
+(use-package dotenv-mode
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode)))
 
 (use-package python-black
   :defer t
