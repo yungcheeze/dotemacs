@@ -422,6 +422,9 @@
       "* %?\n  %i\n  %a")
      ))
   (org-todo-keywords '((sequence "TODO" "BLOCKED" "|" "DONE")))
+  :bind
+  (:map org-mode-map
+	("C-c RET" . org-insert-heading-respect-content))
   :init
   ;; setting these here so my org-capture- functions work when org hasn't loaded
   (setq-default org-directory "~/work/notes")
