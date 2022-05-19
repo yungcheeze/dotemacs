@@ -575,6 +575,30 @@
   (cheesemacs/buffers "s" 'scratch)
   (cheesemacs/buffers "S" 'scratch-with-mode))
 
+(use-package popper
+  :ensure t ; or :straight t
+  :bind (("C-`"   . popper-toggle-latest)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (cheesemacs/windows "p p" 'popper-toggle-latest)
+  (cheesemacs/windows "p n" 'popper-cycle)
+  (cheesemacs/windows "p t" 'popper-toggle-type)
+
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+	  "\\*xref\\*"
+	  "\\*Embark Collect.*\\*"
+	  "\\*Embark Export.*\\*"
+          help-mode
+	  helpful-mode
+          compilation-mode))
+
+  (popper-mode +1)
+  (popper-echo-mode +1))
+
 (use-package helpful
   :defer t
   :init
