@@ -61,6 +61,8 @@
     :prefix "M-SPC q")
   (general-create-definer cheesemacs/search
     :prefix "M-SPC s")
+  (general-create-definer cheesemacs/toggle
+    :prefix "M-SPC t")
   (general-create-definer cheesemacs/text
     :prefix "M-SPC x")
   (general-create-definer cheesemacs/windows
@@ -89,7 +91,8 @@
 (use-package xterm-color
   :defer t
   :init
-  (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer))
+  (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer)
+  (cheesemacs/toggle "a" 'xterm-color-colorize-buffer))
 
 
 ;;; Helm 2.0
@@ -547,7 +550,6 @@
 
 (use-package treemacs
   :init
-  (cheesemacs "t" 'treemacs-display-current-project-exclusively)
   (cheesemacs "TAB" 'treemacs-display-current-project-exclusively)
   :config
   (treemacs-project-follow-mode +1)
