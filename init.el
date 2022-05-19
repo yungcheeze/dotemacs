@@ -28,6 +28,8 @@
   :hook (after-init . mood-line-mode))
 
 (use-package nord-theme
+  :custom-face                     
+  (hl-line ((t (:background "#313845"))))
   :config
   (defun on-after-init ()
     (unless (display-graphic-p (selected-frame))
