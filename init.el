@@ -88,6 +88,13 @@
   :config
   (general-auto-unbind-keys))
 
+(use-package hydra
+  )
+(use-package pretty-hydra
+  )
+(use-package major-mode-hydra
+  )
+
 (use-package xterm-color
   :defer t
   :init
