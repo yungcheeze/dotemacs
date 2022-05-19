@@ -473,12 +473,62 @@
   :defer t)
 (use-package multiple-cursors
   :defer t
+  :commands (mc/split-region)
   :bind
-  (:map mc/keymap
-	("<return>" . nil)
-	("C-s" . phi-search)
-	("C-r" . phi-search-backward)
-	("C-&" . mc/vertical-align-with-space)))
+  (("M-c" . cheese/hydra-mc/body)
+   (:map mc/keymap
+	 ("<return>" . nil)
+	 ("C-s" . phi-search)
+	 ("C-r" . phi-search-backward)
+	 ("C-&" . mc/vertical-align-with-space)))
+  :config
+  (defun mc/split-region (beg end search)
+    "Split region each time SEARCH occurs between BEG and END.
+
+This can be thought of as an inverse to `mc/mark-all-in-region'."
+    (interactive "r\nsSplit on: ")
+    (let ((case-fold-search nil))
+      (if (string= search "")
+          (user-error "Empty search term")
+	(progn
+          (mc/remove-fake-cursors)
+          (goto-char beg)
+          (push-mark beg)
+          (while (search-forward search end t)
+            (save-excursion
+              (goto-char (match-beginning 0))
+              (mc/create-fake-cursor-at-point))
+            (push-mark (match-end 0)))
+          (unless (= (point) end)
+            (goto-char end))
+          (mc/maybe-multiple-cursors-mode)))))
+  :pretty-hydra
+  (cheese/hydra-mc
+   (:quit-key "q" :title "Multiple Cursors")
+   ("Prev/Next"
+    (("n" mc/mark-next-like-this "next-like-this")
+     ("N" mc/skip-to-next-like-this "skip-next-like-this")
+     ("p" mc/mark-previous-like-this "previous-like-this")
+     ("P" mc/skip-to-previous-like-this "skip-previous-like-this")
+     ("j" mc/mark-next-lines "next-line")
+     ("k" mc/mark-previous-lines "previous-line")
+     ("M-n" mc/mark-next-symbol-like-this "next-symbol-this")
+     ("M-p" mc/mark-previous-symbol-like-this "previous-symbol-this"))
+    "Regions"
+    (("A" mc/edit-beginnings-of-lines "edit-lines")
+     ("E" mc/edit-ends-of-lines "edit-lines (ends)")
+     ("s" mc/mark-all-in-region "filter")
+     ("S" mc/split-region "split"))
+    "Buffer"
+    (("bs" mc/mark-all-symbols-like-this "symbols-like-this")
+     ("bw" mc/mark-all-like-this "like-this"))
+    "Defun"
+    (("dw" mc/mark-all-symbols-like-this-in-defun "symbols-like-this")
+     ("ds" mc/mark-all-like-this-in-defun "like-this"))
+    "Special"
+    (("r" mc/reverse-regions "rotate")
+     ("&" mc/vertical-align-with-space "align")
+     ("q" nil "quit" :color blue)))))
 
 (use-package expand-region
   :defer t
