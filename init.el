@@ -66,6 +66,7 @@
   (general-create-definer cheesemacs/windows
     :prefix "M-SPC w")
 
+  (cheesemacs/buffers "k" 'kill-buffer)
   (cheesemacs/buffers "w" 'save-buffer)
   (cheesemacs/windows "c" 'delete-window)
   (cheesemacs/windows "O" 'delete-other-windows)
