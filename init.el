@@ -823,3 +823,4 @@ point reaches the beginning or end of the buffer, stop there."
   (fill-column 80)
   :hook
   (org-mode . auto-fill-mode))
+(put 'upcase-region 'disabled nil)
