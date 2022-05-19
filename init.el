@@ -606,7 +606,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :ensure t
   :init
   (cheesemacs/project "f" 'projectile-find-file)
-  (cheesemacs/project "p" 'projectile-switch-project)
+  (cheesemacs/project "P" 'projectile-switch-project)
   (projectile-mode +1))
 (use-package consult-projectile
   :after projectile
@@ -627,8 +627,12 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheesemacs/windows "p" 'persp-switch)
   (cheesemacs/windows "TAB" 'persp-switch)
   (cheesemacs/project "TAB" 'persp-switch)
-
   (persp-mode))
+  
+(use-package persp-projectile
+  :after perspective
+  :init
+  (cheesemacs/project "p" 'projectile-persp-switch-project))
 
 (use-package treemacs
   :init
