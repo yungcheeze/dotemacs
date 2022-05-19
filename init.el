@@ -806,6 +806,7 @@ point reaches the beginning or end of the buffer, stop there."
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message "")
 (electric-pair-mode 1)
+(delete-selection-mode 1)
 
 (use-package auto-fill
   :straight nil
