@@ -471,6 +471,10 @@
   :defer t
   :hook (org-mode . org-autolist-mode))
 
+(use-package org-bullets
+  :defer t
+  :hook (org-mode . org-bullets-mode))
+
 ;;; QOL
 (use-package phi-search
   :defer t)
