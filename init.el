@@ -306,6 +306,13 @@
 	(lsp-notify "json/schemaAssociations" lsp-json--schema-associations)))))
   (provide 'lsp-json-nix))
 
+;;; Debugging
+(use-package dap-mode
+  :defer t
+  :custom
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
 ;;;Completion
 (use-package company
   :config
