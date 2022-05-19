@@ -38,6 +38,12 @@
   (add-hook 'window-setup-hook 'on-after-init)
   (load-theme 'nord t))
 
+(use-package rainbow-delimiters
+  :defer t)
+(use-package highlight-parentheses
+  :defer t
+  :hook
+  (prog-mode . highlight-parentheses-mode))
 (use-package all-the-icons
   :defer t)
 
