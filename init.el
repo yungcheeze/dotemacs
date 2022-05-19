@@ -420,6 +420,7 @@
      ("n" "Note" entry (file+headline org-default-notes-file "Notes")
       "* %?\n  %i\n  %a")
      ))
+  (org-todo-keywords '((sequence "TODO" "BLOCKED" "|" "DONE")))
   :init
   ;; setting these here so my org-capture- functions work when org hasn't loaded
   (setq-default org-directory "~/work/notes")
