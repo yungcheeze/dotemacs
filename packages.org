@@ -42,7 +42,11 @@
 * Core
 - [ ] modalka
 - [ ] key-chord (could be useful for binding even more keys)
-- [ ] hydra?
+- [ ] hydra
+  - [ ] buffer switching
+  - [ ] window switching
+  - [ ] window moving
+  - [ ] window resizing
 - [-] emacs-tmux-pane (buggy if I want M-h/j/k/l)
 - [ ] consider vertico instead of selectrum
   - only if I end up in a situation where I can't get completion for
