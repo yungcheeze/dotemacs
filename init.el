@@ -255,9 +255,13 @@
   :defer t)
 
 (use-package code-review
+  :after forge
   :defer t
+  :preface
+  (cheesemacs/git "r" 'code-review-start)
   :init
-  (cheesemacs/git "r" 'code-review-start))
+  (transient-append-suffix 'forge-dispatch "v p" '("v r" "code-review" code-review-forge-pr-at-point))
+  (define-key forge-topic-mode-map (kbd "C-c r") 'code-review-forge-pr-at-point))
 
 ;;;LSP
 (use-package lsp-mode
