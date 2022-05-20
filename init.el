@@ -344,7 +344,8 @@
   )
 
 (use-package yasnippet
-  :config
+  :defer t
+  :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
   :after yasnippet
@@ -647,6 +648,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheesemacs/project "p" 'projectile-persp-switch-project))
 
 (use-package treemacs
+  :defer t
   :init
   (cheesemacs "TAB" 'treemacs-display-current-project-exclusively)
   :config
