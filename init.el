@@ -25,6 +25,7 @@
 
 ;;; Visuals
 (use-package mood-line
+  :straight (mood-line :type git :host github :repo "yungcheeze/mood-line")
   :hook (after-init . mood-line-mode))
 
 (use-package nord-theme
