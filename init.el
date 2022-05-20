@@ -28,7 +28,7 @@
   :hook (after-init . mood-line-mode))
 
 (use-package nord-theme
-  :custom-face                     
+  :custom-face
   (hl-line ((t (:background "#313845"))))
   :config
   (defun on-after-init ()
@@ -96,12 +96,9 @@
   :config
   (general-auto-unbind-keys))
 
-(use-package hydra
-  )
-(use-package pretty-hydra
-  )
-(use-package major-mode-hydra
-  )
+(use-package hydra)
+(use-package pretty-hydra)
+(use-package major-mode-hydra)
 
 (use-package xterm-color
   :defer t
@@ -643,7 +640,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheesemacs/windows "TAB" 'persp-switch)
   (cheesemacs/project "TAB" 'persp-switch)
   (persp-mode))
-  
+
 (use-package persp-projectile
   :after perspective
   :init
@@ -711,6 +708,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :custom
   (browse-url-browser-function #'browse-url-chrome)
   (browse-url-chrome-program  "brave"))
+
 ;;; Custom Binds
 
 (global-set-key (kbd "M-o") 'ace-window)
