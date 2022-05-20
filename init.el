@@ -55,27 +55,38 @@
   (general-create-definer cheesemacs
     :prefix "M-SPC")
   (general-create-definer cheesemacs/buffers
-    :prefix "M-SPC b")
+    :wrapping cheesemacs
+    :infix "b")
   (general-create-definer cheesemacs/files
-    :prefix "M-SPC f")
+    :wrapping cheesemacs
+    :infix "f")
   (general-create-definer cheesemacs/git
-    :prefix "M-SPC g")
+    :wrapping cheesemacs
+    :infix "g")
   (general-create-definer cheesemacs/jump
-    :prefix "M-SPC j")
+    :wrapping cheesemacs
+    :infix "j")
   (general-create-definer cheesemacs/org
-    :prefix "M-SPC o")
+    :wrapping cheesemacs
+    :infix "o")
   (general-create-definer cheesemacs/project
-    :prefix "M-SPC p")
+    :wrapping cheesemacs
+    :infix "p")
   (general-create-definer cheesemacs/quit
-    :prefix "M-SPC q")
+    :wrapping cheesemacs
+    :infix "q")
   (general-create-definer cheesemacs/search
-    :prefix "M-SPC s")
+    :wrapping cheesemacs
+    :infix "s")
   (general-create-definer cheesemacs/toggle
-    :prefix "M-SPC t")
+    :wrapping cheesemacs
+    :infix "t")
   (general-create-definer cheesemacs/text
-    :prefix "M-SPC x")
+    :wrapping cheesemacs
+    :infix "x")
   (general-create-definer cheesemacs/windows
-    :prefix "M-SPC w")
+    :wrapping cheesemacs
+    :infix "w")
 
   (cheesemacs/buffers "k" 'kill-buffer)
   (cheesemacs/buffers "w" 'save-buffer)
