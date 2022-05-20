@@ -100,6 +100,25 @@
 (use-package pretty-hydra)
 (use-package major-mode-hydra)
 
+(use-package modalka
+  :bind
+  (("M-i" . modalka-mode))
+  :init
+  (modalka-define-kbd "i" "M-i")
+  (modalka-define-kbd "n" "C-n")
+  (modalka-define-kbd "p" "C-p")
+  (modalka-define-kbd "f" "C-f")
+  (modalka-define-kbd "b" "C-b")
+  (modalka-define-kbd "x s" "C-x C-s")
+  (modalka-define-kbd "x 1" "C-x 1")
+  (modalka-define-kbd "x 2" "C-x 2")
+  (modalka-define-kbd "x 3" "C-x 3")
+  (modalka-define-kbd "x 0" "C-x 0")
+  (modalka-define-kbd "x o" "C-x o")
+  (modalka-define-kbd "x o" "C-x o")
+  (modalka-define-kbd "x b" "C-x b")
+  (modalka-define-kbd "SPC" "ESC SPC"))
+
 (use-package xterm-color
   :defer t
   :init
