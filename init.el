@@ -51,6 +51,14 @@
 (use-package general
   :ensure t
   :preface
+  (global-unset-key (kbd "M-m"))
+  (general-create-definer temp/cheesemacs
+    :prefix "M-m"
+    :prefix-command 'temp/cheesemacs-map)
+  (general-create-definer temp/cheesemacs/buffers
+    :wrapping temp/cheesemacs
+    :infix "b")
+  
   (global-unset-key (kbd "M-SPC"))
   (general-create-definer cheesemacs
     :prefix "M-SPC")
@@ -77,8 +85,8 @@
   (general-create-definer cheesemacs/windows
     :prefix "M-SPC w")
 
-  (cheesemacs/buffers "k" 'kill-buffer)
-  (cheesemacs/buffers "w" 'save-buffer)
+  (temp/cheesemacs/buffers "k" 'kill-buffer)
+  (temp/cheesemacs/buffers "w" 'save-buffer)
   (cheesemacs/windows "c" 'delete-window)
   (cheesemacs/windows "O" 'delete-other-windows)
   (cheesemacs/windows "o" 'other-window)
@@ -123,7 +131,7 @@
 (use-package xterm-color
   :defer t
   :init
-  (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer)
+  (temp/cheesemacs/buffers "x c" 'xterm-color-colorize-buffer)
   (cheesemacs/toggle "a" 'xterm-color-colorize-buffer))
 
 
@@ -184,7 +192,7 @@
 (use-package consult
   :ensure t
   :init
-  (cheesemacs/buffers "b" 'consult-buffer)
+  (temp/cheesemacs/buffers "b" 'consult-buffer)
   (cheesemacs/jump "m" 'consult-mark)
   (cheesemacs/jump "i" 'consult-imenu)
   (cheesemacs/jump "I" 'consult-imenu-multi)
@@ -290,8 +298,8 @@
 	 (json-mode . lsp)
 	 (jsonc-mode . lsp)
 	 (yaml-mode . lsp))
-  :custom
-  (lsp-keymap-prefix "M-SPC l")
+  ;; :custom
+  ;; (lsp-keymap-prefix "M-SPC l")
   :commands lsp)
 (use-package consult-lsp
   :defer t)
@@ -435,7 +443,7 @@
 (use-package format-all
   :defer t
   :init
-  (cheesemacs/buffers "f" 'format-all-buffer))
+  (temp/cheesemacs/buffers "f" 'format-all-buffer))
 
 (use-package separedit
   :defer t)
@@ -696,8 +704,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
     (setq current-prefix-arg '(4))
     (call-interactively 'scratch)
     (setq ))
-  (cheesemacs/buffers "s" 'scratch)
-  (cheesemacs/buffers "S" 'scratch-with-mode))
+  (temp/cheesemacs/buffers "s" 'scratch)
+  (temp/cheesemacs/buffers "S" 'scratch-with-mode))
 
 (use-package popper
   :ensure t ; or :straight t
