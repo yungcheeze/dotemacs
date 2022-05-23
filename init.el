@@ -68,6 +68,9 @@
   (general-create-definer cheesemacs/jump
     :wrapping cheesemacs
     :infix "j")
+  (general-create-definer cheesemacs/narrow
+    :wrapping cheesemacs
+    :infix "n")
   (general-create-definer cheesemacs/org
     :wrapping cheesemacs
     :infix "o")
@@ -92,6 +95,9 @@
 
   (cheesemacs/buffers "k" 'kill-buffer)
   (cheesemacs/buffers "w" 'save-buffer)
+  (cheesemacs/narrow "w" 'widen)
+  (cheesemacs/narrow "r" 'narrow-to-region)
+  (cheesemacs/narrow "d" 'narrow-to-defun)
   (cheesemacs/windows "c" 'delete-window)
   (cheesemacs/windows "O" 'delete-other-windows)
   (cheesemacs/windows "o" 'other-window)
