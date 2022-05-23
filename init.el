@@ -139,6 +139,8 @@
   (modalka-define-kbd "x o" "C-x o")
   (modalka-define-kbd "x o" "C-x o")
   (modalka-define-kbd "x b" "C-x b")
+  (modalka-define-kbd "x f" "C-x C-f")
+  (modalka-define-kbd "x c" "C-x C-c")
   (define-key modalka-mode-map (kbd "SPC") #'cheesemacs-map))
 
 (use-package xterm-color
