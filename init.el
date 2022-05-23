@@ -368,7 +368,8 @@
   )
 
 (use-package yasnippet
-  :defer t
+  :bind
+  ("M-i" . consult-yasnippet)
   :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
