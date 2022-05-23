@@ -572,7 +572,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
           (mc/maybe-multiple-cursors-mode)))))
   :pretty-hydra
   (cheese/hydra-mc
-   (:quit-key "q" :title "Multiple Cursors")
+   (:quit-key "C-g" :title "Multiple Cursors")
    ("Prev/Next"
     (("n" mc/mark-next-like-this "next-like-this")
      ("N" mc/skip-to-next-like-this "skip-next-like-this")
