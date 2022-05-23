@@ -578,8 +578,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
      ("N" mc/skip-to-next-like-this "skip-next-like-this")
      ("p" mc/mark-previous-like-this "previous-like-this")
      ("P" mc/skip-to-previous-like-this "skip-previous-like-this")
-     ("j" mc/mark-next-lines "next-line")
-     ("k" mc/mark-previous-lines "previous-line")
      ("M-n" mc/mark-next-symbol-like-this "next-symbol-this")
      ("M-p" mc/mark-previous-symbol-like-this "previous-symbol-this"))
     "Regions"
