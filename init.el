@@ -141,7 +141,10 @@
   (modalka-define-kbd "x b" "C-x b")
   (modalka-define-kbd "x f" "C-x C-f")
   (modalka-define-kbd "x c" "C-x C-c")
-  (define-key modalka-mode-map (kbd "SPC") #'cheesemacs-map))
+  (define-key modalka-mode-map (kbd "SPC") #'cheesemacs-map)
+
+  (add-hook 'multiple-cursors-mode-hook (lambda () (when (bound-and-true-p multiple-cursors-mode) (modalka-mode -1))))
+  )
 
 (use-package xterm-color
   :defer t
