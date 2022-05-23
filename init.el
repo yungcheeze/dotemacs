@@ -120,39 +120,6 @@
 (use-package pretty-hydra)
 (use-package major-mode-hydra)
 
-(use-package modalka
-  :bind
-  (("M-i" . modalka-mode))
-  :init
-  (setq-local modalka-unset-keys
-	      '("q" "w" "e" "r" "t" "y""u""i""o""p""a""s""d""f""g""h""j""k""l""z""c""v""b""n""m"))
-  (defun nope ()
-    (interactive))
-  (global-set-key (kbd "<F22>") #'nope)
-  (mapc
-   (lambda (k) (modalka-define-kbd k "<F22>"))
-   modalka-unset-keys)
-  (modalka-define-kbd "i" "M-i")
-  (modalka-define-kbd "n" "C-n")
-  (modalka-define-kbd "p" "C-p")
-  (modalka-define-kbd "f" "C-f")
-  (modalka-define-kbd "b" "C-b")
-  (modalka-define-kbd "v" "C-v")
-  (modalka-define-kbd "y" "C-y")
-  (modalka-define-kbd "x s" "C-x C-s")
-  (modalka-define-kbd "x 1" "C-x 1")
-  (modalka-define-kbd "x 2" "C-x 2")
-  (modalka-define-kbd "x 3" "C-x 3")
-  (modalka-define-kbd "x 0" "C-x 0")
-  (modalka-define-kbd "x o" "C-x o")
-  (modalka-define-kbd "x b" "C-x b")
-  (modalka-define-kbd "x f" "C-x C-f")
-  (modalka-define-kbd "x c" "C-x C-c")
-  (define-key modalka-mode-map (kbd "SPC") #'cheesemacs-map)
-
-  (add-hook 'multiple-cursors-mode-hook (lambda () (when (bound-and-true-p multiple-cursors-mode) (modalka-mode -1))))
-  )
-
 (use-package xterm-color
   :defer t
   :init
