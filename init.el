@@ -118,6 +118,14 @@
   :bind
   (("M-i" . modalka-mode))
   :init
+  (setq-local modalka-unset-keys
+	      '("q" "w" "e" "r" "t" "y""u""i""o""p""a""s""d""f""g""h""j""k""l""z""c""v""b""n""m"))
+  (defun nope ()
+    (interactive))
+  (global-set-key (kbd "<F22>") #'nope)
+  (mapc
+   (lambda (k) (modalka-define-kbd k "<F22>"))
+   modalka-unset-keys)
   (modalka-define-kbd "i" "M-i")
   (modalka-define-kbd "n" "C-n")
   (modalka-define-kbd "p" "C-p")
