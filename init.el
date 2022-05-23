@@ -584,6 +584,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
     (("A" mc/edit-beginnings-of-lines "edit-lines")
      ("E" mc/edit-ends-of-lines "edit-lines (ends)")
      ("s" mc/mark-all-in-region "filter")
+     ("r" mc/mark-all-in-region-regexp "filter")
      ("S" mc/split-region "split"))
     "Buffer"
     (("bs" mc/mark-all-symbols-like-this "symbols-like-this")
