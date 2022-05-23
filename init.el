@@ -52,8 +52,10 @@
   :ensure t
   :preface
   (global-unset-key (kbd "M-SPC"))
+  (define-prefix-command 'cheesemacs-map)
+  (global-set-key (kbd "M-SPC") 'cheesemacs-map)
   (general-create-definer cheesemacs
-    :prefix "M-SPC")
+    :prefix-command 'cheesemacs-map)
   (general-create-definer cheesemacs/buffers
     :wrapping cheesemacs
     :infix "b")
@@ -129,7 +131,7 @@
   (modalka-define-kbd "x o" "C-x o")
   (modalka-define-kbd "x o" "C-x o")
   (modalka-define-kbd "x b" "C-x b")
-  (modalka-define-kbd "SPC" "ESC SPC"))
+  (define-key modalka-mode-map (kbd "SPC") #'cheesemacs-map))
 
 (use-package xterm-color
   :defer t
