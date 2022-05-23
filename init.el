@@ -587,11 +587,11 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
      ("r" mc/mark-all-in-region-regexp "filter")
      ("S" mc/split-region "split"))
     "Buffer"
-    (("bs" mc/mark-all-symbols-like-this "symbols-like-this")
-     ("bw" mc/mark-all-like-this "like-this"))
+    (("bw" mc/mark-all-symbols-like-this "symbols-like-this")
+     ("bb" mc/mark-all-like-this "like-this"))
     "Defun"
     (("dw" mc/mark-all-symbols-like-this-in-defun "symbols-like-this")
-     ("ds" mc/mark-all-like-this-in-defun "like-this"))
+     ("dd" mc/mark-all-like-this-in-defun "like-this"))
     "Special"
     (("r" mc/reverse-regions "rotate")
      ("&" mc/vertical-align-with-space "align")
