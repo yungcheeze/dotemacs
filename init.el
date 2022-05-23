@@ -139,7 +139,6 @@
   (modalka-define-kbd "x 3" "C-x 3")
   (modalka-define-kbd "x 0" "C-x 0")
   (modalka-define-kbd "x o" "C-x o")
-  (modalka-define-kbd "x o" "C-x o")
   (modalka-define-kbd "x b" "C-x b")
   (modalka-define-kbd "x f" "C-x C-f")
   (modalka-define-kbd "x c" "C-x C-c")
