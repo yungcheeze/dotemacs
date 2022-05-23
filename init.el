@@ -131,6 +131,8 @@
   (modalka-define-kbd "p" "C-p")
   (modalka-define-kbd "f" "C-f")
   (modalka-define-kbd "b" "C-b")
+  (modalka-define-kbd "v" "C-v")
+  (modalka-define-kbd "y" "C-y")
   (modalka-define-kbd "x s" "C-x C-s")
   (modalka-define-kbd "x 1" "C-x 1")
   (modalka-define-kbd "x 2" "C-x 2")
