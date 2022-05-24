@@ -573,6 +573,10 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :defer t
   :bind ("M-." . er/expand-region))
 
+(use-package ialign
+  :ensure t
+  :defer t)
+
 (use-package auto-mark
   :straight
   (auto-mark :type git :host github :repo "yungcheeze/auto-mark.el")
