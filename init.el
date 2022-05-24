@@ -566,8 +566,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
     (("dw" mc/mark-all-symbols-like-this-in-defun "symbols-like-this")
      ("dd" mc/mark-all-like-this-in-defun "like-this"))
     "Special"
-    (("r" mc/reverse-regions "rotate")
-     ("&" mc/vertical-align-with-space "align")
+    (("&" mc/vertical-align-with-space "align")
      ("q" nil "quit" :color blue)))))
 
 (use-package expand-region
