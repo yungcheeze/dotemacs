@@ -850,6 +850,7 @@ point reaches the beginning or end of the buffer, stop there."
 (setq initial-scratch-message "")
 (electric-pair-mode 1)
 (delete-selection-mode 1)
+(setq read-minibuffer-restore-windows nil)
 
 (use-package auto-fill
   :straight nil
