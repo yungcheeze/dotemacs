@@ -601,11 +601,12 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :config
   (recentf-mode))
 
-(use-package undohist
+(use-package undo-tree
   :custom
-  (undohist-ignored-files '("COMMIT_EDITMSG"))
+  (undo-tree-visualizer-timestamps t)
+  (undo-tree-visualizer-diff t)
   :config
-  (undohist-initialize))
+  (global-undo-tree-mode))
 
 (use-package gcmh
   :delight gcmh-mode
