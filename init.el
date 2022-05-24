@@ -629,7 +629,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :defer t)
 
 (use-package evil-nerd-commenter
-  :defer t)
+  :defer t
+  :bind ("M-g c" . evilnc-comment-or-uncomment-lines))
 
 (use-package golden-ratio-scroll-screen
   :ensure t
