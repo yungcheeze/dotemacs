@@ -58,6 +58,8 @@
   :defer t
   :hook
   (prog-mode . highlight-parentheses-mode))
+(use-package rainbow-mode
+  :defer t)
 (use-package all-the-icons
   :defer t)
 
