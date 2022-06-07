@@ -132,6 +132,7 @@
   (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer)
   (cheesemacs/toggle "a" 'xterm-color-colorize-buffer))
 
+(use-package ansi)
 
 ;;; Helm 2.0
 (use-package selectrum
