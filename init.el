@@ -218,6 +218,8 @@
   (cheesemacs/git "d" 'magit-dispatch)
   (cheesemacs/git "f" 'magit-find-file)
   (cheesemacs/git "o l" 'magit-list-submodules)
+  (cheesemacs/git "B" 'magit-switch-to-repository-buffer)
+  (cheesemacs/git "b" 'magit-blame)
   :custom
   (magit-diff-refine-ignore-whitespace t)
   (magit-diff-refine-hunk 'all)
