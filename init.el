@@ -579,6 +579,9 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
     (("&" mc/vertical-align-with-space "align")
      ("q" nil "quit" :color blue)))))
 
+(use-package iedit
+  :defer t)
+
 (use-package expand-region
   :defer t
   :bind ("M-." . er/expand-region))
