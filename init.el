@@ -605,6 +605,15 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :custom
   (undo-tree-visualizer-timestamps t)
   (undo-tree-visualizer-diff t)
+  (undo-tree-history-directory-alist
+   `(("." . ,(let ((dir (expand-file-name "undo-tree-history" user-emacs-directory)))
+               (if (file-exists-p dir)
+                   (unless (file-accessible-directory-p dir)
+                     (warn "Cannot access directory `%s'.
+ Perhaps you don't have required permissions, or it's not a directory.
+ See variable `undo-tree-history-directory-alist'." dir))
+                 (make-directory dir))
+               dir))))
   :config
   (global-undo-tree-mode))
 
