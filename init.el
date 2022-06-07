@@ -502,6 +502,7 @@
   :init
   (cheesemacs/project "c" 'org-projectile-capture-for-current-project)
   (cheesemacs/project "n" 'org-projectile-goto-location-for-project)
+  (cheesemacs/project "o" 'org-projectile-goto-location-for-project)
   :config
   (progn
     (setq org-projectile-projects-file
