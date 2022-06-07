@@ -736,6 +736,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 	  "\\*xref\\*"
 	  "\\*Embark Collect.*\\*"
 	  "\\*Embark Export.*\\*"
+	  "\\*eshell\\*"
           help-mode
 	  helpful-mode
           compilation-mode))
