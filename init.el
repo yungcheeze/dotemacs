@@ -699,6 +699,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :defer t
   :init
   (cheesemacs "TAB" 'treemacs-display-current-project-exclusively)
+  (cheesemacs/files "t" 'treemacs-display-current-project-exclusively)
   :config
   (treemacs-project-follow-mode +1)
   )
