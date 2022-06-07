@@ -43,6 +43,7 @@
   (tree-sitter-hl-face:type.builtin         ((t (:inherit font-lock-keyword-face))))
   (tree-sitter-hl-face:number               ((t (:inherit highlight-numbers-number))))
   (tree-sitter-hl-face:variable.special     ((t (:inherit font-lock-keyword-face))))
+  (mode-line ((t (:background "#3B4252"))))
   :config
   (defun on-after-init ()
     (unless (display-graphic-p (selected-frame))
