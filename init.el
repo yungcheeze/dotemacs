@@ -868,6 +868,13 @@ point reaches the beginning or end of the buffer, stop there."
 (delete-selection-mode 1)
 (setq read-minibuffer-restore-windows nil)
 
+(use-package ediff
+  :straight nil
+  :custom
+  (ediff-window-setup-function 'ediff-setup-windows-plain)
+  (ediff-diff-options "-w")
+  (ediff-split-window-function 'split-window-horizontally))
+
 (use-package auto-fill
   :straight nil
   :custom
