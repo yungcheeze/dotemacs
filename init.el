@@ -24,9 +24,15 @@
   (xclip-mode 1))
 
 ;;; Visuals
-(use-package mood-line
-  :straight (mood-line :type git :host github :repo "yungcheeze/mood-line")
-  :hook (after-init . mood-line-mode))
+(use-package doom-modeline
+  :ensure t
+  :custom
+  (doom-modeline-env-version nil)
+  (doom-modeline-unicode-fallback t)
+  (doom-modeline-buffer-encoding t)
+  (mode-line-percent-position nil)
+  :init
+  (doom-modeline-mode 1))
 
 (use-package nord-theme
   :custom-face
