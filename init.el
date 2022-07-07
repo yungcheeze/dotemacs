@@ -456,6 +456,10 @@
   :defer t
   :init
   (add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode)))
+(use-package typescript-mode
+  :defer t)
+(use-package csv-mode
+  :defer t)
 
 (use-package python-black
   :defer t
