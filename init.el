@@ -688,7 +688,13 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :init
   (cheesemacs/project "f" 'project-find-file)
   (cheesemacs/project "P" 'projectile-switch-project)
-  (projectile-mode +1))
+  (projectile-mode +1)
+  :config
+  (projectile-register-project-type 'haskell-hpack '("package.yaml")
+                                  :project-file "package.yaml"
+                                  :compile "hpack . && cabal build"
+                                  :test "hpack . && cabal test --test-show-details=direct"
+                                  :test-suffix "Spec"))
 (use-package consult-projectile
   :after projectile
   :defer t)
