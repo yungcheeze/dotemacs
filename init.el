@@ -405,6 +405,16 @@
   :after yasnippet
   :defer t)
 
+(use-package autoinsert
+  :init
+  (setq auto-insert-directory (concat user-emacs-directory "templates"))
+  (setq auto-insert-query nil)
+  (add-hook 'find-file-hook 'auto-insert) (auto-insert-mode 1)
+  (defun autoinsert-yas-expand()
+  "Replace text in yasnippet template."
+  (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+  :config
+  (define-auto-insert "\.hs$" ["default-haskell.hs" autoinsert-yas-expand]))
 
 ;;; Direnv
 (use-package envrc
