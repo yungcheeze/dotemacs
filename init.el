@@ -431,6 +431,8 @@
   :defer t)
 (use-package haskell-mode
   :defer t)
+(use-package hlint-refactor
+  :hook (haskell-mode . hlint-refactor-mode))
 (use-package json-mode
   :defer t)
 (use-package json-snatcher
