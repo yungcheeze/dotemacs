@@ -115,6 +115,7 @@
   (cheesemacs/narrow "w" 'widen)
   (cheesemacs/narrow "r" 'narrow-to-region)
   (cheesemacs/narrow "d" 'narrow-to-defun)
+  (cheesemacs/toggle "l" 'toggle-truncate-lines)
   (cheesemacs/windows "c" 'delete-window)
   (cheesemacs/windows "O" 'delete-other-windows)
   (cheesemacs/windows "o" 'other-window)
