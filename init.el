@@ -690,6 +690,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheesemacs/project "P" 'projectile-switch-project)
   (cheesemacs/project "k" 'projectile-compile-project)
   (cheesemacs/project "t" 'projectile-test-project)
+  (cheesemacs/buffers "o" 'projectile-toggle-between-implementation-and-test)
+  (cheesemacs/buffers "a" 'ff-find-other-fileg)
   (projectile-mode +1)
   :config
   (projectile-register-project-type 'haskell-hpack '("package.yaml")
