@@ -762,6 +762,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 	  "\\*Embark Collect.*\\*"
 	  "\\*Embark Export.*\\*"
 	  "\\*eshell\\*"
+	  "\\*format-all-errors\\*"
           help-mode
 	  helpful-mode
           compilation-mode))
