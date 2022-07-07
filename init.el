@@ -312,6 +312,10 @@
 	 (jsonc-mode . lsp)
 	 (yaml-mode . lsp)
 	 (shell-script-mode . lsp))
+  :bind (:map lsp-mode-map
+	      ("M-g g" . lsp-find-definition)
+	      ("M-g d" . lsp-find-definition)
+	      ("M-g r" . lsp-find-references))
   :custom
   (lsp-keymap-prefix "M-SPC l")
   :commands lsp)
