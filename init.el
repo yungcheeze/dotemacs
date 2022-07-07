@@ -310,7 +310,8 @@
   :hook ((lsp-mode . lsp-enable-which-key-integration)
 	 (json-mode . lsp)
 	 (jsonc-mode . lsp)
-	 (yaml-mode . lsp))
+	 (yaml-mode . lsp)
+	 (shell-script-mode . lsp))
   :custom
   (lsp-keymap-prefix "M-SPC l")
   :commands lsp)
