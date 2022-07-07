@@ -37,12 +37,6 @@
 (use-package nord-theme
   :custom-face
   (hl-line ((t (:background "#313845"))))
-  (tree-sitter-hl-face:method.call          ((t (:inherit font-lock-function-name-face))))
-  (tree-sitter-hl-face:function.call        ((t (:inherit font-lock-function-name-face))))
-  (tree-sitter-hl-face:operator             ((t (:inherit default))))
-  (tree-sitter-hl-face:type.builtin         ((t (:inherit font-lock-keyword-face))))
-  (tree-sitter-hl-face:number               ((t (:inherit highlight-numbers-number))))
-  (tree-sitter-hl-face:variable.special     ((t (:inherit font-lock-keyword-face))))
   (mode-line ((t (:background "#3B4252"))))
   :config
   (defun on-after-init ()
