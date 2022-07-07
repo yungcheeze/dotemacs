@@ -434,6 +434,9 @@
 (use-package hlint-refactor
   :hook (haskell-mode . hlint-refactor-mode))
 (use-package json-mode
+  :bind
+  (:map js-mode-map
+	("M-." . nil)) ;; M-. used for expand-region
   :defer t)
 (use-package json-snatcher
   :defer t)
