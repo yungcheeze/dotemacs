@@ -704,10 +704,19 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
   :custom
   (persp-suppress-no-prefix-key-warning t)
+  :pretty-hydra
+  (cheese/hydra-persp
+   (:quit-key "C-g" :title "Perspective")
+   ("Prev/Next"
+    (("n" persp-next "next")
+     ("p" persp-prev "previous"))
+    "Switch"
+    (("TAB" persp-switch "switch" :exit t))
+    "Special"
+    (("q" nil "quit" :color blue))))
   :init
-  (cheesemacs/windows "p" 'persp-switch)
-  (cheesemacs/windows "TAB" 'persp-switch)
-  (cheesemacs/project "TAB" 'persp-switch)
+  (cheesemacs/project "TAB" 'cheese/hydra-persp/body)
+  (cheesemacs/project "n" 'cheese/hydra-persp/persp-next)
   (persp-mode))
 
 (use-package persp-projectile
