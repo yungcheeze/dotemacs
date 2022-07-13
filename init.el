@@ -756,11 +756,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package treemacs
   :defer t
   :init
-  (cheesemacs "TAB" 'treemacs-display-current-project-exclusively)
-  (cheesemacs/files "t" 'treemacs-display-current-project-exclusively)
-  :config
-  (treemacs-project-follow-mode +1)
-  )
+  (global-set-key (kbd "M-TAB") 'treemacs-display-current-project-exclusively))
 (use-package treemacs-projectile
   :after (treemacs projectile))
 (use-package treemacs-magit
