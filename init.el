@@ -474,7 +474,16 @@
 (use-package py-isort
   :defer t)
 (use-package pytest
-  :defer t)
+  :defer t
+  :init
+  (defcustom pytest-remove-path ""
+    "Path to remove from pytest test-names variable")
+  :config
+  (with-eval-after-load 'pytest
+    (defun pytest-cmd-format (format-string working-directory test-runner command-flags test-names)
+    "Override default function to remove local path."
+    (format format-string working-directory test-runner command-flags (replace-regexp-in-string pytest-remove-path "" test-names)))
+  ))
 (use-package pip-requirements
   :defer t)
 
