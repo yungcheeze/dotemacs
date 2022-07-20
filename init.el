@@ -486,6 +486,13 @@
   ))
 (use-package pip-requirements
   :defer t)
+(use-package text-mode
+  :defer t
+  :straight nil
+  :bind
+  (:map text-mode-map
+	;; unbind key used for treemacs
+	("M-TAB" . nil)))
 
 (use-package format-all
   :defer t
