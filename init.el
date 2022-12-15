@@ -594,9 +594,9 @@
   :ensure t
   :config
   (defun my/copilot-tab ()
-  (interactive)
-  (or (copilot-accept-completion)
-      (indent-for-tab-command)))
+    (interactive)
+    (or (copilot-accept-completion)
+	(indent-for-tab-command)))
   (define-key copilot-completion-map (kbd "<tab>")  #'my/copilot-tab)
   (define-key copilot-completion-map (kbd "TAB")  #'my/copilot-tab)
   :hook (prog-mode . copilot-mode))
