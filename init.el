@@ -513,6 +513,14 @@
   :init
   (cheesemacs/buffers "f" 'format-all-buffer))
 
+(use-package ethan-wspace
+  :custom
+  (mode-require-final-newline nil)
+  :init
+  (cheesemacs/buffers "w" 'ethan-wspace-clean-all)
+  :config
+  (global-ethan-wspace-mode 1))
+
 (use-package separedit
   :defer t)
 
