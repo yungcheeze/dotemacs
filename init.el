@@ -878,6 +878,25 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (popper-mode +1)
   (popper-echo-mode +1))
 
+(use-package winner
+  :straight nil
+  :init
+  (cheesemacs/windows "u" 'cheese/hydra-winner/winner-undo)
+  (cheesemacs/windows "r" 'cheese/hydra-winner/winner-redo)
+  :pretty-hydra
+  (cheese/hydra-winner
+   (:quit-key "C-g" :title "Winner")
+   ("Undo/Redo"
+    (
+     ("u" winner-undo "undo")
+     ("r" winner-redo "redo"))
+    "Special"
+    (("q" nil "quit" :color blue)
+     ("RET" nil "quit" :color blue))
+    ))
+  :config
+  (winner-mode))
+
 (use-package helpful
   :defer t
   :init
