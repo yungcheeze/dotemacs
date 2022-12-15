@@ -214,6 +214,10 @@
   (cheesemacs/files "f" 'find-file)
   (cheesemacs/project "b" 'consult-project-buffer)
   (cheesemacs "s" 'consult-ripgrep)
+  :bind
+  ("M-g m" . consult-mark)
+  ("M-s" . consult-line)
+  ("M-S" . consult-ripgrep))
 
 (use-package rg
   :defer t
