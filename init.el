@@ -39,6 +39,7 @@
   :straight t
   :custom-face
   (hl-line ((t (:background "#313845"))))
+  (highlight ((t (:background "#353C4A"))))
   (mode-line ((t (:background "#3B4252"))))
   :config
   (defun on-after-init ()
