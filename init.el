@@ -807,14 +807,17 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheese/hydra-persp
    (:quit-key "C-g" :title "Perspective")
    ("Prev/Next"
-    (("n" persp-next "next")
+    (("TAB" persp-next "next")
+     ("n" persp-next "next")
      ("p" persp-prev "previous"))
     "Switch"
-    (("TAB" persp-switch "switch" :exit t))
+    (("o" persp-switch "switch" :exit t))
     "Special"
-    (("q" nil "quit" :color blue))))
+    (("q" nil "quit" :color blue)
+     ("RET" nil "quit" :color blue))))
   :init
   (cheesemacs/project "TAB" 'cheese/hydra-persp/body)
+  (cheesemacs "TAB" 'cheese/hydra-persp/persp-next)
   (cheesemacs/project "n" 'cheese/hydra-persp/persp-next)
   (persp-mode))
 
