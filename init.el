@@ -743,7 +743,13 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
           :map minibuffer-local-isearch-map
           ("<left>" . backward-char)
           ("<right>" . forward-char)))
-
+(use-package avy
+  :defer t
+  :custom
+  (avy-timeout-seconds 1)
+  :bind
+  (("M-j" . avy-goto-char-timer)
+   ("M-l" . avy-goto-line)))
 (use-package ace-window
   :custom
   (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
