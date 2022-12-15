@@ -695,6 +695,9 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (recentf-mode))
 
 (use-package undo-tree
+  :bind (
+	 ("M-u" . undo-tree-undo)
+	 ("M-r" . undo-tree-redo))
   :custom
   (undo-tree-visualizer-timestamps t)
   (undo-tree-visualizer-diff t)
