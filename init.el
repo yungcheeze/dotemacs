@@ -347,6 +347,7 @@
   :straight t
   :defer t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
+         (lsp-mode . lsp-completion-mode)
 	 (json-mode . lsp)
 	 (jsonc-mode . lsp)
 	 (yaml-mode . lsp)
@@ -360,6 +361,12 @@
   :custom
   (lsp-keymap-prefix "M-SPC l")
   (lsp-semantic-tokens-enable t)
+  (lsp-completion-provider :none)
+  (lsp-completion-enable t)
+  (lsp-completion-enable-additional-text-edit t)
+  (lsp-enable-snippet t)
+  (lsp-completion-show-kind t)
+
   :commands lsp)
 (use-package consult-lsp
   :straight t
@@ -430,25 +437,77 @@
   :config
   (require 'dap-python))
 ;;;Completion
-(use-package company
-  :straight t
+(use-package corfu
+  :straight ( :host github
+              :repo "minad/corfu"
+              :branch "main")
+  :load-path "straight/repos/corfu/extensions/"
+  :bind ( :map corfu-map
+          ("C-n" . corfu-next)
+          ("C-p" . corfu-previous)
+          ([remap completion-at-point] . corfu-complete)
+          ("RET" . corfu-insert)
+          ("<return>" . corfu-insert))
   :custom
-  (company-dabbrev-downcase nil)
+  (corfu-auto t)
+  (corfu-cycle t)
+  (corfu-preview-current nil)
+  (corfu-preselect-first nil)
+  (corfu-scroll-margin 4)
+  (corfu-quit-no-match t)
+  (corfu-quit-at-boundary t)
+  (corfu-max-width 100)
+  (corfu-min-width 42)
+  (corfu-count 9)
+  ;; should be configured in the `indent' package, but `indent.el'
+  ;; doesn't provide the `indent' feature.
+  (tab-always-indent 'complete)
   :config
-  (with-eval-after-load 'company
-    (define-key company-active-map (kbd "TAB") #'company-complete-selection)
-    (define-key company-active-map (kbd "C-f") #'company-complete-selection))
-  (global-company-mode 1))
-(use-package company-shell
-  :straight t
-  :defer t)
-(use-package company-cabal
-  :straight t
-  :defer t)
-(use-package company-nixos-options
-  :straight t
+  (defun corfu-complete-and-quit ()
+    (interactive)
+    (corfu-complete)
+    (corfu-quit))
+  :init
+  (global-corfu-mode 1))
+
+(use-package corfu-popupinfo
+  :bind ( :map corfu-popupinfo-map
+          ("M-p" . corfu-popupinfo-scroll-down)
+          ("M-n" . corfu-popupinfo-scroll-up))
+  :hook (corfu-mode . corfu-popupinfo-mode)
+  :custom-face
+  (corfu-popupinfo ((t :height 1.0))))
+
+(use-package popon
+  :straight ( :type git
+	      :host nil
+              :repo "https://codeberg.org/akib/emacs-popon.git"
+              :branch "master")
   :defer t
-  )
+  :unless (display-graphic-p))
+
+(use-package corfu-terminal
+  :straight ( :type git
+	      :host nil
+              :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"
+              :branch "master")
+  :unless (display-graphic-p)
+  :after corfu
+  :config
+  (corfu-terminal-mode 1))
+
+(use-package cape
+  :straight t
+  :after corfu
+  :config
+  (setq completion-at-point-functions
+        '(cape-capf-buster
+          (cape-super-capf
+           (cape-company-to-capf #'company-yankpad)
+           #'cape-ispell
+           #'cape-file
+           #'cape-dabbrev))))
+
 
 (use-package yasnippet
   :straight t
@@ -487,11 +546,12 @@
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
   :config
-  (with-eval-after-load 'company
-    ;; disable inline previews
-    (delq 'company-preview-if-just-one-frontend company-frontends))
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (defun my/copilot-tab ()
+  (interactive)
+  (or (copilot-accept-completion)
+      (indent-for-tab-command)))
+  (define-key copilot-completion-map (kbd "<tab>")  #'my/copilot-tab)
+  (define-key copilot-completion-map (kbd "TAB")  #'my/copilot-tab)
   :hook (prog-mode . copilot-mode))
 
 ;;; Direnv
