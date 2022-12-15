@@ -121,24 +121,16 @@
   (cheesemacs "w" 'cheesemacs/windows-map)
 
   (cheesemacs/buffers "k" 'kill-buffer)
-  (cheesemacs/buffers "w" 'save-buffer)
   (cheesemacs/narrow "w" 'widen)
   (cheesemacs/narrow "r" 'narrow-to-region)
   (cheesemacs/narrow "d" 'narrow-to-defun)
   (cheesemacs/toggle "l" 'toggle-truncate-lines)
   (cheesemacs/windows "c" 'delete-window)
-  (cheesemacs/windows "O" 'delete-other-windows)
-  (cheesemacs/windows "o" 'other-window)
+  (cheesemacs/windows "x" 'delete-window)
+  (cheesemacs/windows "o" 'delete-other-windows)
   (cheesemacs/windows "s" 'split-window-below)
   (cheesemacs/windows "/" 'split-window-right)
-  (cheesemacs/windows "1" 'delete-other-windows)
-  (cheesemacs/windows "2" 'split-window-below)
-  (cheesemacs/windows "3" 'split-window-right)
-  (cheesemacs/windows "0" 'delete-window)
-  (cheesemacs/windows "h" 'windmove-left)
-  (cheesemacs/windows "j" 'windmove-down)
-  (cheesemacs/windows "k" 'windmove-up)
-  (cheesemacs/windows "l" 'windmove-right)
+  (cheesemacs/windows "v" 'split-window-right)
   (cheesemacs/quit "q" 'save-buffers-kill-emacs)
 
   :config
@@ -159,7 +151,7 @@
 ;;; Helm 2.0
 (use-package selectrum
   :init
-  (cheesemacs ";" 'selectrum-repeat)
+  (cheesemacs "SPC" 'selectrum-repeat)
   :config
   (selectrum-mode +1)
   (setq completion-styles '(orderless))
@@ -221,7 +213,7 @@
   (cheesemacs/files "s" 'consult-find)
   (cheesemacs/files "f" 'find-file)
   (cheesemacs/project "b" 'consult-project-buffer)
-  (cheesemacs/search "s" 'consult-ripgrep))
+  (cheesemacs "s" 'consult-ripgrep)
 
 (use-package rg
   :defer t
