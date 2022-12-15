@@ -496,18 +496,65 @@
   :config
   (corfu-terminal-mode 1))
 
+
+(use-package company
+  :straight t
+  :custom
+  (company-dabbrev-downcase nil))
+(use-package company-shell
+  :straight t
+  )
+(use-package company-cabal
+  :straight t
+  )
+(use-package company-nixos-options
+  :straight t
+  )
+
 (use-package cape
   :straight t
-  :after corfu
+  :after corfu company-nixos-options
+  :hook ((nix-mode . (lambda ()
+		       (setq-local completion-at-point-functions (list
+								  (cape-capf-buster
+								   (cape-super-capf
+								    (cape-company-to-capf #'company-nixos-options)
+								    #'cape-file
+								    #'cape-dabbrev))))
+		       ))
+	 (shell-script-mode . (lambda ()
+				(setq-local completion-at-point-functions (list
+									   (cape-capf-buster
+									    (cape-super-capf
+									     (cape-company-to-capf #'company-shell)
+									     (cape-company-to-capf #'company-shell-env)
+									     #'cape-file
+									     #'cape-dabbrev))))
+				))
+	 (envrc-mode . (lambda ()
+			 (setq-local completion-at-point-functions (list
+								    (cape-capf-buster
+								     (cape-super-capf
+								      (cape-company-to-capf #'company-shell-env)
+								      #'cape-file
+								      #'cape-dabbrev))))
+			 ))
+	 (haskell-cabal-mode . (lambda ()
+				 (setq-local completion-at-point-functions (list
+									    (cape-capf-buster
+									     (cape-super-capf
+									      (cape-company-to-capf #'company-cabal)
+									      #'cape-file
+									      #'cape-dabbrev))))
+				 ))
+	 )
   :config
-  (setq completion-at-point-functions
-        '(cape-capf-buster
-          (cape-super-capf
-           (cape-company-to-capf #'company-yankpad)
-           #'cape-ispell
-           #'cape-file
-           #'cape-dabbrev))))
-
+  (setq completion-at-point-functions (list
+                                       (cape-capf-buster
+                                        (cape-super-capf
+                                         #'cape-file
+                                         #'cape-dabbrev))))
+  )
 
 (use-package yasnippet
   :straight t
