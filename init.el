@@ -424,8 +424,8 @@
   (setq auto-insert-query nil)
   (add-hook 'find-file-hook 'auto-insert) (auto-insert-mode 1)
   (defun autoinsert-yas-expand()
-  "Replace text in yasnippet template."
-  (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+    "Replace text in yasnippet template."
+    (yas-expand-snippet (buffer-string) (point-min) (point-max)))
   :config
   (define-auto-insert "\.hs$" ["default-haskell.hs" autoinsert-yas-expand]))
 
@@ -496,9 +496,9 @@
   :config
   (with-eval-after-load 'pytest
     (defun pytest-cmd-format (format-string working-directory test-runner command-flags test-names)
-    "Override default function to remove local path."
-    (format format-string working-directory test-runner command-flags (replace-regexp-in-string pytest-remove-path "" test-names)))
-  ))
+      "Override default function to remove local path."
+      (format format-string working-directory test-runner command-flags (replace-regexp-in-string pytest-remove-path "" test-names)))
+    ))
 (use-package pip-requirements
   :defer t)
 (use-package text-mode
@@ -785,10 +785,10 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (projectile-mode +1)
   :config
   (projectile-register-project-type 'haskell-hpack '("package.yaml")
-                                  :project-file "package.yaml"
-                                  :compile "hpack . && cabal build"
-                                  :test "hpack . && cabal test --test-show-details=direct"
-                                  :test-suffix "Spec"))
+                                    :project-file "package.yaml"
+                                    :compile "hpack . && cabal build"
+                                    :test "hpack . && cabal test --test-show-details=direct"
+                                    :test-suffix "Spec"))
 (use-package consult-projectile
   :after projectile
   :defer t)
