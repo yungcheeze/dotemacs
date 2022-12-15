@@ -652,7 +652,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
      ("dd" mc/mark-all-like-this-in-defun "like-this"))
     "Special"
     (("&" mc/vertical-align-with-space "align")
-     ("q" nil "quit" :color blue)))))
+     ("q" nil "quit" :color blue)
+     ("RET" nil "quit" :color blue)))))
 
 (use-package iedit
   :defer t)
