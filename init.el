@@ -533,7 +533,8 @@
      ("n" "Note" entry (file+headline org-default-notes-file "Notes")
       "* %?\n  %i\n  %a")
      ))
-  (org-todo-keywords '((sequence "TODO" "BLOCKED" "|" "DONE")))
+  (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE")))
+  (org-export-backends '(ascii html icalendar latex odt confluence md))
   :bind
   (:map org-mode-map
 	("C-c RET" . org-insert-heading-respect-content))
@@ -564,8 +565,7 @@
   (cheesemacs/org "c" 'org-capture)
   (cheesemacs/org "l" 'cheese/org-store-link-raw))
 
-(use-package org-contrib
-  :defer t)
+(use-package org-contrib)
 (use-package ol-git-link
   :after org)
 (use-package orgit
