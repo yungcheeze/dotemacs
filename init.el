@@ -317,7 +317,9 @@
 	 (json-mode . lsp)
 	 (jsonc-mode . lsp)
 	 (yaml-mode . lsp)
-	 (shell-script-mode . lsp))
+	 (shell-script-mode . lsp)
+	 (c-mode . lsp)
+	 (cc-mode . lsp))
   :bind (:map lsp-mode-map
 	      ("M-g g" . lsp-find-definition)
 	      ("M-g d" . lsp-find-definition)
@@ -342,6 +344,10 @@
 (use-package lsp-haskell
   :hook ((haskell-mode . lsp)
 	 (haskell-literate-mode . lsp)))
+
+(use-package ccls
+  :custom
+  (ccls-executable "~/.nix-profile/bin/ccls"))
 
 ;; Need my own version vscode-languageserver.
 ;; lsp-mode's json-ls doesn't allow me to set a custom executable path and
