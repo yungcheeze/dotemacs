@@ -603,6 +603,8 @@
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
+  :custom
+  (copilot-idle-delay 0.5)
   :config
   (defun my/copilot-tab ()
     (interactive)
