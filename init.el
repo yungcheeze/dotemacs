@@ -912,8 +912,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 ;;; Custom Binds
 
 (global-set-key (kbd "M-o") 'ace-window)
-(global-set-key (kbd "C-M-o") 'ace-swap-window)
-(global-set-key (kbd "M-s") 'consult-line)
+(global-set-key (kbd "C-M-o") 'ace-delete-window)
 (global-set-key (kbd "ESC M-DEL") 'backward-kill-sexp)
 
 ;;; Custom Functions
