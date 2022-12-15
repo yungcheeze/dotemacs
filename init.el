@@ -326,6 +326,7 @@
 	      ("M-g r" . lsp-find-references))
   :custom
   (lsp-keymap-prefix "M-SPC l")
+  (lsp-semantic-tokens-enable t)
   :commands lsp)
 (use-package consult-lsp
   :defer t)
