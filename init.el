@@ -9,10 +9,10 @@
 
 ;; Packages
 (use-package straight
-  :custom
-  (straight-use-package-by-default t))
+  )
 
 (use-package benchmark-init
+  :straight t
   :ensure t
   :config
   ;; To disable collection of benchmark data after init is done.
@@ -25,6 +25,7 @@
 
 ;;; Visuals
 (use-package doom-modeline
+  :straight t
   :ensure t
   :custom
   (doom-modeline-env-version nil)
@@ -35,6 +36,7 @@
   (doom-modeline-mode 1))
 
 (use-package nord-theme
+  :straight t
   :custom-face
   (hl-line ((t (:background "#313845"))))
   (mode-line ((t (:background "#3B4252"))))
@@ -47,25 +49,32 @@
   (load-theme 'nord t))
 
 (use-package rainbow-delimiters
+  :straight t
   :defer t)
 (use-package highlight-parentheses
+  :straight t
   :defer t
   :hook
   (prog-mode . highlight-parentheses-mode))
 (use-package rainbow-mode
+  :straight t
   :defer t)
 (use-package all-the-icons
+  :straight t
   :defer t)
 
 (use-package tree-sitter
+  :straight t
   :after tree-sitter-langs
   :config
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-(use-package tree-sitter-langs)
+(use-package tree-sitter-langs
+  :straight t)
 
 (use-package general
+  :straight t
   :ensure t
   :preface
   (global-unset-key (kbd "M-SPC"))
@@ -136,20 +145,26 @@
   :config
   (general-auto-unbind-keys))
 
-(use-package hydra)
-(use-package pretty-hydra)
-(use-package major-mode-hydra)
+(use-package hydra
+  :straight t)
+(use-package pretty-hydra
+  :straight t)
+(use-package major-mode-hydra
+  :straight t)
 
 (use-package xterm-color
+  :straight t
   :defer t
   :init
   (cheesemacs/buffers "x c" 'xterm-color-colorize-buffer)
   (cheesemacs/toggle "a" 'xterm-color-colorize-buffer))
 
-(use-package ansi)
+(use-package ansi
+  :straight t)
 
 ;;; Helm 2.0
 (use-package selectrum
+  :straight t
   :init
   (cheesemacs "SPC" 'selectrum-repeat)
   :config
@@ -164,14 +179,17 @@
   (setq orderless-skip-highlighting (lambda () selectrum-is-active))
   (setq selectrum-highlight-candidates-function #'orderless-highlight-matches))
 
-(use-package orderless)
+(use-package orderless
+  :straight t)
 
 (use-package marginalia
+  :straight t
   :ensure t
   :config
   (marginalia-mode))
 
 (use-package embark
+  :straight t
   :ensure t
 
   :bind
@@ -194,6 +212,7 @@
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
+  :straight t
   :ensure t
   :after (embark consult)
   :demand t ; only necessary if you have the hook below
@@ -203,6 +222,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package consult
+  :straight t
   :ensure t
   :init
   (cheesemacs/buffers "b" 'consult-buffer)
@@ -220,16 +240,19 @@
   ("M-S" . consult-ripgrep))
 
 (use-package rg
+  :straight t
   :defer t
   :config
   (rg-enable-menu))
 
 (use-package which-key
+  :straight t
   :config
   (which-key-mode))
 
 ;;; Git stuff
 (use-package magit
+  :straight t
   :defer t
   :init
   (cheesemacs/git "g" 'magit)
@@ -244,11 +267,13 @@
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 (use-package magit-delta
+  :straight t
   :defer t
   :custom
   (magit-delta-default-dark-theme "Nord")
   :hook (magit-mode . magit-delta-mode))
 (use-package magit-todos
+  :straight t
   :defer t
   :after magit
   :custom
@@ -263,6 +288,7 @@
     '("T " "Todos" magit-todos-jump-to-todos)))
 
 (use-package blamer
+  :straight t
   :ensure t
   :bind (("s-i" . blamer-show-commit-info))
   :defer 20
@@ -276,15 +302,18 @@
                    :italic t))))
 
 (use-package git-gutter
+  :straight t
   :config
   (setq git-gutter:update-interval 1)
   (global-git-gutter-mode +1))
 
 (use-package git-timemachine
+  :straight t
   :defer t)
 
 ;; good for files
 (use-package git-link
+  :straight t
   :defer t
   :init
   (cheesemacs/git "k l" 'git-link)
@@ -293,15 +322,18 @@
   (git-link-use-commit t))
 ;; good for commit objects
 (use-package browse-at-remote
+  :straight t
   :init
   (cheesemacs/git "k b" 'browse-at-remote-kill)
   :defer t)
 
 (use-package forge
+  :straight t
   :after magit
   :defer t)
 
 (use-package code-review
+  :straight t
   :after forge
   :defer t
   :preface
@@ -312,6 +344,7 @@
 
 ;;;LSP
 (use-package lsp-mode
+  :straight t
   :defer t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
 	 (json-mode . lsp)
@@ -329,13 +362,17 @@
   (lsp-semantic-tokens-enable t)
   :commands lsp)
 (use-package consult-lsp
+  :straight t
   :defer t)
 (use-package flycheck
+  :straight t
   :defer t)
 (use-package lsp-ui
+  :straight t
   :defer t)
 
 (use-package lsp-pyright
+  :straight t
   :ensure t
   :defer t
   :hook (python-mode . (lambda ()
@@ -343,10 +380,12 @@
                          (lsp))))  ; or lsp-deferred
 
 (use-package lsp-haskell
+  :straight t
   :hook ((haskell-mode . lsp)
 	 (haskell-literate-mode . lsp)))
 
 (use-package ccls
+  :straight t
   :custom
   (ccls-executable "~/.nix-profile/bin/ccls"))
 
@@ -384,6 +423,7 @@
 
 ;;; Debugging
 (use-package dap-mode
+  :straight t
   :defer t
   :custom
   (dap-python-debugger 'debugpy)
@@ -391,6 +431,7 @@
   (require 'dap-python))
 ;;;Completion
 (use-package company
+  :straight t
   :custom
   (company-dabbrev-downcase nil)
   :config
@@ -399,26 +440,33 @@
     (define-key company-active-map (kbd "C-f") #'company-complete-selection))
   (global-company-mode 1))
 (use-package company-shell
+  :straight t
   :defer t)
 (use-package company-cabal
+  :straight t
   :defer t)
 (use-package company-nixos-options
+  :straight t
   :defer t
   )
 
 (use-package yasnippet
+  :straight t
   :bind
   ("M-i" . consult-yasnippet)
   :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
+  :straight t
   :after yasnippet
   :defer t)
 (use-package consult-yasnippet
+  :straight t
   :after yasnippet
   :defer t)
 
 (use-package autoinsert
+  :straight t
   :init
   (setq auto-insert-directory (concat user-emacs-directory "templates"))
   (setq auto-insert-query nil)
@@ -429,9 +477,12 @@
   :config
   (define-auto-insert "\.hs$" ["default-haskell.hs" autoinsert-yas-expand]))
 
-(use-package dash)
-(use-package s)
-(use-package editorconfig)
+(use-package dash
+  :straight t)
+(use-package s
+  :straight t)
+(use-package editorconfig
+  :straight t)
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
@@ -445,6 +496,7 @@
 
 ;;; Direnv
 (use-package envrc
+  :straight t
   :defer t
   :config
   (envrc-global-mode))
@@ -455,10 +507,13 @@
 
 ;;; Langs
 (use-package nix-mode
+  :straight t
   :defer t)
 (use-package haskell-mode
+  :straight t
   :defer t)
 (use-package hlint-refactor
+  :straight t
   :hook (haskell-mode . hlint-refactor-mode))
 (use-package json-mode
   :custom
@@ -468,41 +523,55 @@
 	("M-." . nil)) ;; M-. used for expand-region
   :defer t)
 (use-package json-snatcher
+  :straight t
   :defer t)
 (use-package json-navigator
+  :straight t
   :defer t)
 (use-package tree-mode
+  :straight t
   :defer t)
 (use-package dockerfile-mode
+  :straight t
   :defer t
   :init
   (add-to-list 'auto-mode-alist '(".*Dockerfile\\'" . dockerfile-mode)))
 (use-package yaml-mode
+  :straight t
   :defer t)
 (use-package jenkinsfile-mode
+  :straight t
   :defer t
   :init
   (add-to-list 'auto-mode-alist '("jenkins/build\\'" . jenkinsfile-mode))
   (add-to-list 'auto-mode-alist '(".*Jenkinsfile\\'" . jenkinsfile-mode)))
 (use-package groovy-mode
+  :straight t
   :defer t)
 (use-package dotenv-mode
+  :straight t
   :defer t
   :init
   (add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode)))
 (use-package typescript-mode
+  :straight t
   :defer t)
 (use-package csv-mode
+  :straight t
   :defer t)
 
 (use-package python-black
+  :straight t
   :defer t
   :after python)
 (use-package pyimport
+  :straight t
   :defer t)
 (use-package py-isort
+  :straight t
   :defer t)
 (use-package pytest
+  :straight t
   :defer t
   :init
   (defcustom pytest-remove-path ""
@@ -514,6 +583,7 @@
       (format format-string working-directory test-runner command-flags (replace-regexp-in-string pytest-remove-path "" test-names)))
     ))
 (use-package pip-requirements
+  :straight t
   :defer t)
 (use-package text-mode
   :defer t
@@ -524,11 +594,13 @@
 	("M-TAB" . nil)))
 
 (use-package format-all
+  :straight t
   :defer t
   :init
   (cheesemacs/buffers "f" 'format-all-buffer))
 
 (use-package ethan-wspace
+  :straight t
   :custom
   (mode-require-final-newline nil)
   :init
@@ -537,9 +609,11 @@
   (global-ethan-wspace-mode 1))
 
 (use-package separedit
+  :straight t
   :defer t)
 
 (use-package org
+  :straight t
   :commands (org-store-link)
   :custom
   (org-capture-templates
@@ -581,13 +655,17 @@
   (cheesemacs/org "c" 'org-capture)
   (cheesemacs/org "l" 'cheese/org-store-link-raw))
 
-(use-package org-contrib)
+(use-package org-contrib
+  :straight t)
 (use-package ol-git-link
+  :straight t
   :after org)
 (use-package orgit
+  :straight t
   :after org
   :commands (orgit-store-link))
 (use-package org-projectile
+  :straight t
   :defer t
   :init
   (cheesemacs/project "c" 'org-projectile-capture-for-current-project)
@@ -602,17 +680,21 @@
   :ensure t)
 
 (use-package org-autolist
+  :straight t
   :defer t
   :hook (org-mode . org-autolist-mode))
 
 (use-package org-bullets
+  :straight t
   :defer t
   :hook (org-mode . org-bullets-mode))
 
 ;;; QOL
 (use-package phi-search
+  :straight t
   :defer t)
 (use-package multiple-cursors
+  :straight t
   :defer t
   :commands (mc/split-region)
   :bind
@@ -671,15 +753,19 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
      ("RET" nil "quit" :color blue)))))
 
 (use-package iedit
+  :straight t
   :defer t)
 
 (use-package expand-region
+  :straight t
   :defer t
   :bind ("M-." . er/expand-region))
 
-(use-package swap-regions)
+(use-package swap-regions
+  :straight t)
 
 (use-package ialign
+  :straight t
   :ensure t
   :defer t)
 
@@ -700,9 +786,11 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 
   (global-auto-mark-mode 1))
 
-(use-package goto-chg)
+(use-package goto-chg
+  :straight t)
 
 (use-package recentf
+  :straight t
   :straight nil
   :custom
   (recentf-max-menu-items 100)
@@ -710,6 +798,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (recentf-mode))
 
 (use-package undo-tree
+  :straight t
   :bind (
 	 ("M-u" . undo-tree-undo)
 	 ("M-r" . undo-tree-redo))
@@ -729,6 +818,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (global-undo-tree-mode))
 
 (use-package gcmh
+  :straight t
   :delight gcmh-mode
   :init
   (gcmh-mode t))
@@ -759,6 +849,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
           ("<left>" . backward-char)
           ("<right>" . forward-char)))
 (use-package avy
+  :straight t
   :defer t
   :custom
   (avy-timeout-seconds 1)
@@ -771,12 +862,15 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :defer t)
 
 (use-package evil-nerd-commenter
+  :straight t
   :defer t
   :bind ("M-g c" . evilnc-comment-or-uncomment-lines))
 
-(use-package smartparens)
+(use-package smartparens
+  :straight t)
 
 (use-package golden-ratio-scroll-screen
+  :straight t
   :ensure t
   :custom
   (golden-ratio-scroll-highlight-flag 'before)
@@ -785,9 +879,11 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up))
 
 (use-package perfect-margin
+  :straight t
   :defer t)
 
 (use-package projectile
+  :straight t
   :ensure t
   :init
   (cheesemacs/project "f" 'project-find-file)
@@ -804,16 +900,20 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
                                     :test "hpack . && cabal test --test-show-details=direct"
                                     :test-suffix "Spec"))
 (use-package consult-projectile
+  :straight t
   :after projectile
   :defer t)
 (use-package flycheck-projectile
+  :straight t
   :after projectile
   :defer t)
 (use-package hl-todo
+  :straight t
   :init
   (global-hl-todo-mode 1))
 
 (use-package perspective
+  :straight t
   :bind
   ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
   :custom
@@ -837,26 +937,33 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (persp-mode))
 
 (use-package persp-projectile
+  :straight t
   :after perspective
   :init
   (cheesemacs/project "p" 'projectile-persp-switch-project))
 
 (use-package treemacs
+  :straight t
   :defer t
   :init
   (global-set-key (kbd "M-TAB") 'treemacs-display-current-project-exclusively)
   (cheesemacs/files "t" 'treemacs-display-current-project-exclusively))
 (use-package treemacs-projectile
+  :straight t
   :after (treemacs projectile))
 (use-package treemacs-magit
+  :straight t
   :after (treemacs magit))
 (use-package treemacs-icons-dired
+  :straight t
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 (use-package lsp-treemacs
+  :straight t
   :defer t)
 
 (use-package scratch
+  :straight t
   :defer t
   :init
   (defun scratch-with-mode ()
@@ -868,6 +975,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (cheesemacs/buffers "S" 'scratch-with-mode))
 
 (use-package popper
+  :straight t
   :ensure t ; or :straight t
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
@@ -894,6 +1002,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (popper-echo-mode +1))
 
 (use-package winner
+  :straight t
   :straight nil
   :init
   (cheesemacs/windows "u" 'cheese/hydra-winner/winner-undo)
@@ -913,6 +1022,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (winner-mode))
 
 (use-package helpful
+  :straight t
   :defer t
   :init
   (global-set-key (kbd "C-h f") #'helpful-callable)
@@ -920,6 +1030,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (global-set-key (kbd "C-h k") #'helpful-key))
 
 (use-package browse-url
+  :straight t
   :custom
   (browse-url-browser-function #'browse-url-chrome)
   (browse-url-chrome-program  "brave"))
