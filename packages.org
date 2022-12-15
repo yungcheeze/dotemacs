@@ -25,10 +25,11 @@
 - [X] projectile
   - [X] org-projectile
 - [X] flycheck
-- [ ] yasnippet
-  - [ ] yasnippet-snippets
+- [-] yasnippet
+  - [X] yasnippet-snippets
   - [ ] auto-yasnippet
-- [ ] lsp-mode
+- [X] lsp-mode
+  - [X] Map =M-g d= and =M-g r= to goto definition and goto references in lsp-mode-map
 - [ ] dap-mode
 - [ ] gh-md
   
@@ -40,7 +41,7 @@
 - [ ] dockerfile-mode
 - [ ] lua-mode
 * Core
-- [ ] modalka
+- [ ] modalka (not worth it)
 - [ ] key-chord (could be useful for binding even more keys)
 - [ ] hydra
   - [ ] buffer switching
