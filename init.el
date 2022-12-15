@@ -429,6 +429,20 @@
   :config
   (define-auto-insert "\.hs$" ["default-haskell.hs" autoinsert-yas-expand]))
 
+(use-package dash)
+(use-package s)
+(use-package editorconfig)
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :config
+  (with-eval-after-load 'company
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends))
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  :hook (prog-mode . copilot-mode))
+
 ;;; Direnv
 (use-package envrc
   :defer t
