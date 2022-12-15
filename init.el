@@ -510,6 +510,9 @@
 (use-package company-nixos-options
   :straight t
   )
+(use-package company-emoji
+  :straight t
+  )
 
 (use-package cape
   :straight t
@@ -547,6 +550,14 @@
 									      #'cape-file
 									      #'cape-dabbrev))))
 				 ))
+	 (text-mode . (lambda ()
+			(setq-local completion-at-point-functions (list
+								   (cape-capf-buster
+								    (cape-super-capf
+								     (cape-company-to-capf #'company-emoji)
+								     #'cape-file
+								     #'cape-dabbrev))))
+			))
 	 )
   :config
   (setq completion-at-point-functions (list
