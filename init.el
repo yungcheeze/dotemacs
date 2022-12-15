@@ -829,7 +829,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package treemacs
   :defer t
   :init
-  (global-set-key (kbd "M-TAB") 'treemacs-display-current-project-exclusively))
+  (global-set-key (kbd "M-TAB") 'treemacs-display-current-project-exclusively)
+  (cheesemacs/files "t" 'treemacs-display-current-project-exclusively))
 (use-package treemacs-projectile
   :after (treemacs projectile))
 (use-package treemacs-magit
