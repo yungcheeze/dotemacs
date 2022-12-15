@@ -73,15 +73,21 @@
   (global-set-key (kbd "M-SPC") 'cheesemacs-map)
   (general-create-definer cheesemacs
     :prefix-command 'cheesemacs-map)
+  (define-prefix-command 'cheesemacs/buffers-map)
+  (global-set-key (kbd "M-B") 'cheesemacs/buffers-map)
   (general-create-definer cheesemacs/buffers
-    :wrapping cheesemacs
-    :infix "b")
+    :prefix-command 'cheesemacs/buffers-map)
+  (cheesemacs "b" cheesemacs/buffers-map)
+  (define-prefix-command 'cheesemacs/files-map)
+  (global-set-key (kbd "M-F") 'cheesemacs/files-map)
   (general-create-definer cheesemacs/files
-    :wrapping cheesemacs
-    :infix "f")
+    :prefix-command 'cheesemacs/files-map)
+  (cheesemacs "f" cheesemacs/files-map)
+  (define-prefix-command 'cheesemacs/git-map)
+  (global-set-key (kbd "M-G") 'cheesemacs/git-map)
   (general-create-definer cheesemacs/git
-    :wrapping cheesemacs
-    :infix "g")
+    :prefix-command 'cheesemacs/git-map)
+  (cheesemacs "g" 'cheesemacs/git-map)
   (general-create-definer cheesemacs/jump
     :wrapping cheesemacs
     :infix "j")
@@ -91,9 +97,11 @@
   (general-create-definer cheesemacs/org
     :wrapping cheesemacs
     :infix "o")
+  (define-prefix-command 'cheesemacs/project-map)
+  (global-set-key (kbd "M-P") 'cheesemacs/project-map)
   (general-create-definer cheesemacs/project
-    :wrapping cheesemacs
-    :infix "p")
+    :prefix-command 'cheesemacs/project-map)
+  (cheesemacs "p" cheesemacs/project-map)
   (general-create-definer cheesemacs/quit
     :wrapping cheesemacs
     :infix "q")
@@ -106,9 +114,11 @@
   (general-create-definer cheesemacs/text
     :wrapping cheesemacs
     :infix "x")
+  (define-prefix-command 'cheesemacs/windows-map)
+  (global-set-key (kbd "M-W") 'cheesemacs/windows-map)
   (general-create-definer cheesemacs/windows
-    :wrapping cheesemacs
-    :infix "w")
+    :prefix-command 'cheesemacs/windows-map)
+  (cheesemacs "w" 'cheesemacs/windows-map)
 
   (cheesemacs/buffers "k" 'kill-buffer)
   (cheesemacs/buffers "w" 'save-buffer)
