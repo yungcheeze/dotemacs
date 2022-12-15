@@ -1018,7 +1018,6 @@ point reaches the beginning or end of the buffer, stop there."
 (setq inhibit-splash-screen t)
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message "")
-(electric-pair-mode 1)
 (delete-selection-mode 1)
 (setq read-minibuffer-restore-windows nil)
 
@@ -1037,3 +1036,17 @@ point reaches the beginning or end of the buffer, stop there."
   (org-mode . auto-fill-mode))
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+(use-package electric-pairs
+  :straight nil
+  :init
+  (defvar org-electric-pairs '((?/ . ?/) (?= . ?=)) "Electric pairs for org-mode.")
+  (defun org-add-electric-pairs ()
+    (setq-local electric-pair-pairs (append electric-pair-pairs org-electric-pairs))
+    (setq-local electric-pair-text-pairs electric-pair-pairs))
+  :defer nil ;; needed because of :hook other :config won't run on startup
+  :config
+  (electric-pair-mode 1)
+  (push '(?\` . ?\`) electric-pair-pairs)
+  :hook
+  (org-mode . org-add-electric-pairs))
