@@ -390,6 +390,8 @@
   (require 'dap-python))
 ;;;Completion
 (use-package company
+  :custom
+  (company-dabbrev-downcase nil)
   :config
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "<return>") nil)
