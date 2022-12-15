@@ -452,7 +452,7 @@
   (corfu-auto t)
   (corfu-cycle t)
   (corfu-preview-current nil)
-  (corfu-preselect-first nil)
+  (corfu-preselect-first t)
   (corfu-scroll-margin 4)
   (corfu-quit-no-match t)
   (corfu-quit-at-boundary t)
