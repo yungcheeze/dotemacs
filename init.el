@@ -446,6 +446,8 @@
 (use-package hlint-refactor
   :hook (haskell-mode . hlint-refactor-mode))
 (use-package json-mode
+  :custom
+  (js-indent-level 2)
   :bind
   (:map js-mode-map
 	("M-." . nil)) ;; M-. used for expand-region
