@@ -725,6 +725,21 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
           ("<left>" . isearch-edit-string)
           ("<right>" . isearch-edit-string)
 	  ("C-j" . avy-isearch)
+	  ("C-w" . (lambda ()
+		     "Reset current isearch to a word-mode search of the word under point."
+		     (interactive)
+		     (setq isearch-word t
+			   isearch-string ""
+			   isearch-message "")
+		     (isearch-yank-string (word-at-point))))
+	  ("M-w" . (lambda ()
+		     "Reset current isearch to a word-mode search of the word under point."
+		     (interactive)
+		     (setq isearch-word t
+			   isearch-string ""
+			   isearch-message "")
+		     (isearch-yank-string (buffer-substring (region-beginning) (region-end)))
+		     (deactivate-mark)))
           :map minibuffer-local-isearch-map
           ("<left>" . backward-char)
           ("<right>" . forward-char)))
