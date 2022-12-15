@@ -537,7 +537,8 @@
   (org-export-backends '(ascii html icalendar latex odt confluence md))
   :bind
   (:map org-mode-map
-	("C-c RET" . org-insert-heading-respect-content))
+	("C-c RET" . org-insert-heading-respect-content)
+	("C-t" . org-todo))
   :init
   ;; setting these here so my org-capture- functions work when org hasn't loaded
   (setq-default org-directory "~/work/notes")
