@@ -685,6 +685,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 
   (global-auto-mark-mode 1))
 
+(use-package goto-chg)
+
 (use-package recentf
   :straight nil
   :custom
