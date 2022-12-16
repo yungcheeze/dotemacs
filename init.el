@@ -564,6 +564,15 @@
 								     #'cape-file
 								     #'cape-dabbrev))))
 			))
+	 (emacs-lisp-mode . (lambda ()
+			      (setq-local completion-at-point-functions (list
+									 (cape-capf-buster
+									  (cape-super-capf
+									   #'cape-symbol
+									   ;; (cape-company-to-capf #'company-elisp)
+									   #'cape-file
+									   #'cape-dabbrev))))
+			      ))
 	 )
   :config
   (setq completion-at-point-functions (list
