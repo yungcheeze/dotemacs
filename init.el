@@ -394,6 +394,7 @@
 
 (use-package ccls
   :straight t
+  :defer t
   :custom
   (ccls-executable "~/.nix-profile/bin/ccls"))
 
@@ -510,6 +511,7 @@
   )
 (use-package company-nixos-options
   :straight t
+  :defer t
   )
 (use-package company-emoji
   :straight t
@@ -517,7 +519,7 @@
 
 (use-package cape
   :straight t
-  :after corfu company-nixos-options
+  :after corfu
   :hook ((nix-mode . (lambda ()
 		       (setq-local completion-at-point-functions (list
 								  (cape-capf-buster
