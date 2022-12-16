@@ -499,6 +499,9 @@
   (corfu-terminal-mode 1))
 
 
+(use-package pabbrev
+  :straight t
+  :hook (text-mode . pabbrev-mode))
 (use-package company
   :straight t
   :custom
