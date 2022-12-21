@@ -501,7 +501,9 @@
 
 (use-package pabbrev
   :straight t
-  :hook (text-mode . pabbrev-mode))
+  :hook (text-mode . pabbrev-mode)
+  :custom
+  (pabbrev-idle-timer-verbose nil))
 (use-package company
   :straight t
   :custom
