@@ -1001,9 +1001,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :defer t
   :bind ("M-g c" . evilnc-comment-or-uncomment-lines))
 
-(use-package smartparens
-  :straight t)
-
 (use-package golden-ratio-scroll-screen
   :straight t
   :ensure t
