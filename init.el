@@ -922,7 +922,21 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
                                    '(tree-sitter-mark-bigger-node))))
 
 (use-package swap-regions
-  :straight t)
+  :straight t
+  :init
+  (defun swap-regions--exit ()
+    (interactive)
+    (exit-recursive-edit))
+  (defun swap-regions--abort ()
+    (interactive)
+    (abort-recursive-edit))
+  :config
+  (defun cheese/swap-regions ()
+    (interactive)
+    (if (eq (recursion-depth) 0)
+	(call-interactively 'swap-regions)
+      (call-interactively 'swap-regions--exit)))
+  (cheesemacs "x" 'cheese/swap-regions))
 
 (use-package ialign
   :straight t
