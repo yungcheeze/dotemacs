@@ -469,7 +469,8 @@
           ("RET" . corfu-insert)
           ("<return>" . corfu-insert)
 	  ("TAB" . nil)
-	  ("<tab>" . nil))
+	  ("<tab>" . nil)
+	  ("M-TAB" . nil))
   :custom
   (corfu-auto t)
   (corfu-cycle t)
@@ -643,6 +644,11 @@
   :ensure t
   :custom
   (copilot-idle-delay 0.5)
+  :bind
+  (("M-n" . copilot-next-completion)
+   ("M-p" . copilot-previous-completion)
+   ("M-TAB" . copilot-accept-completion-by-line)
+   ("ESC <backtab>" . copilot-accept-completion-by-word))
   :config
   (defun my/copilot-tab ()
     (interactive)
@@ -1118,7 +1124,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :straight t
   :defer t
   :init
-  (global-set-key (kbd "M-TAB") 'treemacs-display-current-project-exclusively)
   (cheesemacs/files "t" 'treemacs-display-current-project-exclusively))
 (use-package treemacs-projectile
   :straight t
