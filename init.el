@@ -449,7 +449,9 @@
           ("C-p" . corfu-previous)
           ([remap completion-at-point] . corfu-complete)
           ("RET" . corfu-insert)
-          ("<return>" . corfu-insert))
+          ("<return>" . corfu-insert)
+	  ("TAB" . nil)
+	  ("<tab>" . nil))
   :custom
   (corfu-auto t)
   (corfu-cycle t)
