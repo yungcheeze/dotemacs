@@ -943,7 +943,9 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
     (if (eq (recursion-depth) 0)
 	(call-interactively 'swap-regions)
       (call-interactively 'swap-regions--exit)))
-  (cheesemacs "x" 'cheese/swap-regions))
+  (cheesemacs "x" 'cheese/swap-regions)
+  :bind
+  ("M-g x" . cheese/swap-regions))
 
 (use-package ialign
   :straight t
