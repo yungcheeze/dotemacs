@@ -68,6 +68,23 @@
   :straight t
   :after tree-sitter-langs
   :config
+  (defun tree-sitter-mark-bigger-node ()
+    (interactive)
+    (let* ((p (point))
+           (m (or (mark) p))
+           (beg (min p m))
+           (end (max p m))
+           (root (ts-root-node tree-sitter-tree))
+           (node (ts-get-descendant-for-position-range root beg end))
+           (node-beg (ts-node-start-position node))
+           (node-end (ts-node-end-position node)))
+      ;; Node fits the region exactly. Try its parent node instead.
+      (when (and (= beg node-beg) (= end node-end))
+	(when-let ((node (ts-get-parent node)))
+          (setq node-beg (ts-node-start-position node)
+		node-end (ts-node-end-position node))))
+      (set-mark node-end)
+      (goto-char node-beg)))
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
@@ -899,7 +916,10 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package expand-region
   :straight t
   :defer t
-  :bind ("M-." . er/expand-region))
+  :bind ("M-." . er/expand-region)
+  :config
+  (setq er/try-expand-list (append er/try-expand-list
+                                   '(tree-sitter-mark-bigger-node))))
 
 (use-package swap-regions
   :straight t)
