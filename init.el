@@ -276,6 +276,7 @@
   (cheesemacs/git "g" 'magit)
   (cheesemacs/git "d" 'magit-dispatch)
   (cheesemacs/git "f" 'magit-find-file)
+  (cheesemacs/git "l" (lambda () (interactive) (call-interactively 'magit) (call-interactively 'magit-log)))
   (cheesemacs/git "o l" 'magit-list-submodules)
   (cheesemacs/git "B" 'magit-switch-to-repository-buffer)
   (cheesemacs/git "b" 'magit-blame)
