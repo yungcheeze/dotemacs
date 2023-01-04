@@ -647,7 +647,7 @@
   :bind
   (("M-n" . copilot-next-completion)
    ("M-p" . copilot-previous-completion)
-   ("M-TAB" . copilot-accept-completion-by-line)
+   ("<backtab>" . copilot-accept-completion-by-line)
    ("ESC <backtab>" . copilot-accept-completion-by-word))
   :config
   (defun my/copilot-tab ()
