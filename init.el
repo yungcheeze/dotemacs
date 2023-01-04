@@ -754,7 +754,7 @@
   :straight nil
   :bind
   (:map text-mode-map
-	;; unbind key used for treemacs
+	;; unbind key used for copilot
 	("M-TAB" . nil)))
 
 (use-package format-all
@@ -1121,25 +1121,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :after perspective
   :init
   (cheesemacs/project "p" 'projectile-persp-switch-project))
-
-(use-package treemacs
-  :straight t
-  :defer t
-  :init
-  (cheesemacs/files "t" 'treemacs-display-current-project-exclusively))
-(use-package treemacs-projectile
-  :straight t
-  :after (treemacs projectile))
-(use-package treemacs-magit
-  :straight t
-  :after (treemacs magit))
-(use-package treemacs-icons-dired
-  :straight t
-  :hook (dired-mode . treemacs-icons-dired-enable-once)
-  :ensure t)
-(use-package lsp-treemacs
-  :straight t
-  :defer t)
 
 (use-package scratch
   :straight t
