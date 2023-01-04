@@ -1122,6 +1122,12 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :init
   (cheesemacs/project "p" 'projectile-persp-switch-project))
 
+(use-package dired-subtree
+  :straight t
+  :bind (:map dired-mode-map
+	 ("i" . dired-subtree-insert)
+	 ("I" . dired-subtree-remove)))
+
 (use-package scratch
   :straight t
   :defer t
