@@ -57,6 +57,10 @@
   :defer t
   :hook
   (prog-mode . highlight-parentheses-mode))
+(use-package highlight-indent-guides
+  :straight t
+  :hook
+  (yaml-mode . highlight-indent-guides-mode))
 (use-package rainbow-mode
   :straight t
   :defer t)
