@@ -997,36 +997,17 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :config
   (recentf-mode))
 
-(use-package undo-tree
-  :straight t
-  :bind (
-	 ("M-u" . undo-tree-undo)
-	 ("M-r" . undo-tree-redo))
-  :custom
-  (undo-tree-visualizer-timestamps t)
-  (undo-tree-visualizer-diff t)
-  (undo-tree-history-directory-alist
-   `(("." . ,(let ((dir (expand-file-name "undo-tree-history" user-emacs-directory)))
-               (if (file-exists-p dir)
-                   (unless (file-accessible-directory-p dir)
-                     (warn "Cannot access directory `%s'.
- Perhaps you don't have required permissions, or it's not a directory.
- See variable `undo-tree-history-directory-alist'." dir))
-                 (make-directory dir))
-               dir))))
-  :config
-  ;; Keep region when undoing in region
-  (defadvice undo-tree-undo (around keep-region activate)
-    (if (use-region-p)
-	(let ((m (set-marker (make-marker) (mark)))
-              (p (set-marker (make-marker) (point))))
-          ad-do-it
-          (goto-char p)
-          (set-mark m)
-          (set-marker p nil)
-          (set-marker m nil))
-      ad-do-it))
-  (global-undo-tree-mode))
+
+(use-package undo
+  :straight nil
+  :bind
+  ("M-u" . undo-only)
+  ("M-r" . undo-redo))
+
+(use-package vundo
+  :straight (vundo :type git :host github :repo "casouri/vundo")
+  :bind
+  ("C-x u" . vundo))
 
 (use-package gcmh
   :straight t
