@@ -875,7 +875,7 @@
   :straight t
   :defer t)
 (use-package multiple-cursors
-  :straight t
+  :straight (multiple-cursors :type git :host github :repo "magnars/multiple-cursors.el")
   :defer t
   :commands (mc/split-region)
   :bind
