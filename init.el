@@ -393,7 +393,11 @@
   :bind (:map lsp-mode-map
 	      ("M-g g" . lsp-find-definition)
 	      ("M-g d" . lsp-find-definition)
-	      ("M-g r" . lsp-find-references))
+	      ("M-g r" . lsp-find-references)
+	      ("M-g R" . lsp-rename)
+	      ("M-g M-s" . consult-lsp-file-symbols)
+	      ("M-g s" . consult-lsp-symbols)
+	      ("M-g M-e" . consult-lsp-diagnostics))
   :custom
   (lsp-keymap-prefix "M-SPC l")
   (lsp-semantic-tokens-enable t)
