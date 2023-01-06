@@ -1383,7 +1383,7 @@ Version 2017-01-08"
 (use-package electric-pairs
   :straight nil
   :init
-  (defvar org-electric-pairs '((?/ . ?/) (?= . ?=)) "Electric pairs for org-mode.")
+  (defvar org-electric-pairs '((?= . ?=)) "Electric pairs for org-mode.")
   (defun org-add-electric-pairs ()
     (setq-local electric-pair-pairs (append electric-pair-pairs org-electric-pairs))
     (setq-local electric-pair-text-pairs electric-pair-pairs))
