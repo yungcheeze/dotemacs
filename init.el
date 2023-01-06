@@ -163,7 +163,7 @@
   (cheesemacs/windows "/" 'split-window-right)
   (cheesemacs/windows "v" 'split-window-right)
   (cheesemacs/quit "q" 'save-buffers-kill-emacs)
-
+  (cheesemacs/text "c" 'capitalize-word)
   :config
   (general-auto-unbind-keys))
 
