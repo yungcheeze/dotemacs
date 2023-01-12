@@ -974,6 +974,9 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   :ensure t
   :defer t)
 
+(use-package string-inflection
+  :straight t)
+
 (use-package auto-mark
   :straight
   (auto-mark :type git :host github :repo "yungcheeze/auto-mark.el")
