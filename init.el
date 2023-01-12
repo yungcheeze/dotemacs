@@ -1142,8 +1142,11 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package dired-subtree
   :straight t
   :bind (:map dired-mode-map
-	      ("i" . dired-subtree-insert)
-	      ("I" . dired-subtree-remove)))
+	      ("i" . dired-subtree-cycle)
+	      ("I" . dired-subtree-remove)
+	      ("M-n" . dired-subtree-next-sibling)
+	      ("M-p" . dired-subtree-previous-sibling)
+	      ("M-u" . dired-subtree-up)))
 
 (use-package scratch
   :straight t
