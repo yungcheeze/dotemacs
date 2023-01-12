@@ -1148,6 +1148,10 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 	      ("M-p" . dired-subtree-previous-sibling)
 	      ("M-u" . dired-subtree-up)))
 
+(use-package ranger
+  :straight t
+  :defer t)
+
 (use-package scratch
   :straight t
   :defer t
