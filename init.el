@@ -301,7 +301,8 @@
     (kill-buffer)
     (jump-to-register :magit-fullscreen))
 
-  (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+  (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+  (define-key magit-status-mode-map (kbd "M-q") 'magit-mode-bury-buffer))
 (use-package magit-delta
   :straight t
   :defer t
