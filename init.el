@@ -702,6 +702,7 @@
   :straight t
   :hook (haskell-mode . hlint-refactor-mode))
 (use-package json-mode
+  :straight t
   :custom
   (js-indent-level 2)
   :bind
