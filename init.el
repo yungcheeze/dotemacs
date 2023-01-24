@@ -559,7 +559,10 @@
 (use-package yasnippet
   :straight t
   :bind
-  ("M-i" . consult-yasnippet)
+  (("M-i" . consult-yasnippet))
+  (:map yas-minor-mode-map
+	("TAB" . nil)
+	("<tab>" . nil))
   :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
@@ -595,17 +598,25 @@
   :custom
   (copilot-idle-delay 0.5)
   :bind
-  (("M-n" . copilot-next-completion)
+  (:map copilot-completion-map
+	("M-n" . copilot-next-completion)
+	("M-p" . copilot-previous-completion)
+	("<backtab>" . copilot-accept-completion-by-line)
+	("ESC <backtab>" . copilot-accept-completion-by-word)
+	("TAB" . my/copilot-tab)
+	("M-<tab>" . my/copilot-tab))
+  (:map corfu-map
+	("M-n" . copilot-next-completion)
    ("M-p" . copilot-previous-completion)
    ("<backtab>" . copilot-accept-completion-by-line)
-   ("ESC <backtab>" . copilot-accept-completion-by-word))
+	("ESC <backtab>" . copilot-accept-completion-by-word)
+	("TAB" . my/copilot-tab)
+	("M-<tab>" . my/copilot-tab))
   :config
   (defun my/copilot-tab ()
     (interactive)
     (or (copilot-accept-completion)
 	(indent-for-tab-command)))
-  (define-key copilot-completion-map (kbd "<tab>")  #'my/copilot-tab)
-  (define-key copilot-completion-map (kbd "TAB")  #'my/copilot-tab)
   :hook (prog-mode . copilot-mode))
 
 ;;; Direnv
