@@ -25,7 +25,7 @@
 
 ;;; Visuals
 (use-package doom-modeline
-  :straight t
+  :straight (:type git :host github :repo "seagle0128/doom-modeline")
   :ensure t
   :custom
   (doom-modeline-env-version nil)
@@ -122,6 +122,11 @@
   (general-create-definer cheesemacs/jump
     :wrapping cheesemacs
     :infix "j")
+  (define-prefix-command 'cheesemacs/lsp-map)
+  (global-set-key (kbd "M-L") 'cheesemacs/lsp-map)
+  (general-create-definer cheesemacs/lsp
+    :prefix-command 'cheesemacs/lsp-map)
+  (cheesemacs "l" cheesemacs/lsp-map)
   (general-create-definer cheesemacs/narrow
     :wrapping cheesemacs
     :infix "n")
@@ -261,6 +266,15 @@
   ("M-s" . consult-line)
   ("M-S" . consult-ripgrep))
 
+(use-package imenu-list
+  :straight t
+  :bind
+  ("M-g l" . imenu-list-smart-toggle)
+  :init
+  (cheesemacs/jump "l" 'imenu-list-smart-toggle)
+  :config
+  (setq imenu-list-focus-after-activation t
+	imenu-list-size 30))
 (use-package rg
   :straight t
   :defer t
@@ -380,104 +394,49 @@
   (define-key forge-topic-mode-map (kbd "C-c r") 'code-review-forge-pr-at-point))
 
 ;;;LSP
-(use-package lsp-mode
+
+(use-package eglot
   :straight t
   :defer t
-  :hook ((lsp-mode . lsp-enable-which-key-integration)
-         (lsp-mode . lsp-completion-mode)
-	 (json-mode . lsp)
-	 (jsonc-mode . lsp)
-	 (yaml-mode . lsp)
-	 (shell-script-mode . lsp)
-	 (c-mode . lsp)
-	 (cc-mode . lsp))
-  :bind (:map lsp-mode-map
-	      ("M-g g" . lsp-find-definition)
-	      ("M-g d" . lsp-find-definition)
-	      ("M-g r" . lsp-find-references)
-	      ("M-g R" . lsp-rename)
-	      ("M-g M-s" . consult-lsp-file-symbols)
-	      ("M-g s" . consult-lsp-symbols)
-	      ("M-g M-e" . consult-lsp-diagnostics))
-  :custom
-  (lsp-keymap-prefix "M-SPC l")
-  (lsp-semantic-tokens-enable t)
-  (lsp-completion-provider :none)
-  (lsp-completion-enable t)
-  (lsp-completion-enable-additional-text-edit t)
-  (lsp-enable-snippet t)
-  (lsp-completion-show-kind t)
+  :commands (eglot eglot-ensure)
+  :init
+  (setq completion-category-overrides '((eglot (styles orderless))))
+  (with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(json-mode . ("vscode-json-languageserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(jsonc-mode . ("vscode-json-languageserver" "--stdio"))))
+  :hook
+  (python-mode . eglot-ensure)
+  (json-mode . eglot-ensure)
+  (jsonc-mode . eglot-ensure)
+  (yaml-mode . eglot-ensure)
+  (shell-script-mode . eglot-ensure)
+  (c-mode . eglot-ensure)
+  (cc-mode . eglot-ensure)
+  (haskell-mode . eglot-ensure)
+  (haskel-literate-mode . eglot-ensure)
+  :init
+  (cheesemacs/lsp "e" 'consult-flymake)
+  (cheesemacs/lsp "r" 'eglot-rename)
+  :bind (:map eglot-mode-map
+	      ("M-g g" . xref-find-definitions)
+	      ("M-g d" . xref-find-definitions)
+	      ("M-g r". xref-find-references)
+	      ("M-g R". eglot-rename)
+	      ("M-g M-e" . consult-flymake)
+	      ("M-g M-s" . consult-imenu)
+	      ("M-g s" . consult-eglot-symbols)))
 
-  :commands lsp)
-(use-package consult-lsp
+(use-package consult-eglot
   :straight t
+  :after eglot
   :defer t)
+
 (use-package flycheck
   :straight t
   :defer t)
-(use-package lsp-ui
-  :straight t
-  :defer t)
 
-(use-package lsp-pyright
-  :straight t
-  :ensure t
-  :defer t
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))  ; or lsp-deferred
-
-(use-package lsp-haskell
-  :straight t
-  :hook ((haskell-mode . lsp)
-	 (haskell-literate-mode . lsp)))
-
-(use-package ccls
-  :straight t
-  :defer t
-  :custom
-  (ccls-executable "~/.nix-profile/bin/ccls"))
-
-;; Need my own version vscode-languageserver.
-;; lsp-mode's json-ls doesn't allow me to set a custom executable path and
-;; tries to install it using npm (which I don't always have)
-(use-package lsp-json-nix
-  :straight nil
-  :defer t
-  :requires (lsp-mode)
-  :preface
-  (require 'lsp-mode) ;; defines lsp- symbols
-  (require 'lsp-json) ;; defines lsp-json-- symbols
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection
-    (lsp-stdio-connection
-     ;; this is the main thing I changed
-     (lambda () (list "vscode-json-languageserver" "--stdio")))
-    :activation-fn (lsp-activate-on "json" "jsonc")
-    :server-id 'json-ls-nix
-    :priority 1 ;; set higher priority than json-ls (currently 0)
-    :multi-root t
-    :completion-in-comments? t
-    :initialization-options lsp-json--extra-init-params
-    :async-request-handlers (ht ("vscode/content" #'lsp-json--get-content))
-    :initialized-fn
-    (lambda (w)
-      (with-lsp-workspace w
-	(lsp--set-configuration
-	 (ht-merge (lsp-configuration-section "json")
-		   (lsp-configuration-section "http")))
-	(lsp-notify "json/schemaAssociations" lsp-json--schema-associations)))))
-  (provide 'lsp-json-nix))
-
-;;; Debugging
-(use-package dap-mode
-  :straight t
-  :defer t
-  :custom
-  (dap-python-debugger 'debugpy)
-  :config
-  (require 'dap-python))
 ;;;Completion
 (use-package corfu
   :straight ( :host github
@@ -631,7 +590,10 @@
 (use-package yasnippet
   :straight t
   :bind
-  ("M-i" . consult-yasnippet)
+  (("M-i" . consult-yasnippet))
+  (:map yas-minor-mode-map
+	("TAB" . nil)
+	("<tab>" . nil))
   :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
@@ -670,14 +632,14 @@
   (("M-n" . copilot-next-completion)
    ("M-p" . copilot-previous-completion)
    ("<backtab>" . copilot-accept-completion-by-line)
-   ("ESC <backtab>" . copilot-accept-completion-by-word))
+   ("ESC <backtab>" . copilot-accept-completion-by-word)
+   ("TAB" . my/copilot-tab)
+   ("M-<tab>" . my/copilot-tab))
   :config
   (defun my/copilot-tab ()
     (interactive)
     (or (copilot-accept-completion)
 	(indent-for-tab-command)))
-  (define-key copilot-completion-map (kbd "<tab>")  #'my/copilot-tab)
-  (define-key copilot-completion-map (kbd "TAB")  #'my/copilot-tab)
   :hook (prog-mode . copilot-mode))
 
 ;;; Direnv
@@ -1057,6 +1019,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (("M-j" . avy-goto-char-timer)
    ("M-l" . avy-goto-line)))
 (use-package ace-window
+  :straight t
   :custom
   (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
   :defer t)
