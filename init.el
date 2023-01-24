@@ -716,6 +716,11 @@
 (use-package csv-mode
   :straight t
   :defer t)
+(use-package csharp-mode
+  :straight t
+  :custom
+  (csharp-indent-offset 4)
+  :config)
 
 (use-package python-black
   :straight t
