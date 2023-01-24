@@ -278,6 +278,12 @@
   :config
   (setq imenu-list-focus-after-activation t
 	imenu-list-size 30))
+
+(use-package origami
+  :straight t
+  :config
+  (global-origami-mode))
+
 (use-package rg
   :straight t
   :defer t
