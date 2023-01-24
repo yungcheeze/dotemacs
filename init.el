@@ -392,9 +392,8 @@
   :commands (eglot eglot-ensure)
   :init
   (setq completion-category-overrides '((eglot (styles orderless))))
-  :hook
+  ;; :hook
   ;; NOTE need individual server commands, having issues with JSON and yaml
-  (prog-mode . eglot-ensure)
   :init
   (cheesemacs/lsp "e" 'consult-flymake)
   (cheesemacs/lsp "r" 'eglot-rename)
