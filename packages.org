@@ -1,48 +1,16 @@
 * QOL
 - gitmodes
 - macrostep
-- [X] ace-window?
-- [ ] highlight-parentheses
-- [ ] org
-  - [ ] org-bullets
-  - [ ] org-projectile
 
 * Code
-- [-] magit
-  - [X] diff-hl or git-gutter
-  - [X] git-timemachine
-  - [ ] diffview
+- [ ] magit
   - [ ] options
     - [ ] refine diff hunks t
     - [ ] refine ignore whitespace t
-- [ ] company
-  - [ ] company-quickhelp (instead of corfu-doc)
-    - uses pos-tip. I think it doesn't work in terminal
-- [ ] corfu instead of company
-  - can run embark on candidates (meh)
-  - corfu-doc (oh-yeah)
-  - no idle completion (oh no)
-- [X] projectile
-  - [X] org-projectile
-- [X] flycheck
-- [-] yasnippet
-  - [X] yasnippet-snippets
-  - [ ] auto-yasnippet
-- [X] lsp-mode
-  - [X] Map =M-g d= and =M-g r= to goto definition and goto references in lsp-mode-map
-- [ ] dap-mode
-- [ ] gh-md
-  
+- [ ] gh-md (need gui)
+
 * Languages
-- [ ] python
-  - [ ] cython-mode
-  - [ ] pytest
-- [ ] typescript-mode
-- [ ] dockerfile-mode
-- [ ] lua-mode
 * Core
-- [ ] modalka (not worth it)
-- [ ] key-chord (could be useful for binding even more keys)
 - [ ] hydra
   - [ ] buffer switching
   - [ ] window switching
@@ -55,4 +23,3 @@
     (https://github.com/raxod502/selectrum/issues/481)
 
 * Rice
-- [ ] treesitter highlighting (cause nord doesn't highlight yaml https://github.com/arcticicestudio/nord-emacs/issues/37)
