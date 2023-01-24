@@ -25,7 +25,7 @@
 
 ;;; Visuals
 (use-package doom-modeline
-  :straight t
+  :straight (:type git :host github :repo "seagle0128/doom-modeline")
   :ensure t
   :custom
   (doom-modeline-env-version nil)
