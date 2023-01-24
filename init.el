@@ -996,6 +996,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
   (("M-j" . avy-goto-char-timer)
    ("M-l" . avy-goto-line)))
 (use-package ace-window
+  :straight t
   :custom
   (aw-keys '(?a ?s ?d ?f ?j ?k ?l ?g ?h))
   :defer t)
