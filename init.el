@@ -266,6 +266,15 @@
   ("M-s" . consult-line)
   ("M-S" . consult-ripgrep))
 
+(use-package imenu-list
+  :straight t
+  :bind
+  ("M-g l" . imenu-list-smart-toggle)
+  :init
+  (cheesemacs/jump "l" 'imenu-list-smart-toggle)
+  :config
+  (setq imenu-list-focus-after-activation t
+	imenu-list-size 30))
 (use-package rg
   :straight t
   :defer t
