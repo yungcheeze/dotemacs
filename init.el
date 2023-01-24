@@ -422,7 +422,16 @@
   :bind (:map eglot-mode-map
 	      ("M-g g" . xref-find-definitions)
 	      ("M-g d" . xref-find-definitions)
-	      ("M-g r". xref-find-references)))
+	      ("M-g r". xref-find-references)
+	      ("M-g R". eglot-rename)
+	      ("M-g M-e" . consult-flymake)
+	      ("M-g M-s" . consult-imenu)
+	      ("M-g s" . consult-eglot-symbols)))
+
+(use-package consult-eglot
+  :straight t
+  :after eglot
+  :defer t)
 
 (use-package flycheck
   :straight t
