@@ -95,6 +95,9 @@
 (use-package tree-sitter-langs
   :straight t)
 
+(use-package tree-sitter-indent
+  :straight t)
+
 (use-package general
   :straight t
   :ensure t
