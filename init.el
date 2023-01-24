@@ -645,7 +645,6 @@
 ;;; Direnv
 (use-package envrc
   :straight t
-  :defer t
   :config
   (envrc-global-mode))
 ;; (use-package direnv
