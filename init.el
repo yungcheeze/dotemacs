@@ -611,20 +611,12 @@
   :custom
   (copilot-idle-delay 0.5)
   :bind
-  (:map copilot-completion-map
-	("M-n" . copilot-next-completion)
-	("M-p" . copilot-previous-completion)
-	("<backtab>" . copilot-accept-completion-by-line)
-	("ESC <backtab>" . copilot-accept-completion-by-word)
-	("TAB" . my/copilot-tab)
-	("M-<tab>" . my/copilot-tab))
-  (:map corfu-map
-	("M-n" . copilot-next-completion)
+  (("M-n" . copilot-next-completion)
    ("M-p" . copilot-previous-completion)
    ("<backtab>" . copilot-accept-completion-by-line)
-	("ESC <backtab>" . copilot-accept-completion-by-word)
-	("TAB" . my/copilot-tab)
-	("M-<tab>" . my/copilot-tab))
+   ("ESC <backtab>" . copilot-accept-completion-by-word)
+   ("TAB" . my/copilot-tab)
+   ("M-<tab>" . my/copilot-tab))
   :config
   (defun my/copilot-tab ()
     (interactive)
