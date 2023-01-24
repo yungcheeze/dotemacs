@@ -392,8 +392,21 @@
   :commands (eglot eglot-ensure)
   :init
   (setq completion-category-overrides '((eglot (styles orderless))))
-  ;; :hook
-  ;; NOTE need individual server commands, having issues with JSON and yaml
+  (with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(json-mode . ("vscode-json-languageserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(jsonc-mode . ("vscode-json-languageserver" "--stdio"))))
+  :hook
+  (python-mode . eglot-ensure)
+  (json-mode . eglot-ensure)
+  (jsonc-mode . eglot-ensure)
+  (yaml-mode . eglot-ensure)
+  (shell-script-mode . eglot-ensure)
+  (c-mode . eglot-ensure)
+  (cc-mode . eglot-ensure)
+  (haskell-mode . eglot-ensure)
+  (haskel-literate-mode . eglot-ensure)
   :init
   (cheesemacs/lsp "e" 'consult-flymake)
   (cheesemacs/lsp "r" 'eglot-rename)
