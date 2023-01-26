@@ -640,8 +640,8 @@
 (use-package yasnippet
   :straight t
   :bind
-  (("M-i" . consult-yasnippet))
   (:map yas-minor-mode-map
+	("M-i" . consult-yasnippet)
 	("TAB" . nil)
 	("<tab>" . nil))
   :init
