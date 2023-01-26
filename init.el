@@ -542,7 +542,9 @@
 
 (use-package pabbrev
   :straight t
-  :hook (text-mode . pabbrev-mode)
+  :hook
+  (text-mode . pabbrev-mode)
+  (forge-post-mode . pabbrev-mode)
   :custom
   (pabbrev-idle-timer-verbose nil))
 (use-package company
@@ -600,6 +602,15 @@
 									      #'cape-dabbrev))))
 				 ))
 	 (text-mode . (lambda ()
+			(setq-local completion-at-point-functions (list
+								   (cape-capf-buster
+								    (cape-super-capf
+								     (cape-company-to-capf #'company-emoji)
+								     #'cape-file
+								     #'cape-dabbrev
+								     #'cape-ispell))))
+			))
+	 (forge-post-mode . (lambda ()
 			(setq-local completion-at-point-functions (list
 								   (cape-capf-buster
 								    (cape-super-capf
