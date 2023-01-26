@@ -645,7 +645,9 @@
 	("TAB" . nil)
 	("<tab>" . nil))
   :init
-  (yas-global-mode t))
+  (yas-global-mode t)
+  :config
+  (define-key yas-minor-mode-map (kbd "M-RET") yas-maybe-expand))
 (use-package yasnippet-snippets
   :straight t
   :after yasnippet
