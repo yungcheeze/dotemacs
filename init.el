@@ -447,6 +447,36 @@
   :defer t)
 
 ;;;Completion
+;; copilot dependencies
+(use-package dash
+  :straight t)
+(use-package s
+  :straight t)
+(use-package editorconfig
+  :straight t)
+;; define copilot before corfu so keymap gets precedence
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :custom
+  (copilot-idle-delay 0.5)
+  :bind
+  (:map copilot-completion-map
+	("TAB" . copilot-accept-or-tab)
+	("<right>" . copilot-accept-completion-by-word)
+	("M-<right>" . copilot-accept-completion-by-line)
+	("M-<up>" . copilot-previous-completion)
+	("M-<down>" . copilot-next-completion)
+	("M-n" . copilot-next-completion)
+	("M-p" . copilot-previous-completion))
+  :config
+  (defun copilot-accept-or-tab ()
+    (interactive)
+    (or (copilot-accept-completion)
+	(indent-for-tab-command)))
+  :hook (prog-mode . copilot-mode))
+
+
 (use-package corfu
   :straight ( :host github
               :repo "minad/corfu"
@@ -626,30 +656,6 @@
   :config
   (define-auto-insert "\.hs$" ["default-haskell.hs" autoinsert-yas-expand]))
 
-(use-package dash
-  :straight t)
-(use-package s
-  :straight t)
-(use-package editorconfig
-  :straight t)
-(use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :ensure t
-  :custom
-  (copilot-idle-delay 0.5)
-  :bind
-  (("M-n" . copilot-next-completion)
-   ("M-p" . copilot-previous-completion)
-   ("<backtab>" . copilot-accept-completion-by-line)
-   ("ESC <backtab>" . copilot-accept-completion-by-word)
-   ("TAB" . my/copilot-tab)
-   ("M-<tab>" . my/copilot-tab))
-  :config
-  (defun my/copilot-tab ()
-    (interactive)
-    (or (copilot-accept-completion)
-	(indent-for-tab-command)))
-  :hook (prog-mode . copilot-mode))
 
 ;;; Direnv
 (use-package envrc
