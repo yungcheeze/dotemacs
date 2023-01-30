@@ -492,7 +492,7 @@
               :repo "minad/corfu"
               :branch "main"
 	      :files (:defaults "extensions/*")
-	      :includes (corfu-info corfu-history))
+	      :includes (corfu-info corfu-history corfu-echo corfu-popupinfo))
   :bind ( :map corfu-map
           ("C-n" . corfu-next)
           ("C-p" . corfu-previous)
@@ -531,6 +531,9 @@
   :hook (corfu-mode . corfu-popupinfo-mode)
   :custom-face
   (corfu-popupinfo ((t :height 1.0))))
+
+(use-package corfu-echo
+  :hook (corfu-mode . corfu-echo-mode))
 
 (use-package popon
   :straight ( :type git
