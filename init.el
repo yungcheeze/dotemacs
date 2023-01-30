@@ -436,6 +436,15 @@
 	      ("M-g M-e" . consult-flymake)
 	      ("M-g M-s" . consult-imenu)
 	      ("M-g s" . consult-eglot-symbols)))
+  :config
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              ;; Show flymake diagnostics first.
+              (setq eldoc-documentation-functions
+                    (cons #'flymake-eldoc-function
+                          (remove #'flymake-eldoc-function eldoc-documentation-functions)))
+              ;; Show all eldoc feedback.
+              (setq eldoc-documentation-strategy #'eldoc-documentation-compose))))
 
 (use-package consult-eglot
   :straight t
