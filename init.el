@@ -435,7 +435,8 @@
 	      ("M-g R". eglot-rename)
 	      ("M-g M-e" . consult-flymake)
 	      ("M-g M-s" . consult-imenu)
-	      ("M-g s" . consult-eglot-symbols)))
+	      ("M-g s" . consult-eglot-symbols)
+	      ("M-g ." . eldoc-doc-buffer))
   :config
   (add-hook 'eglot-managed-mode-hook
             (lambda ()
