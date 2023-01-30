@@ -411,10 +411,10 @@
   :init
   (setq completion-category-overrides '((eglot (styles orderless))))
   (with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(json-mode . ("vscode-json-languageserver" "--stdio")))
-  (add-to-list 'eglot-server-programs
-               '(jsonc-mode . ("vscode-json-languageserver" "--stdio"))))
+    (add-to-list 'eglot-server-programs
+		 '(json-mode . ("vscode-json-languageserver" "--stdio")))
+    (add-to-list 'eglot-server-programs
+		 '(jsonc-mode . ("vscode-json-languageserver" "--stdio"))))
   :hook
   (python-mode . eglot-ensure)
   (json-mode . eglot-ensure)
@@ -622,14 +622,14 @@
 								     #'cape-ispell))))
 			))
 	 (forge-post-mode . (lambda ()
-			(setq-local completion-at-point-functions (list
-								   (cape-capf-buster
-								    (cape-super-capf
-								     (cape-company-to-capf #'company-emoji)
-								     #'cape-file
-								     #'cape-dabbrev
-								     #'cape-ispell))))
-			))
+			      (setq-local completion-at-point-functions (list
+									 (cape-capf-buster
+									  (cape-super-capf
+									   (cape-company-to-capf #'company-emoji)
+									   #'cape-file
+									   #'cape-dabbrev
+									   #'cape-ispell))))
+			      ))
 	 (emacs-lisp-mode . (lambda ()
 			      (setq-local completion-at-point-functions (list
 									 (cape-capf-buster
