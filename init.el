@@ -490,8 +490,9 @@
 (use-package corfu
   :straight ( :host github
               :repo "minad/corfu"
-              :branch "main")
-  :load-path "straight/repos/corfu/extensions/"
+              :branch "main"
+	      :files (:defaults "extensions/*")
+	      :includes (corfu-info corfu-history))
   :bind ( :map corfu-map
           ("C-n" . corfu-next)
           ("C-p" . corfu-previous)
