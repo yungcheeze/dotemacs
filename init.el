@@ -1187,6 +1187,8 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 	  "\\*xref\\*"
 	  "\\*Embark Collect.*\\*"
 	  "\\*Embark Export.*\\*"
+	  "\\*Flymake diagnostics.*\\*"
+	  "\\*eldoc\\*"
 	  "\\*eshell\\*"
 	  "\\*format-all-errors\\*"
           help-mode
