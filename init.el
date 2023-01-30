@@ -530,7 +530,10 @@
           ("M-n" . corfu-popupinfo-scroll-up))
   :hook (corfu-mode . corfu-popupinfo-mode)
   :custom-face
-  (corfu-popupinfo ((t :height 1.0))))
+  (corfu-popupinfo ((t :height 1.0)))
+  :config
+  (when (display-graphic-p)
+    (define-key corfu-map (kbd "M-h") #'corfu-popupinfo-toggle)))
 
 (use-package corfu-echo
   :hook (corfu-mode . corfu-echo-mode))
