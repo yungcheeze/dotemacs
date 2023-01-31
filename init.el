@@ -437,7 +437,7 @@
 	      ("M-g M-e" . consult-flymake)
 	      ("M-g M-s" . consult-imenu)
 	      ("M-g s" . consult-eglot-symbols)
-	      ("M-g ." . eldoc-doc-buffer))
+	      ("M-g ." . eldoc-print-current-symbol-info))
   :config
   (add-hook 'eglot-managed-mode-hook
             (lambda ()
