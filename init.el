@@ -470,16 +470,26 @@
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
   :custom
-  (copilot-idle-delay 0.5)
+  (copilot-idle-delay nil)
   :bind
-  (:map copilot-completion-map
-	("TAB" . copilot-accept-or-tab)
-	("<right>" . copilot-accept-completion-by-word)
-	("M-<right>" . copilot-accept-completion-by-line)
-	("M-<up>" . copilot-previous-completion)
-	("M-<down>" . copilot-next-completion)
-	("M-n" . copilot-next-completion)
-	("M-p" . copilot-previous-completion))
+  (:map prog-mode-map ("M-RET" . cheese/hydra-copilot/copilot-complete))
+  :pretty-hydra
+  (cheese/hydra-copilot
+   (:title "Copilot"
+	    :quit-key "C-g")
+   ("Complete"
+    (("RET" copilot-complete "suggest")
+     ("TAB" copilot-accept-completion "accept and exit" :exit t)
+     ("<right>" copilot-accept-completion-by-word "accept by word")
+     ("M-<right>" copilot-accept-completion-by-line "accept by line"))
+    "Cycle"
+    (("n" copilot-next-completion "next")
+     ("M-n" copilot-next-completion "next")
+     ("p" copilot-previous-completion "previous")
+     ("M-p" copilot-previous-completion "previous"))
+    "Special"
+    (("u" (lambda() (interactive) (undo-only) (copilot-complete)) "undo")
+     ("q" copilot-clear-overlay "quit" :color blue))))
   :config
   (defun copilot-accept-or-tab ()
     (interactive)
@@ -657,15 +667,8 @@
 
 (use-package yasnippet
   :straight t
-  :bind
-  (:map yas-minor-mode-map
-	("M-i" . consult-yasnippet)
-	("TAB" . nil)
-	("<tab>" . nil))
   :init
-  (yas-global-mode t)
-  :config
-  (define-key yas-minor-mode-map (kbd "M-RET") yas-maybe-expand))
+  (yas-global-mode t))
 (use-package yasnippet-snippets
   :straight t
   :after yasnippet
