@@ -771,7 +771,9 @@
   :defer t)
 (use-package py-isort
   :straight t
-  :defer t)
+  :defer t
+  :bind (:map python-mode-map
+	      ("C-c i" . py-isort-buffer)))
 (use-package pytest
   :straight t
   :defer t
