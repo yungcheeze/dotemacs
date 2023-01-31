@@ -457,6 +457,10 @@
   :straight t
   :defer t)
 
+(use-package eldoc
+  :custom
+  (eldoc-idle-delay 1.0))
+
 ;;;Completion
 ;; copilot dependencies
 (use-package dash
