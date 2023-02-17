@@ -778,6 +778,9 @@
   :custom
   (csharp-indent-offset 4)
   :config)
+(use-package cc-mode
+  :straight t
+  :defer t)
 
 (use-package python-black
   :straight t
