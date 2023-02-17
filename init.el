@@ -688,6 +688,12 @@
   :straight t
   :after yasnippet
   :defer t)
+(use-package auto-yasnippet
+  :straight t
+  :after yasnippet
+  :custom
+  (aya-case-fold t)
+  :defer t)
 
 (use-package autoinsert
   :straight t
