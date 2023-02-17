@@ -540,7 +540,6 @@
     (interactive)
     (corfu-complete)
     (corfu-quit))
-  :init
   (global-corfu-mode 1))
 
 (use-package corfu-popupinfo
