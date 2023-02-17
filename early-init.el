@@ -15,6 +15,7 @@
  inhibit-compacting-font-caches t
  message-log-max 16384
  package-enable-at-startup nil
+ package-quickstart t
  load-prefer-newer noninteractive)
 
 (setq-default
