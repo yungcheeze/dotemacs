@@ -848,6 +848,9 @@
      ))
   (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE")))
   (org-export-backends '(ascii html icalendar latex odt confluence md jira))
+  (org-clock-persist 'history)
+  :config
+  (org-clock-persistence-insinuate)
   :bind
   (:map org-mode-map
 	("C-c RET" . org-insert-heading-respect-content)
