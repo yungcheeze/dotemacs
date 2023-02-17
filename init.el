@@ -847,7 +847,7 @@
       "* %?\n  %i\n  %a")
      ))
   (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE")))
-  (org-export-backends '(ascii html icalendar latex odt confluence md))
+  (org-export-backends '(ascii html icalendar latex odt confluence md jira))
   :bind
   (:map org-mode-map
 	("C-c RET" . org-insert-heading-respect-content)
@@ -878,6 +878,9 @@
   (cheesemacs/org "o" 'org-capture-open)
   (cheesemacs/org "c" 'org-capture)
   (cheesemacs/org "l" 'cheese/org-store-link-raw))
+
+(use-package ox-jira
+  :straight t)
 
 (use-package org-contrib
   :straight t)
