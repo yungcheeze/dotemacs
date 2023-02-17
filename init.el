@@ -1377,7 +1377,8 @@ point reaches the beginning or end of the buffer, stop there."
 (setq read-minibuffer-restore-windows nil)
 
 (use-package ediff
-  :straight nil
+  :straight t
+  :defer t
   :custom
   (ediff-window-setup-function 'ediff-setup-windows-plain)
   (ediff-diff-options "-w")
