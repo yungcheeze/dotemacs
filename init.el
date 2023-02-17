@@ -70,6 +70,7 @@
 
 (use-package tree-sitter
   :straight t
+  :defer t
   :after tree-sitter-langs
   :config
   (defun tree-sitter-mark-bigger-node ()
@@ -93,10 +94,12 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs
-  :straight t)
+  :straight t
+  :defer t)
 
 (use-package tree-sitter-indent
-  :straight t)
+  :straight t
+  :defer t)
 
 (use-package general
   :straight t
