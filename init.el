@@ -882,6 +882,17 @@
 (use-package ox-jira
   :straight t)
 
+(use-package org-super-agenda
+  :straight t
+  :hook
+  (org-mode . org-super-agenda-mode)
+  :config
+  (setq org-agenda-custom-commands
+      '(("a" "Main Agenda" todo ""
+         ((org-super-agenda-groups
+           `((:auto-outline-path t)
+	     ))))))
+  )
 (use-package org-contrib
   :straight t)
 (use-package ol-git-link
