@@ -429,6 +429,7 @@
   (haskell-mode . eglot-ensure)
   (haskel-literate-mode . eglot-ensure)
   (nix-mode . eglot-ensure)
+  (typescript-mode . eglot-ensure)
   :init
   (cheesemacs/lsp "e" 'consult-flymake)
   (cheesemacs/lsp "r" 'eglot-rename)
