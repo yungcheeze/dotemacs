@@ -859,6 +859,7 @@
   ;; setting these here so my org-capture- functions work when org hasn't loaded
   (setq-default org-directory "~/work/notes")
   (setq-default org-default-notes-file (concat org-directory "/NOTES.org"))
+  (setq-default org-agenda-files `(,(concat org-directory "/NOTES.org")))
 
   (defun cheese/org-store-link-raw ()
     (interactive)
