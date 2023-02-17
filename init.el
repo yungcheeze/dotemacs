@@ -775,6 +775,7 @@
   :defer t)
 (use-package csharp-mode
   :straight t
+  :defer t
   :custom
   (csharp-indent-offset 4)
   :config)
