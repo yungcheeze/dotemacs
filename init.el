@@ -675,6 +675,9 @@
 
 (use-package yasnippet
   :straight t
+  :bind
+  (:map yas-minor-mode-map
+	("M-i" . consult-yasnippet))
   :init
   (yas-global-mode t))
 (use-package yasnippet-snippets
