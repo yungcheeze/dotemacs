@@ -8,6 +8,8 @@
     - [ ] refine diff hunks t
     - [ ] refine ignore whitespace t
 - [ ] gh-md (need gui)
+- [ ] contextual editing using
+  [[https://github.com/mickeynp/combobulate][combobulate]] (needs emacs 29)
 
 * Languages
 * Core
