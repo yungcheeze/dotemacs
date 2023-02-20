@@ -498,11 +498,6 @@
     "Special"
     (("u" (lambda() (interactive) (undo-only) (copilot-complete)) "undo")
      ("q" copilot-clear-overlay "quit" :color blue))))
-  :config
-  (defun copilot-accept-or-tab ()
-    (interactive)
-    (or (copilot-accept-completion)
-	(indent-for-tab-command)))
   :hook (prog-mode . copilot-mode))
 
 
@@ -537,10 +532,6 @@
   ;; doesn't provide the `indent' feature.
   (tab-always-indent 'complete)
   :config
-  (defun corfu-complete-and-quit ()
-    (interactive)
-    (corfu-complete)
-    (corfu-quit))
   (global-corfu-mode 1))
 
 (use-package corfu-popupinfo
