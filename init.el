@@ -512,6 +512,7 @@
               :branch "main"
 	      :files (:defaults "extensions/*")
 	      :includes (corfu-info corfu-history corfu-echo corfu-popupinfo))
+  :defer nil
   :bind ( :map corfu-map
           ("C-n" . corfu-next)
           ("C-p" . corfu-previous)
