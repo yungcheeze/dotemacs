@@ -621,14 +621,6 @@
 									     #'cape-file
 									     #'cape-dabbrev))))
 				))
-	 (envrc-mode . (lambda ()
-			 (setq-local completion-at-point-functions (list
-								    (cape-capf-buster
-								     (cape-super-capf
-								      (cape-company-to-capf #'company-shell-env)
-								      #'cape-file
-								      #'cape-dabbrev))))
-			 ))
 	 (haskell-cabal-mode . (lambda ()
 				 (setq-local completion-at-point-functions (list
 									    (cape-capf-buster
