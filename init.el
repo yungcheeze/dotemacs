@@ -1016,23 +1016,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package string-inflection
   :straight t)
 
-(use-package auto-mark
-  :straight
-  (auto-mark :type git :host github :repo "yungcheeze/auto-mark.el")
-  :custom
-  (auto-mark-command-class-alist
-   '((goto-line . jump)
-     (indent-for-tab-command . ignore)
-     (undo . ignore)))
-  :config
-  (defun auto-mark-set-mark ()
-    (interactive)
-    (push-mark (point) t nil))
-
-  (defadvice consult-line (after set-mark activate) (auto-mark-set-mark))
-
-  (global-auto-mark-mode 1))
-
 (use-package goto-chg
   :straight t)
 
