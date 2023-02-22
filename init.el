@@ -196,24 +196,27 @@
   :straight t)
 
 ;;; Helm 2.0
-(use-package selectrum
-  :straight t
+(use-package vertico
+  :straight (:files (:defaults "extensions/*"))
   :init
-  (cheesemacs "SPC" 'selectrum-repeat)
   :config
-  (selectrum-mode +1)
-  (setq completion-styles '(orderless))
+  (vertico-mode +1)
+  (savehist-mode +1))
 
-  ;; Persist history over Emacs restarts
-  (savehist-mode)
-
-  ;; Optional performance optimization
-  ;; by highlighting only the visible candidates.
-  (setq orderless-skip-highlighting (lambda () selectrum-is-active))
-  (setq selectrum-highlight-candidates-function #'orderless-highlight-matches))
+(use-package vertico-repeat
+  :straight nil
+  :after vertico
+  :ensure nil
+  :config
+  (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
+  (cheesemacs "SPC" 'vertico-repeat))
 
 (use-package orderless
-  :straight t)
+  :straight t
+  :custom
+  (completion-styles '(orderless))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
 (use-package marginalia
   :straight t
