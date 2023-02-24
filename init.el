@@ -1179,6 +1179,15 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 	      ("M-p" . dired-subtree-previous-sibling)
 	      ("M-u" . dired-subtree-up)))
 
+(use-package dired-sidebar
+  :straight t
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :custom
+  (dired-sidebar-theme 'nerd)
+  :init
+  (cheesemacs "TAB" #'dired-sidebar-toggle-sidebar))
+
 (use-package ranger
   :straight t
   :defer t)
