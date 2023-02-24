@@ -481,26 +481,32 @@
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
   :custom
-  (copilot-idle-delay nil)
+  (copilot-idle-delay 0)
   :bind
-  (:map prog-mode-map ("M-RET" . cheese/hydra-copilot/copilot-complete))
+  (:map prog-mode-map ("M-RET" . cheese/hydra-copilot/copilot-accept-or-complete))
   :pretty-hydra
   (cheese/hydra-copilot
    (:title "Copilot"
 	    :quit-key "C-g")
    ("Complete"
-    (("RET" copilot-complete "suggest")
-     ("TAB" copilot-accept-completion "accept and exit" :exit t)
+    (("M-RET" copilot-accept-or-complete "suggest or complete")
      ("<right>" copilot-accept-completion-by-word "accept by word")
-     ("M-<right>" copilot-accept-completion-by-line "accept by line"))
+     ("<down>" copilot-accept-completion-by-line "accept by line"))
     "Cycle"
     (("n" copilot-next-completion "next")
      ("M-n" copilot-next-completion "next")
      ("p" copilot-previous-completion "previous")
      ("M-p" copilot-previous-completion "previous"))
     "Special"
-    (("u" (lambda() (interactive) (undo-only) (copilot-complete)) "undo")
+    (("RET" newline "newline")
+     ("u" (lambda() (interactive) (undo-only) (copilot-complete)) "undo")
+     ("M-u" (lambda() (interactive) (undo-only) (copilot-complete)) "undo")
      ("q" copilot-clear-overlay "quit" :color blue))))
+  :config
+  (defun copilot-accept-or-complete ()
+    (interactive)
+    (or (copilot-accept-completion)
+	(copilot-complete)))
   :hook (prog-mode . copilot-mode))
 
 ;; we need compat-29 for corfu to work as it uses defvar-keymap, which is an emacs-29 function
