@@ -903,7 +903,7 @@
   :defer t
   :init
   (cheesemacs/project "c" 'org-projectile-capture-for-current-project)
-  (cheesemacs/project "n" 'org-projectile-goto-location-for-project)
+  (cheesemacs/project "C" 'org-projectile-goto-location-for-project)
   :config
   (progn
     (setq org-projectile-projects-file
@@ -1160,6 +1160,7 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
      ("RET" nil "quit" :color blue))))
   :init
   (cheesemacs/project "TAB" 'cheese/hydra-persp/persp-next)
+  (cheesemacs/project "n" 'cheese/hydra-persp/persp-next)
   (cheesemacs/project "o" 'cheese/hydra-persp/persp-switch-and-exit)
   (persp-mode))
 
