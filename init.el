@@ -1380,6 +1380,13 @@ point reaches the beginning or end of the buffer, stop there."
 (global-auto-revert-mode t)
 (setq confirm-kill-emacs nil)
 
+(xterm-mouse-mode 1)
+(setq mouse-wheel-scroll-amount '(3
+ ((shift)
+  . hscroll)
+ ((meta))
+ ((control)
+  . text-scale)))
 (column-number-mode 1)
 (global-hl-line-mode +1)
 (setq show-trailing-whitespace 1)
