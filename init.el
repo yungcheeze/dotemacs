@@ -808,7 +808,22 @@
   :straight t
   :defer t
   :init
-  (cheesemacs/buffers "f" 'format-all-buffer))
+  (cheesemacs/buffers "f" 'format-all-buffer)
+  :config
+  (define-format-all-formatter fourmolu
+  (:executable "fourmolu")
+  (:install "stack install fourmolu")
+  (:languages "Haskell" "Literate Haskell")
+  (:features)
+  (:format
+   (format-all--buffer-easy executable)))
+  (define-format-all-formatter ormolu
+  (:executable "ormolu")
+  (:install "stack install ormolu")
+  (:languages "Haskell" "Literate Haskell")
+  (:features)
+  (:format
+   (format-all--buffer-easy executable))))
 
 (use-package ethan-wspace
   :straight t
