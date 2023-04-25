@@ -523,7 +523,7 @@
               :repo "minad/corfu"
               :branch "main"
 	      :files (:defaults "extensions/*")
-	      :includes (corfu-info corfu-history corfu-echo corfu-popupinfo))
+	      :includes (corfu-history))
   :defer nil
   :bind ( :map corfu-map
           ("C-n" . corfu-next)
@@ -550,20 +550,6 @@
   (tab-always-indent 'complete)
   :config
   (global-corfu-mode 1))
-
-(use-package corfu-popupinfo
-  :bind ( :map corfu-popupinfo-map
-          ("M-p" . corfu-popupinfo-scroll-down)
-          ("M-n" . corfu-popupinfo-scroll-up))
-  :hook (corfu-mode . corfu-popupinfo-mode)
-  :custom-face
-  (corfu-popupinfo ((t :height 1.0)))
-  :config
-  (when (display-graphic-p)
-    (define-key corfu-map (kbd "M-h") #'corfu-popupinfo-toggle)))
-
-(use-package corfu-echo
-  :hook (corfu-mode . corfu-echo-mode))
 
 (use-package popon
   :straight ( :type git
