@@ -464,6 +464,9 @@
   :straight t
   :defer t)
 
+(use-package flymake-ruff
+  :straight t)
+
 (use-package eldoc
   :custom
   (eldoc-idle-delay 1.0))
