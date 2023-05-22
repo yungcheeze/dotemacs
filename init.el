@@ -443,6 +443,7 @@
 	      ("M-g R". eglot-rename)
 	      ("M-g M-e" . consult-flymake)
 	      ("M-g M-s" . consult-imenu)
+	      ("M-g i" . consult-imenu)
 	      ("M-g s" . consult-eglot-symbols)
 	      ("M-g ." . eldoc-print-current-symbol-info))
   :config
