@@ -850,7 +850,10 @@
   :bind
   (:map org-mode-map
 	("C-c RET" . org-insert-heading-respect-content)
-	("C-t" . org-todo))
+	("C-t" . org-todo)
+	("M-g M-s" . consult-imenu)
+	("M-g i" . consult-imenu)
+	("M-g f" . org-fold-hide-sublevels))
   :init
   ;; setting these here so my org-capture- functions work when org hasn't loaded
   (setq-default org-directory "~/work/notes")
