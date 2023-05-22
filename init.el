@@ -491,7 +491,7 @@
   :pretty-hydra
   (cheese/hydra-copilot
    (:title "Copilot"
-	    :quit-key "C-g")
+	   :quit-key "C-g")
    ("Complete"
     (("M-RET" copilot-accept-or-complete "suggest or complete")
      ("<right>" copilot-accept-completion-by-word "accept by word")
@@ -805,19 +805,19 @@
   (cheesemacs/buffers "f" 'format-all-buffer)
   :config
   (define-format-all-formatter fourmolu
-  (:executable "fourmolu")
-  (:install "stack install fourmolu")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format
-   (format-all--buffer-easy executable)))
+    (:executable "fourmolu")
+    (:install "stack install fourmolu")
+    (:languages "Haskell" "Literate Haskell")
+    (:features)
+    (:format
+     (format-all--buffer-easy executable)))
   (define-format-all-formatter ormolu
-  (:executable "ormolu")
-  (:install "stack install ormolu")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format
-   (format-all--buffer-easy executable))))
+    (:executable "ormolu")
+    (:install "stack install ormolu")
+    (:languages "Haskell" "Literate Haskell")
+    (:features)
+    (:format
+     (format-all--buffer-easy executable))))
 
 (use-package ethan-wspace
   :straight t
@@ -891,10 +891,10 @@
   (org-mode . org-super-agenda-mode)
   :config
   (setq org-agenda-custom-commands
-      '(("a" "Main Agenda" todo ""
-         ((org-super-agenda-groups
-           `((:auto-outline-path t)
-	     ))))))
+	'(("a" "Main Agenda" todo ""
+           ((org-super-agenda-groups
+             `((:auto-outline-path t)
+	       ))))))
   )
 (use-package org-contrib
   :straight t)
@@ -1379,11 +1379,11 @@ point reaches the beginning or end of the buffer, stop there."
 
 (xterm-mouse-mode 1)
 (setq mouse-wheel-scroll-amount '(3
- ((shift)
-  . hscroll)
- ((meta))
- ((control)
-  . text-scale)))
+				  ((shift)
+				   . hscroll)
+				  ((meta))
+				  ((control)
+				   . text-scale)))
 (column-number-mode 1)
 (global-hl-line-mode +1)
 (setq show-trailing-whitespace 1)
