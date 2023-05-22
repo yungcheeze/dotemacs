@@ -570,13 +570,6 @@
   (corfu-terminal-mode 1))
 
 
-(use-package pabbrev
-  :straight t
-  :hook
-  (text-mode . pabbrev-mode)
-  (forge-post-mode . pabbrev-mode)
-  :custom
-  (pabbrev-idle-timer-verbose nil))
 (use-package company
   :straight t
   :custom
