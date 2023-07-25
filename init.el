@@ -817,7 +817,26 @@
     (:languages "Haskell" "Literate Haskell")
     (:features)
     (:format
-     (format-all--buffer-easy executable))))
+     (format-all--buffer-easy executable)))
+  (define-format-all-formatter shfmt
+    (:executable "shfmt")
+    (:install
+     (macos "brew install shfmt")
+     (windows "scoop install shfmt"))
+    (:languages "Shell")
+    (:features)
+    (:format
+     (format-all--buffer-easy
+      executable
+      "-i" (format "%d" sh-indentation)
+      (if (buffer-file-name)
+          (list "-filename" (buffer-file-name))
+	(list "-ln" (cl-case (and (eql major-mode 'sh-mode)
+                                  (boundp 'sh-shell)
+                                  (symbol-value 'sh-shell))
+                      (bash "bash")
+                      (mksh "mksh")
+                      (t "posix"))))))))
 
 (use-package ethan-wspace
   :straight t
