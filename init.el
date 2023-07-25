@@ -838,6 +838,12 @@
                       (mksh "mksh")
                       (t "posix"))))))))
 
+(use-package editorconfig
+  :straight t
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (use-package ethan-wspace
   :straight t
   :custom
