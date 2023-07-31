@@ -488,6 +488,7 @@
   (copilot-idle-delay 0)
   :bind
   (:map prog-mode-map ("M-RET" . cheese/hydra-copilot/copilot-accept-or-complete))
+  (:map copilot-completion-map ("<right>" .  copilot-accept-completion))
   :pretty-hydra
   (cheese/hydra-copilot
    (:title "Copilot"
