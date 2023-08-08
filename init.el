@@ -499,15 +499,16 @@
   :custom
   (copilot-idle-delay 0)
   :bind
-  (:map prog-mode-map ("M-RET" . cheese/hydra-copilot/copilot-accept-or-complete))
+  (:map prog-mode-map ("M-RET" . (lambda() (interactive) (copilot-complete) (cheese/hydra-copilot/body))))
   (:map copilot-completion-map ("<right>" .  copilot-accept-completion))
   :pretty-hydra
   (cheese/hydra-copilot
    (:title "Copilot"
 	   :quit-key "C-g")
    ("Complete"
-    (("M-RET" copilot-accept-or-complete "suggest or complete")
-     ("<right>" copilot-accept-completion-by-word "accept by word")
+    (("M-RET" copilot-accept-or-complete "accept-or-complete")
+     ("<right>" copilot-accept-completion "accept" :exit t :color blue)
+     ("<up>" copilot-accept-completion-by-word "accept by word")
      ("<down>" copilot-accept-completion-by-line "accept by line"))
     "Cycle"
     (("n" copilot-next-completion "next")
