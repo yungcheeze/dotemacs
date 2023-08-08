@@ -68,6 +68,11 @@
   :straight t
   :defer t)
 
+(use-package treesit-auto
+  :straight t
+  :config
+  (global-treesit-auto-mode))
+
 (use-package general
   :straight t
   :ensure t
