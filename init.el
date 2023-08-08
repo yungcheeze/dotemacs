@@ -637,8 +637,7 @@
 								    (cape-super-capf
 								     (cape-company-to-capf #'company-emoji)
 								     #'cape-file
-								     #'cape-dabbrev
-								     #'cape-ispell))))
+								     #'cape-dabbrev))))
 			))
 	 (forge-post-mode . (lambda ()
 			      (setq-local completion-at-point-functions (list
@@ -646,8 +645,7 @@
 									  (cape-super-capf
 									   (cape-company-to-capf #'company-emoji)
 									   #'cape-file
-									   #'cape-dabbrev
-									   #'cape-ispell))))
+									   #'cape-dabbrev))))
 			      ))
 	 (emacs-lisp-mode . (lambda ()
 			      (setq-local completion-at-point-functions (list
