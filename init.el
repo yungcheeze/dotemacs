@@ -423,7 +423,7 @@
 ;;;LSP
 
 (use-package eglot
-  :straight t
+  :straight nil
   :defer t
   :commands (eglot eglot-ensure)
   :init
