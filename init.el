@@ -73,6 +73,33 @@
   :config
   (global-treesit-auto-mode))
 
+(use-package combobulate
+  :straight t
+  :bind
+  (:map combobulate-key-map
+	("M-." . combobulate-mark-node-dwim))
+  ;; TODO: add pretty hydra
+  :preface
+  ;; You can customize Combobulate's key prefix here.
+  ;; Note that you may have to restart Emacs for this to take effect!
+  (setq combobulate-key-prefix "C-c o")
+
+  ;; Optional, but recommended.
+  ;;
+  ;; You can manually enable Combobulate with `M-x
+  ;; combobulate-mode'.
+  :hook ((python-ts-mode . combobulate-mode)
+         (js-ts-mode . combobulate-mode)
+         (css-ts-mode . combobulate-mode)
+         (yaml-ts-mode . combobulate-mode)
+         (typescript-ts-mode . combobulate-mode)
+         (tsx-ts-mode . combobulate-mode)))
+
+(use-package expand-region
+  :straight t
+  :defer t
+  :bind ("M-." . er/expand-region))
+
 (use-package general
   :straight t
   :ensure t
@@ -1005,11 +1032,6 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package iedit
   :straight t
   :defer t)
-
-(use-package expand-region
-  :straight t
-  :defer t
-  :bind ("M-." . er/expand-region))
 
 (use-package swap-regions
   :straight t
