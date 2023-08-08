@@ -885,7 +885,7 @@
       "* %?\n  %i\n  %a")
      ))
   (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE")))
-  (org-export-backends '(ascii html icalendar latex odt confluence md jira))
+  (org-export-backends '(ascii html icalendar latex odt md))
   (org-clock-persist 'history)
   :config
   (org-clock-persistence-insinuate)
