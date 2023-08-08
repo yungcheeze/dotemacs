@@ -818,6 +818,8 @@
 (use-package format-all
   :straight t
   :defer t
+  :custom
+  (format-all-formatters '(("Shell" shfmt)))
   :init
   (cheesemacs/buffers "f" 'format-all-buffer)
   :config
