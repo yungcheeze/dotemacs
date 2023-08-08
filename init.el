@@ -191,6 +191,12 @@
 (use-package major-mode-hydra
   :straight t)
 
+(use-package breadcrumb
+  :straight (breadcrumb :type git :host github :repo "joaotavora/breadcrumb")
+  :defer t
+  :init
+  (cheesemacs/toggle "b" 'breadcrumb-local-mode))
+
 (use-package xterm-color
   :straight t
   :defer t
