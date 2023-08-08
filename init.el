@@ -527,12 +527,6 @@
 	(copilot-complete)))
   :hook (prog-mode . copilot-mode))
 
-;; we need compat-29 for corfu to work as it uses defvar-keymap, which is an emacs-29 function
-(use-package compat
-  :straight t
-  :ensure t
-  :defer nil)
-
 (use-package corfu
   :straight ( :host github
               :repo "minad/corfu"
