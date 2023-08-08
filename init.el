@@ -69,7 +69,7 @@
   :defer t)
 
 (use-package tree-sitter
-  :straight t
+  :straight nil
   :defer t
   :after tree-sitter-langs
   :config
