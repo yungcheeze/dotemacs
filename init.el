@@ -150,9 +150,10 @@
   (general-create-definer cheesemacs/search
     :wrapping cheesemacs
     :infix "s")
+  (define-prefix-command 'cheesemacs/toggle-map)
+  (global-set-key (kbd "M-T") 'cheesemacs/toggle-map)
   (general-create-definer cheesemacs/toggle
-    :wrapping cheesemacs
-    :infix "t")
+    :prefix-command 'cheesemacs/toggle-map)
   (general-create-definer cheesemacs/text
     :wrapping cheesemacs
     :infix "x")
