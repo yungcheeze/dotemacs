@@ -95,11 +95,6 @@
          (typescript-ts-mode . combobulate-mode)
          (tsx-ts-mode . combobulate-mode)))
 
-(use-package expand-region
-  :straight t
-  :defer t
-  :bind ("M-." . er/expand-region))
-
 (use-package general
   :straight t
   :ensure t
@@ -1032,6 +1027,11 @@ This can be thought of as an inverse to `mc/mark-all-in-region'."
 (use-package iedit
   :straight t
   :defer t)
+
+(use-package expand-region
+  :straight t
+  :defer t
+  :bind ("M-." . er/expand-region))
 
 (use-package swap-regions
   :straight t
