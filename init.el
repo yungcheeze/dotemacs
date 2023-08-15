@@ -77,7 +77,11 @@
   :straight t
   :bind
   (:map combobulate-key-map
-	("M-." . combobulate-mark-node-dwim))
+	("M-." . combobulate-mark-node-dwim)
+	("M-N" . nil)
+	("M-P" . nil)
+	("M-<up>" . combobulate-drag-up)
+	("M-<down>" . combobulate-drag-down))
   ;; TODO: add pretty hydra
   :preface
   ;; You can customize Combobulate's key prefix here.
