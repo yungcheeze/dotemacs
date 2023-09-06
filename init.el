@@ -583,10 +583,6 @@
 (use-package company-cabal
   :straight t
   )
-(use-package company-nixos-options
-  :straight t
-  :defer t
-  )
 (use-package company-emoji
   :straight t
   )
@@ -598,7 +594,7 @@
 		       (setq-local completion-at-point-functions (list
 								  (cape-capf-buster
 								   (cape-super-capf
-								    (cape-company-to-capf #'company-nixos-options)
+								    ;;(cape-company-to-capf #'company-nixos-options)
 								    #'cape-file
 								    #'cape-dabbrev))))
 		       ))
