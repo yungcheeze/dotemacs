@@ -496,6 +496,21 @@
   :custom
   (eldoc-idle-delay 1.0))
 
+
+(use-package shell-maker
+  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el"))
+
+  )
+
+(use-package chatgpt-shell
+  :requires shell-maker
+  :custom
+  (chatgpt-shell-openai-key (lambda ()
+			      (auth-source-pick-first-password :host "api.openai.com")))
+  (chatgpt-shell-model-version "gpt-4")
+  (chatgpt-shell-model-temperature 0)
+  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el")))
+
 ;;;Completion
 ;; copilot dependencies
 (use-package dash
