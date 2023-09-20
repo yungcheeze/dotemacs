@@ -340,10 +340,21 @@
   (define-key magit-mode-map (kbd "M-q") 'magit-mode-bury-buffer))
 (use-package magit-delta
   :straight t
-  :defer t
   :custom
   (magit-delta-default-dark-theme "Nord")
-  :hook (magit-mode . magit-delta-mode))
+  :hook (magit-mode . magit-delta-mode)
+  :config
+  ;; https://shivjm.blog/better-magit-diffs/
+  (defun cheeze/toggle-magit-delta ()
+    (interactive)
+    (magit-delta-mode
+     (if magit-delta-mode
+         -1
+       1))
+    (magit-refresh))
+
+  (transient-append-suffix 'magit-diff '(-1 -1 -1)
+    '("l" "Toggle magit-delta" cheeze/toggle-magit-delta)))
 (use-package difftastic
   :straight (difftastic :type git :host github :repo "pkryger/difftastic.el")
   :config
