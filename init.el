@@ -966,7 +966,7 @@
   :ensure t)
 
 (use-package org-autolist
-  :straight t
+  :straight (:type git :host github :repo "ucizi-turintech/org-autolist")
   :defer t
   :hook (org-mode . org-autolist-mode))
 
