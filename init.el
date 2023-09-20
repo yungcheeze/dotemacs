@@ -970,10 +970,17 @@
   :defer t
   :hook (org-mode . org-autolist-mode))
 
-(use-package org-bullets
+(use-package org-modern
   :straight t
   :defer t
-  :hook (org-mode . org-bullets-mode))
+  :custom
+  (org-modern-table nil)
+  (org-modern-list '((?+ . "◦")
+		     (?- . "-")
+		     (?* . "•")))
+  (org-modern-horizontal-rule nil)
+
+  :hook (org-mode . org-modern-mode))
 
 ;;; QOL
 (use-package phi-search
