@@ -344,6 +344,13 @@
   :custom
   (magit-delta-default-dark-theme "Nord")
   :hook (magit-mode . magit-delta-mode))
+(use-package difftastic
+  :straight (difftastic :type git :host github :repo "pkryger/difftastic.el")
+  :config
+  (eval-after-load 'magit-diff
+    '(transient-append-suffix 'magit-diff '(-1 -1)
+       [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
+        ("S" "Difftastic show" difftastic-magit-show)])))
 (use-package magit-todos
   :straight t
   :defer t
