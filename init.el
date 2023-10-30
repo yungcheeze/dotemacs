@@ -916,6 +916,11 @@
   (org-clock-persist 'history)
   :config
   (org-clock-persistence-insinuate)
+  (defun cheese/markdown-to-org-region (start end)
+    "Convert region from markdown to org."
+    (interactive "r")
+    (shell-command-on-region start end "pandoc -f markdown -t org" nil t)
+    (fill-region start end))
   :bind
   (:map org-mode-map
 	("C-c RET" . org-insert-heading-respect-content)
