@@ -49,6 +49,13 @@
   (add-hook 'window-setup-hook 'on-after-init)
   (load-theme 'nord t))
 
+(use-package vline
+  :straight t
+  :custom
+  (vline-use-timer nil)
+  :custom-face
+  (vline ((t (:background "#313845")))))
+
 (use-package rainbow-delimiters
   :straight t
   :defer t)
