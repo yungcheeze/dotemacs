@@ -377,6 +377,7 @@
   (magit-todos-ignored-keywords '("DONE"))
   (magit-todos-nice (when (executable-find "nice") t)
                     "avoid breaking Magit on systems that don't have `nice'.")
+  (magit-todos-exclude-globs '("./git/" "node_modules/"))
   :init
   (let ((inhibit-message t))
     (magit-todos-mode 1))
