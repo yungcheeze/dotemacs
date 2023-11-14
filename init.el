@@ -1014,6 +1014,7 @@
 		     (?- . "-")
 		     (?* . "•")))
   (org-modern-horizontal-rule nil)
+  (org-modern-star '("◉" "○" "◈" "◇" "✳" "✳✳" "✳✳✳" "✳✳✳✳" "✳✳✳✳✳" "✳✳✳✳✳✳"))
 
   :hook (org-mode . org-modern-mode))
 
