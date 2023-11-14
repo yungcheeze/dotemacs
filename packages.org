@@ -8,9 +8,10 @@
     - [ ] refine diff hunks t
     - [ ] refine ignore whitespace t
 - [ ] gh-md (need gui)
-- [ ] contextual editing using
+- [X] contextual editing using
   [[https://github.com/mickeynp/combobulate][combobulate]] (needs emacs 29)
-
+- [ ] aphelia: formatting, supports multiple formatters
+- [ ] flycheck-grammarlyy
 * Languages
 * Core
 - [ ] hydra
@@ -25,3 +26,8 @@
     (https://github.com/raxod502/selectrum/issues/481)
 
 * Rice
+
+* Improvements
+- selective formatting
+  - by mode (for personal stuff)
+  - by project (for work stuff)
