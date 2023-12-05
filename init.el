@@ -876,11 +876,14 @@
 (use-package ethan-wspace
   :straight t
   :custom
+  (require-final-newline nil)
   (mode-require-final-newline nil)
   :init
   (cheesemacs/buffers "w" 'ethan-wspace-clean-all)
   :config
-  (global-ethan-wspace-mode 1))
+  (global-ethan-wspace-mode 1)
+  (setq mode-require-final-newline nil)
+  (setq require-final-newline nil))
 
 (use-package separedit
   :straight t
