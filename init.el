@@ -526,6 +526,10 @@
   (chatgpt-shell-model-temperature 0)
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el")))
 
+(use-package ein
+  :straight t
+  :defer t)
+
 ;;;Completion
 ;; copilot dependencies
 (use-package dash
