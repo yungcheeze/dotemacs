@@ -604,6 +604,9 @@
   ;; should be configured in the `indent' package, but `indent.el'
   ;; doesn't provide the `indent' feature.
   (tab-always-indent 'complete)
+  :hook
+  (chatgpt-shell-mode . (lambda ()
+			  (corfu-mode 0)))
   :config
   (global-corfu-mode 1))
 
