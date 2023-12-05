@@ -855,47 +855,17 @@
 	;; unbind key used for copilot
 	("M-TAB" . nil)))
 
-(use-package format-all
+(use-package apheleia
   :straight t
-  :defer t
-  :custom
-  (format-all-formatters '(("Shell" shfmt)))
+  :ensure t
   :init
-  (cheesemacs/buffers "f" 'format-all-buffer)
+  (cheesemacs/buffers "f" 'apheleia-format-buffer)
   :config
-  (define-format-all-formatter fourmolu
-    (:executable "fourmolu")
-    (:install "stack install fourmolu")
-    (:languages "Haskell" "Literate Haskell")
-    (:features)
-    (:format
-     (format-all--buffer-easy executable)))
-  (define-format-all-formatter ormolu
-    (:executable "ormolu")
-    (:install "stack install ormolu")
-    (:languages "Haskell" "Literate Haskell")
-    (:features)
-    (:format
-     (format-all--buffer-easy executable)))
-  (define-format-all-formatter shfmt
-    (:executable "shfmt")
-    (:install
-     (macos "brew install shfmt")
-     (windows "scoop install shfmt"))
-    (:languages "Shell")
-    (:features)
-    (:format
-     (format-all--buffer-easy
-      executable
-      "-i" (format "%d" sh-indentation)
-      (if (buffer-file-name)
-          (list "-filename" (buffer-file-name))
-	(list "-ln" (cl-case (and (eql major-mode 'sh-mode)
-                                  (boundp 'sh-shell)
-                                  (symbol-value 'sh-shell))
-                      (bash "bash")
-                      (mksh "mksh")
-                      (t "posix"))))))))
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+	'(isort black))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist)
+      '(isort black))
+  (apheleia-global-mode +1))
 
 (use-package editorconfig
   :straight t
